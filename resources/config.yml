@@ -1,0 +1,22 @@
+# 均可使用RPG 里的变量 VIP 称号
+是否显示Boss血条: false
+Boss血条显示: "称号 {ch} 金钱 {money}"
+是否更改头部: true
+头部更改: "{name}"
+是否更改聊天: true
+聊天更改: "<{name}>:{msg}"
+是否更改底部: false
+# 0 : tip 1: popup 2:actionBar
+底部显示类型: 0
+底部: "称号 {ch} 金钱 {money} VIP: {vip} 在线 {online}/{maxplayer}"
+限制显示地图: []
+无称号显示: "§c无称号"
+无VIP显示: "§c无VIP"
+计分板:
+  canShow: true
+  Title: "Server Name"
+  Line:
+    - "line 1"
+    - "line 2"
+    - "line 3"
+    - "line 4"
