@@ -1,0 +1,34 @@
+# 自定义信息提示
+进服提示:
+  default:
+    是否开启: true
+    # 0 msg 1 tip 2: title(换行为subtitle)
+    显示类型: 0
+    显示: "[+] {name} 来到了{levelName}"
+退出提示:
+  default:
+    是否开启: true
+      # 0 msg 1 tip 2: title(换行为subtitle)
+      显示类型: 0
+      显示: "[-] {name} 离开了{levelName}"
+#死亡提示:
+#  default:
+#    是否开启: true
+#    死亡类型:
+#      CONTACT: "{name} 被扎死了"
+#      ENTITY_ATTACK: "{name} 被 {damagePlayer} 用 {item} 打死了"
+#      PROJECTILE: "{name} 走着走着被砸死了"
+#      SUFFOCATION: "{name} 在学习穿墙术的时候 穿墙失败了"
+#      FALL: "{name} 一步踩空， 与大地亲密接触了"
+#      FIRE: "{name} 在"
+#      FIRE_TICK,
+#      LAVA,
+#      DROWNING,
+#      BLOCK_EXPLOSION,
+#      ENTITY_EXPLOSION,
+#      VOID,
+#      SUICIDE,
+#      MAGIC,
+#      CUSTOM,
+#      LIGHTNING,
+#      HUNGER;
