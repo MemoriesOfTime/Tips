@@ -1,10 +1,5 @@
-使用方法:
-安装此显示后为了避免冲突 请关闭其他显示
-功能:
-· 显示RPG插件变量
-· 显示VIP 插件称号变量（售卖插件价格50RMB）
-· 计分板
-. 可作用于 聊天 底部 玩家头部 boss血条 计分板
+版本: v1.7.1
+
 变量 & 介绍:
 基础变量:
 {name}     : 玩家名称
@@ -30,6 +25,9 @@
 {gm}    :玩家游戏模式
 {fly}   :玩家飞行状态
 {op}    :玩家权限
+{ach}   : 玩家完成的成就数量
+{achCount}: 玩家成就总数
+{color} : 随机字符颜色
 
 安装 LevelAwakenSystem （等级插件）可显示 变量
 {属性}     : 玩家的RPG属性
@@ -78,7 +76,10 @@
 {we-dkick}:   玩家盔甲抗击退值
 {we-todamage}: 玩家盔甲反伤百分比
 
-
+安装好友 Friend 含 v1.1.7 以上版本
+{onlineFriend}:  获取在线好友数量
+{maxFriend}   :  获取所有好友数量
+{mailFriend}  :   获取好友邮件的数量
 
 安装 RsTask （任务）可显示:
 {task-name} 正在进行中的任务 (显示第一个)
@@ -91,6 +92,13 @@
 安装OreArea （矿区）插件可显示
 {arealevel} 玩家矿区等级
 {nextarealevel} 玩家下一阶段矿区等级
+
+
+安装OreArea （1.2.7以上版本） （矿区）插件可显示
+{oreareaTime}: 玩家在矿区的使用时间
+{oreareaReset}: 矿区刷新剩余时间
+{oreareaName}: 玩家所在矿区名称
+
 
 ==================支持不是若水的插件===========
 
@@ -119,11 +127,11 @@
 %MurderSurvivorNumber%:  存活人数
 
 安装 ZSociety 可显示
-{societyGrade} 公会等级
-{societyName} 公会名字
-{societyPost} 公会职位
-{title}  ZSociety称号
-{zmarry}  ZSociety 结婚
+${societyGrade} 公会等级
+${societyName} 公会名字
+${societyPost} 公会职位
+${title}  ZSociety称号
+${zmarry}  ZSociety 结婚
 
 安装称号(Qwetitle 插件)
 {qt_ch}  : 玩家称号
@@ -163,3 +171,5 @@
 %server_tps% - 获取当前TPS
 %server_uptime% - 获取当前正常运行时间
 %time% - 获取实际时间
+
+
