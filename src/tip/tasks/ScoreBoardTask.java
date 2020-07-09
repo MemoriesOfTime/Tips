@@ -3,6 +3,7 @@ package tip.tasks;
 import cn.nukkit.Player;
 import cn.nukkit.Server;
 import cn.nukkit.scheduler.AsyncTask;
+import cn.nukkit.scheduler.PluginTask;
 import cn.nukkit.scheduler.Task;
 import de.theamychan.scoreboard.api.ScoreboardAPI;
 import de.theamychan.scoreboard.network.DisplaySlot;
@@ -21,9 +22,12 @@ import java.util.LinkedList;
 /**
  * @author 若水
  */
-public class ScoreBoardTask extends Task{
+public class ScoreBoardTask extends PluginTask<Main> {
 
 
+    public ScoreBoardTask(Main owner) {
+        super(owner);
+    }
 
     @Override
     public void onRun(int i) {
@@ -42,13 +46,13 @@ public class ScoreBoardTask extends Task{
                         }
                     }
                     if (message == null) {
-                        if (Main.getInstance().scoreboards.containsKey(player)) {
+                        if (getOwner().scoreboards.containsKey(player)) {
                             ScoreboardAPI.removeScorebaord(player,
                                     Main.getInstance().scoreboards.get(player));
                         }
                         return;
                     } else if (!message.isOpen()) {
-                        if (Main.getInstance().scoreboards.containsKey(player)) {
+                        if (getOwner().scoreboards.containsKey(player)) {
                             ScoreboardAPI.removeScorebaord(player,
                                     Main.getInstance().scoreboards.get(player));
                         }
@@ -58,17 +62,19 @@ public class ScoreBoardTask extends Task{
                     if (player.isOnline()) {
                         try {
                             Scoreboard scoreboard = ScoreboardAPI.createScoreboard();
+                            String title = message.getTitle();
+                            Api api = new Api(title,player);
                             ScoreboardDisplay scoreboardDisplay = scoreboard.addDisplay(DisplaySlot.SIDEBAR,
-                                    "dumy", message.getTitle());
+                                    "dumy", api.strReplace());
                             LinkedList<String> list = message.getMessages();
                             for (int line = 0; line < list.size(); line++) {
                                 String s = list.get(line);
-                                Api api = new Api(s, player);
+                                api = new Api(s, player);
                                 s = api.strReplace();
                                 scoreboardDisplay.addLine(s, line);
                             }
                             try {
-                                Main.getInstance().scoreboards.get(player).hideFor(player);
+                                getOwner().scoreboards.get(player).hideFor(player);
                             } catch (Exception ignored) {
                             }
                             scoreboard.showFor(player);

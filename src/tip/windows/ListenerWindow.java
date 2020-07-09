@@ -87,6 +87,7 @@ public class ListenerWindow implements Listener {
                 }
 
                 baseMessage = config.getMessage(worldName,types.getType());
+                BaseMessage remove = baseMessage;
                 switch (types){
                     case CHAT_MESSAGE:
                         baseMessage = setChatBase(baseMessage,open,worldName,window,player,defaultMessage);
@@ -108,7 +109,10 @@ public class ListenerWindow implements Listener {
                 if(baseMessage != null){
                     config.setMessage(baseMessage);
                     config.save();
+                    Main.getInstance().init();
                     player.sendMessage("§7设置已保存..");
+                }else{
+                    config.removeMessage(remove);
                 }
             }
         }
@@ -137,8 +141,7 @@ public class ListenerWindow implements Listener {
             ((ChatMessage)baseMessage).setMessage( ((ChatMessage)defaultMessage).getMessage());
             if(inWorld == ((ChatMessage)baseMessage).isInWorld()){
                 if(open == baseMessage.isOpen() && worldName.equalsIgnoreCase(baseMessage.getWorldName())) {
-                    player.sendMessage("§c未更改");
-                    CreateWindow.sendSettingType(player);
+                    player.sendMessage("§7设置已初始化");
                     return null;
                 }
             }else{
@@ -166,8 +169,7 @@ public class ListenerWindow implements Listener {
         }else{
             ((NameTagMessage) baseMessage).setMessage( ((NameTagMessage) defaultMessage).getMessage());
             if(open == baseMessage.isOpen() && worldName.equalsIgnoreCase(baseMessage.getWorldName())) {
-                player.sendMessage("§c未更改");
-                CreateWindow.sendSettingType(player);
+                player.sendMessage("§7设置已初始化");
                 return null;
             }
 
@@ -223,8 +225,7 @@ public class ListenerWindow implements Listener {
             ((BossBarMessage) baseMessage).setMessages(defaultMessage.getMessages());
             if(open == baseMessage.isOpen() && worldName.equalsIgnoreCase(baseMessage.getWorldName())) {
                 if(time ==  ((BossBarMessage)baseMessage).getTime() && size ==  ((BossBarMessage)baseMessage).isSize()) {
-                    player.sendMessage("§c未更改");
-                    CreateWindow.sendSettingType(player);
+                    player.sendMessage("§7设置已初始化");
                     return null;
                 }
             }
@@ -283,8 +284,7 @@ public class ListenerWindow implements Listener {
             ((ScoreBoardMessage) baseMessage).setMessages(defaultMessage.getMessages());
             if(open == baseMessage.isOpen() && worldName.equalsIgnoreCase(baseMessage.getWorldName())) {
                 if(title.equalsIgnoreCase(((ScoreBoardMessage)baseMessage).getTitle())) {
-                    player.sendMessage("§c未更改");
-                    CreateWindow.sendSettingType(player);
+                    player.sendMessage("§7设置已初始化");
                     return null;
                 }
             }
@@ -314,8 +314,7 @@ public class ListenerWindow implements Listener {
             ((TipMessage)baseMessage).setMessage(((TipMessage)defaultMessage).getMessage());
             if(open == baseMessage.isOpen() && worldName.equalsIgnoreCase(baseMessage.getWorldName())) {
                 if(showType == ((TipMessage)baseMessage).getShowType()) {
-                    player.sendMessage("§c未更改");
-                    CreateWindow.sendSettingType(player);
+                    player.sendMessage("§7设置已初始化");
                     return null;
                 }
             }

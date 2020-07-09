@@ -1,22 +1,24 @@
 package tip;
 
 
+
 import cn.nukkit.Player;
 import cn.nukkit.Server;
-import cn.nukkit.command.Command;
-import cn.nukkit.command.CommandSender;
 import cn.nukkit.event.Listener;
 import cn.nukkit.plugin.PluginBase;
 import cn.nukkit.utils.Config;
 import de.theamychan.scoreboard.network.Scoreboard;
 import tip.bossbar.BossBarApi;
+import tip.commands.TipsCommand;
+import tip.lib.viewcompass.ViewCompassVariable;
 import tip.messages.*;
-import tip.tasks.ScoreBoardTask;
-import tip.tasks.TipTask;
+import tip.tasks.*;
 
+import tip.utils.Api;
 import tip.utils.OnListener;
 import tip.utils.PlayerConfig;
-import tip.windows.CreateWindow;
+import tip.utils.variables.defaults.DefaultVariables;
+import tip.utils.variables.defaults.PluginVariables;
 import tip.windows.ListenerWindow;
 
 import java.io.File;
@@ -33,23 +35,47 @@ public class Main extends PluginBase implements Listener {
 
     public Map<Player, Scoreboard> scoreboards = new HashMap<>();
 
+    public LinkedHashMap<Player,BossBarTask> tasks = new LinkedHashMap<>();
 
     private LinkedList<BaseMessage> showMessages = new LinkedList<>();
-
 
     public LinkedHashMap<Player, BossBarApi> apis = new LinkedHashMap<>();
 
     private LinkedList<PlayerConfig> playerConfigs = new LinkedList<>();
 
     @Override
+    public void onLoad() {
+        Api.registerVariables("default", DefaultVariables.class);
+        Api.registerVariables("plugin", PluginVariables.class);
+        Api.registerVariables("ViewCompass", ViewCompassVariable.class);
+    }
+
+    @Override
     public void onEnable() {
         instance = this;
-        this.saveDefaultConfig();
-        this.reloadConfig();
+        init();
+
         this.getServer().getCommandMap().register("tips", new TipsCommand(getConfig().getString("自定义指令.name","tips")));
         this.getServer().getPluginManager().registerEvents(new OnListener(),this);
         this.getServer().getPluginManager().registerEvents(new ListenerWindow(),this);
-        this.getServer().getScheduler().scheduleRepeatingTask(new TipTask(this),getTick());
+        this.getServer().getScheduler().scheduleRepeatingTask(new TipTask(this),getConfig().getInt("自定义刷新刻度.底部",20));
+        this.getServer().getScheduler().scheduleRepeatingTask(new BossBarAllPlayerTask(this),getConfig().getInt("自定义刷新刻度.Boss血条",20));
+        this.getServer().getScheduler().scheduleRepeatingTask(new NameTagTask(this),getConfig().getInt("自定义刷新刻度.头部",20));
+
+        try {
+            Class.forName("de.theamychan.scoreboard.api.ScoreboardAPI");
+            Main.getInstance().getLogger().info("检测到 ScoreboardAPI 成功开启计分板功能");
+            this.getServer().getScheduler().scheduleRepeatingTask(new ScoreBoardTask(this), getConfig().getInt("自定义刷新刻度.计分板",20));
+        } catch (Exception e) {
+            Main.getInstance().getLogger().info("未检测到计分板API 无法使用计分板功能");
+        }
+    }
+
+    public void init(){
+        this.saveDefaultConfig();
+        this.reloadConfig();
+        tasks = new LinkedHashMap<>();
+        showMessages = new LinkedList<>();
         this.getLogger().info("加载成功");
         if(!new File(this.getDataFolder()+"/Tips变量参考.txt").exists()){
             this.saveResource("Tips变量.txt","/Tips变量参考.txt",false);
@@ -63,6 +89,7 @@ public class Main extends PluginBase implements Listener {
         for(BaseMessage.BaseTypes types: BaseMessage.BaseTypes.values()){
             showMessages.addAll(addShowMessageByMap((Map) getConfig().get(types.getConfigName()),types.getType()));
         }
+        playerConfigs = new LinkedList<>();
         //加载玩家覆盖..
         Config config;
         for(String playerName:getPlayerFiles()){
@@ -76,41 +103,13 @@ public class Main extends PluginBase implements Listener {
             }
             playerConfigs.add(new PlayerConfig(playerName,messages));
         }
-        try {
-            Class.forName("de.theamychan.scoreboard.api.ScoreboardAPI");
-            Main.getInstance().getLogger().info("检测到 ScoreboardAPI 成功开启计分板功能");
-            Server.getInstance().getScheduler().scheduleRepeatingTask(new ScoreBoardTask(), 20);
-        } catch (Exception e) {
-            Main.getInstance().getLogger().info("未检测到计分板API 无法使用计分板功能");
-        }
     }
 
     public LinkedList<PlayerConfig> getPlayerConfigs() {
         return playerConfigs;
     }
 
-    private class TipsCommand extends Command{
-        TipsCommand(String name) {
-            super(name);
-            this.setPermission("tips.ts");
-            this.setAliases(getConfig().getStringList("自定义指令.aliases").toArray(new String[0]));
-            this.description = getConfig().getString("自定义指令.description","自定义玩家提示");
 
-        }
-        @Override
-        public boolean execute(CommandSender commandSender, String s, String[] strings) {
-            if (commandSender.isOp()) {
-                if (commandSender instanceof Player) {
-                    CreateWindow.sendSetting((Player) commandSender);
-                } else {
-                    commandSender.sendMessage("请不要在控制台执行");
-                }
-                return true;
-            }
-            return false;
-        }
-
-    }
 
     public PlayerConfig getPlayerConfig(String playerName){
         for(PlayerConfig config:playerConfigs){
@@ -192,9 +191,6 @@ public class Main extends PluginBase implements Listener {
         return instance;
     }
 
-    private int getTick(){
-        return getConfig().getInt("刷新刻度",20);
-    }
 
     private String[] getPlayerFiles() {
         List<String> names = new ArrayList<>();

@@ -19,7 +19,7 @@ public class BossBarApi extends DummyBossBar.Builder{
 
     public static void createBossBar(Player player){
         if(!Main.getInstance().apis.containsKey(player)) {
-            BossBarApi bossBar = (new BossBarApi(player));
+            BossBarApi bossBar = new BossBarApi(player);
             bossBar.length(0);
             bossBar.text("加载中");
             Main.getInstance().apis.put(player, bossBar);

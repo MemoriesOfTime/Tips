@@ -1,7 +1,6 @@
 package tip.tasks;
 
 import cn.nukkit.Player;
-import cn.nukkit.scheduler.Task;
 import tip.Main;
 import tip.bossbar.BossBarApi;
 import tip.messages.BaseMessage;
@@ -13,18 +12,16 @@ import tip.utils.PlayerConfig;
 /**
  * @author 若水
  */
-public class BossBarTask extends Task {
+public class BossBarTask {
     private int i = 0;
     private int time = -2;
 
-    private Player player;
-    public BossBarTask(Player player){
-        this.player = player;
-    }
 
-    @Override
-    public void onRun(int i) {
+    void onRun(Player player) {
         if(player.isOnline()){
+            if(!Main.getInstance().apis.containsKey(player)){
+                return;
+            }
             BossBarMessage message = (BossBarMessage) BaseMessage.getMessageByTypeAndWorld(player.level.getFolderName(),0);
             PlayerConfig config = Main.getInstance().getPlayerConfig(player.getName());
             if(config != null){
@@ -47,6 +44,8 @@ public class BossBarTask extends Task {
                         this.i = 0;
                     }
                     String text = bossMessageBuilder.getStrings().get(this.i);
+
+
                     Api api = new Api(text, player);
                     text = api.strReplace();
                     BossBarApi.showBoss(player, text, bossMessageBuilder.isHealth());
@@ -56,8 +55,6 @@ public class BossBarTask extends Task {
             }else{
                 BossBarApi.removeBossBar(player);
             }
-        }else{
-            this.cancel();
         }
 
 

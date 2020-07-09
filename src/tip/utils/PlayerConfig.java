@@ -52,12 +52,17 @@ public class PlayerConfig {
     }
 
     public BaseMessage getMessage(String levelName,int type){
+        BaseMessage getMessage = null;
         for(BaseMessage baseMessage:messages){
+            if("default".equalsIgnoreCase(baseMessage.getWorldName()) && baseMessage.getType() == type){
+                getMessage = baseMessage;
+            }
             if(baseMessage.getWorldName().equalsIgnoreCase(levelName) && baseMessage.getType() == type){
-                return baseMessage;
+                getMessage = baseMessage;
             }
         }
-        return null;
+
+        return getMessage;
     }
 
     private LinkedList<BaseMessage> getMessagesByType(int type){
