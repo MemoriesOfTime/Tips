@@ -1,9 +1,7 @@
 package tip;
 
 
-
 import cn.nukkit.Player;
-import cn.nukkit.Server;
 import cn.nukkit.event.Listener;
 import cn.nukkit.plugin.PluginBase;
 import cn.nukkit.utils.Config;
@@ -13,7 +11,6 @@ import tip.commands.TipsCommand;
 import tip.lib.viewcompass.ViewCompassVariable;
 import tip.messages.*;
 import tip.tasks.*;
-
 import tip.utils.Api;
 import tip.utils.OnListener;
 import tip.utils.PlayerConfig;
@@ -58,9 +55,9 @@ public class Main extends PluginBase implements Listener {
         this.getServer().getCommandMap().register("tips", new TipsCommand(getConfig().getString("自定义指令.name","tips")));
         this.getServer().getPluginManager().registerEvents(new OnListener(),this);
         this.getServer().getPluginManager().registerEvents(new ListenerWindow(),this);
-        this.getServer().getScheduler().scheduleRepeatingTask(new TipTask(this),getConfig().getInt("自定义刷新刻度.底部",20));
-        this.getServer().getScheduler().scheduleRepeatingTask(new BossBarAllPlayerTask(this),getConfig().getInt("自定义刷新刻度.Boss血条",20));
-        this.getServer().getScheduler().scheduleRepeatingTask(new NameTagTask(this),getConfig().getInt("自定义刷新刻度.头部",20));
+        this.getServer().getScheduler().scheduleRepeatingTask(this, new TipTask(this),getConfig().getInt("自定义刷新刻度.底部",20), true);
+        this.getServer().getScheduler().scheduleRepeatingTask(this, new BossBarAllPlayerTask(this),getConfig().getInt("自定义刷新刻度.Boss血条",20), true);
+        this.getServer().getScheduler().scheduleRepeatingTask(this, new NameTagTask(this),getConfig().getInt("自定义刷新刻度.头部",20), true);
 
         try {
             Class.forName("de.theamychan.scoreboard.api.ScoreboardAPI");
