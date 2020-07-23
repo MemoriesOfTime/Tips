@@ -34,7 +34,7 @@ public class TipTask extends PluginTask<Plugin> {
                 public void onRun() {
                     if (player.isOnline()) {
                         TipMessage tipMessage;
-
+                        NameTagMessage nameTagMessage;
                         tipMessage = (TipMessage) BaseMessage.getMessageByTypeAndWorld(player.level.getFolderName(),
                                 BaseMessage.TIP_MESSAGE_TYPE);
                         PlayerConfig config = Main.getInstance().getPlayerConfig(player.getName());
@@ -46,10 +46,23 @@ public class TipTask extends PluginTask<Plugin> {
                         if (tipMessage != null) {
                             if (tipMessage.isOpen()) {
                                 Api api = new Api(tipMessage.getMessage(), player);
-                                sendTip(player, api.strReplace(), tipMessage.getShowType());
+                                sendTip(player, api.strReplace(), tipMessage.getType());
                             }
                         }
-
+                        nameTagMessage = (NameTagMessage) BaseMessage.getMessageByTypeAndWorld(player.level.getFolderName(),
+                                BaseMessage.NAME_TAG_TYPE);
+                        if (config != null) {
+                            if (config.getMessage(player.getLevel().getFolderName(), BaseMessage.NAME_TAG_TYPE) != null) {
+                                nameTagMessage = (NameTagMessage) config.getMessage(player.getLevel().getFolderName(), BaseMessage.NAME_TAG_TYPE);
+                            }
+                        }
+                        if (nameTagMessage != null) {
+                            if (nameTagMessage.isOpen()) {
+                                Api api1 = new Api(nameTagMessage.getMessage(), player);
+                                String hand = api1.strReplace();
+                                player.setNameTag(hand);
+                            }
+                        }
                     }
                 }
 

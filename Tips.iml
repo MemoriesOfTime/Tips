@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="[经济前置]Money-3.3" level="project" />
+    <orderEntry type="library" name="EconomyAPI" level="project" />
+    <orderEntry type="library" name="Proficiency_v1.1.2" level="project" />
+    <orderEntry type="library" name="Title_v1.0.7" level="project" />
+    <orderEntry type="library" name="KDR-1.0.1" level="project" />
+    <orderEntry type="library" name="LuckPerms" level="project" />
+    <orderEntry type="library" name="[Tips前置(v1.2.7)]ScoreboardAPI-1.3" level="project" />
+    <orderEntry type="library" name="Qwetitle" level="project" />
+    <orderEntry type="library" name="Sociaty(1)" level="project" />
+    <orderEntry type="library" name="MarryN" level="project" />
+    <orderEntry type="library" name="union(2)(1)" level="project" />
+    <orderEntry type="library" name="等级觉醒_v80.5.9.3" level="project" />
+    <orderEntry type="library" name="VIP系统_v1.9.8" level="project" />
+    <orderEntry type="library" name="PlayerPoints_v1.1.3" level="project" />
+    <orderEntry type="library" name="RSWeapon_v1.8.3" level="project" />
+    <orderEntry type="library" name="EasyAPI-1.1.3" level="project" />
+    <orderEntry type="library" name="BadWordKiller【1.0.1】" level="project" />
+    <orderEntry type="library" name="ZSociety-1.0.6alpha" level="project" />
+    <orderEntry type="library" name="healthapi_v1.0.9" level="project" />
+    <orderEntry type="library" name="achievements_v1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="RSTask_v1.5.0" level="project" />
+    <orderEntry type="library" name="PlaceholderAPI v1.3.3" level="project" />
+    <orderEntry type="library" name="nukkit-1.16" level="project" />
+    <orderEntry type="library" name="ScoreboardAPI" level="project" />
+    <orderEntry type="library" name="OreArea_v1.2.7" level="project" />
+  </component>
+</module>

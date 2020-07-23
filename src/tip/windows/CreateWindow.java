@@ -26,7 +26,6 @@ public class CreateWindow {
         for(Player player1: Server.getInstance().getOnlinePlayers().values()){
             simple.addButton(new ElementButton(player1.getName(), new ElementButtonImageData("path", "textures/ui/Friend2")));
         }
-
         player.showFormWindow(simple,MENU);
     }
 

@@ -2,8 +2,7 @@ package tip.tasks;
 
 import cn.nukkit.Player;
 import cn.nukkit.Server;
-import cn.nukkit.scheduler.AsyncTask;
-import cn.nukkit.scheduler.PluginTask;
+import cn.nukkit.scheduler.Task;
 import tip.Main;
 import tip.bossbar.BossBarApi;
 
@@ -12,27 +11,19 @@ import tip.bossbar.BossBarApi;
 /**
  * @author SmallasWater
  */
-public class BossBarAllPlayerTask extends PluginTask<Main> {
+public class BossBarAllPlayerTask extends Task {
 
 
-    public BossBarAllPlayerTask(Main owner) {
-        super(owner);
-    }
 
     @Override
     public void onRun(int i) {
         for(Player player: Server.getInstance().getOnlinePlayers().values()){
-            owner.getServer().getScheduler().scheduleAsyncTask(owner, new AsyncTask() {
-                @Override
-                public void onRun() {
-                    BossBarApi.createBossBar(player);
-                    if(!Main.getInstance().tasks.containsKey(player)){
-                        Main.getInstance().tasks.put(player,new BossBarTask());
-                    }
-                    BossBarTask task = Main.getInstance().tasks.get(player);
-                    task.onRun(player);
-                }
-            });
+            BossBarApi.createBossBar(player);
+            if(!Main.getInstance().tasks.containsKey(player)){
+                Main.getInstance().tasks.put(player,new BossBarTask());
+            }
+            BossBarTask task = Main.getInstance().tasks.get(player);
+            task.onRun(player);
         }
     }
 }
