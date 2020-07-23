@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="MarryN">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../MarryN.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

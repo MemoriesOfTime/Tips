@@ -7,8 +7,6 @@ import cn.nukkit.event.EventPriority;
 import cn.nukkit.event.Listener;
 import cn.nukkit.event.player.*;
 import tip.Main;
-import tip.bossbar.BossBarApi;
-import tip.tasks.BossBarTask;
 import tip.messages.BaseMessage;
 import tip.messages.ChatMessage;
 
@@ -28,6 +26,7 @@ public class OnListener implements Listener {
         }
         return msg;
     }
+
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onChat(PlayerChatEvent event){
