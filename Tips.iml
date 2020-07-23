@@ -32,5 +32,6 @@
     <orderEntry type="library" name="nukkit-1.16" level="project" />
     <orderEntry type="library" name="ScoreboardAPI" level="project" />
     <orderEntry type="library" name="OreArea_v1.2.7" level="project" />
+    <orderEntry type="library" name="AutoUpData_v1.2.3" level="project" />
   </component>
 </module>

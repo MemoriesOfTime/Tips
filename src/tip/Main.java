@@ -3,6 +3,7 @@ package tip;
 
 
 import cn.nukkit.Player;
+import cn.nukkit.Server;
 import cn.nukkit.event.Listener;
 import cn.nukkit.plugin.PluginBase;
 import cn.nukkit.utils.Config;
@@ -19,6 +20,7 @@ import tip.utils.PlayerConfig;
 import tip.utils.variables.defaults.DefaultVariables;
 import tip.utils.variables.defaults.PluginVariables;
 import tip.windows.ListenerWindow;
+import updata.AutoData;
 
 import java.io.File;
 import java.util.*;
@@ -52,6 +54,11 @@ public class Main extends PluginBase implements Listener {
     @Override
     public void onEnable() {
         instance = this;
+        if(Server.getInstance().getPluginManager().getPlugin("AutoUpData") != null){
+            if(AutoData.defaultUpData(this,getFile(),"SmallasWater","Tips")){
+                return;
+            }
+        }
         init();
 
         this.getServer().getCommandMap().register("tips", new TipsCommand(getConfig().getString("自定义指令.name","tips")));
