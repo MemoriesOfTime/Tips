@@ -1,0 +1,1102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="[English]Tips_v1.6.8" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e68eee0a-2462-4e2f-a158-64826ef6f6d4" name="Default Changelist" comment="" />
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/config.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="303">
+              <caret line="88" column="9" selection-start-line="88" selection-start-column="2" selection-end-line="88" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/tip/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="331">
+              <caret line="56" column="62" selection-start-line="56" selection-start-column="62" selection-end-line="56" selection-end-column="62" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#7082#7083#0" expanded="true" />
+                <element signature="e#7143#7144#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/language.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="4" column="10" lean-forward="true" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/tip/commands/base/BaseCommand.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="363">
+              <caret line="46" column="57" selection-start-line="46" selection-start-column="57" selection-end-line="46" selection-end-column="57" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/tip/bossbar/BossBarApi.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-146">
+              <caret line="21" column="36" lean-forward="true" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/tip/messages/TipMessage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1075">
+              <caret line="53" column="24" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/tip/utils/Api.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="8025">
+              <caret line="358" column="106" selection-start-line="357" selection-start-column="7" selection-end-line="358" selection-end-column="106" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/tip/utils/OnListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1050">
+              <caret line="54" column="30" selection-start-line="54" selection-start-column="30" selection-end-line="54" selection-end-column="30" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/tip/commands/TipsCommand.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="475">
+              <caret line="26" selection-start-line="26" selection-end-line="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/plugin.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="175">
+              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>VIP</find>
+      <find>Easy</find>
+      <find>KDR</find>
+      <find>Qw</find>
+      <find>easy</find>
+      <find>Eas</find>
+      <find>HealthA</find>
+      <find>Zsoc</find>
+      <find>zs</find>
+      <find>Zso</find>
+      <find>KD</find>
+      <find>find</find>
+      <find>translateString</find>
+    </findStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/tip/TipTask.java" />
+        <option value="$PROJECT_DIR$/src/tip/lib/de/theamychan/scoreboard/api/ScoreboardAPI.java" />
+        <option value="$PROJECT_DIR$/src/tip/lib/de/theamychan/scoreboard/ScoreboardPlugin.java" />
+        <option value="$PROJECT_DIR$/src/tip/lib/de/theamychan/scoreboard/network/packet/RemoveObjectivePacket.java" />
+        <option value="$PROJECT_DIR$/src/tip/lib/de/theamychan/scoreboard/network/Scoreboard.java" />
+        <option value="$PROJECT_DIR$/src/tip/lib/de/theamychan/scoreboard/network/ScoreboardDisplay.java" />
+        <option value="$PROJECT_DIR$/src/tip/ScoreBoardTask.java" />
+        <option value="$PROJECT_DIR$/src/tip/utils/API.java" />
+        <option value="$PROJECT_DIR$/resources/Tips变量 (1).txt" />
+        <option value="$PROJECT_DIR$/src/tip/utils/BaseOnListener.java" />
+        <option value="$PROJECT_DIR$/src/tip/TipsModule.java" />
+        <option value="$PROJECT_DIR$/src/tip/utils/BossMessageBulider.java" />
+        <option value="$PROJECT_DIR$/src/tip/bossbar/BossBarTask.java" />
+        <option value="$PROJECT_DIR$/src/tip/bossbar/BossAPI.java" />
+        <option value="$PROJECT_DIR$/resources/messages.yml" />
+        <option value="$PROJECT_DIR$/src/tip/tasks/TipTask.java" />
+        <option value="$PROJECT_DIR$/src/tip/utils/PlayerConfig.java" />
+        <option value="$PROJECT_DIR$/src/tip/utils/BossMessageBuilder.java" />
+        <option value="$PROJECT_DIR$/src/tip/commands/subCommand/BaseSubCommand.java" />
+        <option value="$PROJECT_DIR$/src/tip/commands/base/BaseSubCommand.java" />
+        <option value="$PROJECT_DIR$/src/tip/tasks/BossBarTask.java" />
+        <option value="$PROJECT_DIR$/src/tip/utils/OnListener.java" />
+        <option value="$PROJECT_DIR$/src/tip/tasks/ScoreBoardTask.java" />
+        <option value="$PROJECT_DIR$/src/tip/tasks/BossBarAllPlayerTask.java" />
+        <option value="$PROJECT_DIR$/resources/Tips变量.txt" />
+        <option value="$PROJECT_DIR$/src/tip/bossbar/BossBarApi.java" />
+        <option value="$PROJECT_DIR$/src/tip/commands/base/BaseCommand.java" />
+        <option value="$PROJECT_DIR$/src/tip/commands/sub/AchAllSubCommand.java" />
+        <option value="$PROJECT_DIR$/src/tip/commands/sub/ReloadSubCommand.java" />
+        <option value="$PROJECT_DIR$/src/tip/commands/sub/SendSubCommand.java" />
+        <option value="$PROJECT_DIR$/src/tip/messages/BossBarMessage.java" />
+        <option value="$PROJECT_DIR$/src/tip/messages/ChatMessage.java" />
+        <option value="$PROJECT_DIR$/src/tip/messages/NameTagMessage.java" />
+        <option value="$PROJECT_DIR$/src/tip/messages/ScoreBoardMessage.java" />
+        <option value="$PROJECT_DIR$/src/tip/messages/TipMessage.java" />
+        <option value="$PROJECT_DIR$/resources/language.properties" />
+        <option value="$PROJECT_DIR$/src/tip/windows/ListenerWindow.java" />
+        <option value="$PROJECT_DIR$/resources/plugin.yml" />
+        <option value="$PROJECT_DIR$/src/tip/messages/BaseMessage.java" />
+        <option value="$PROJECT_DIR$/src/tip/utils/Api.java" />
+        <option value="$PROJECT_DIR$/src/tip/commands/TipsCommand.java" />
+        <option value="$PROJECT_DIR$/src/tip/windows/CreateWindow.java" />
+        <option value="$PROJECT_DIR$/resources/config.yml" />
+        <option value="$PROJECT_DIR$/src/tip/Main.java" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
+  </component>
+  <component name="PhpServers">
+    <servers />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-5" />
+    <option name="width" value="1940" />
+    <option name="height" value="1050" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Tips -English" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Tips -English" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Tips -English" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Tips -English" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Tips -English" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Tips -English" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Tips -English" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Tips -English" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="tip" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Tips -English" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Tips -English" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="tip" type="462c0819:PsiDirectoryNode" />
+              <item name="bossbar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Tips -English" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Tips -English" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="tip" type="462c0819:PsiDirectoryNode" />
+              <item name="commands" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.276273" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Nukkit驱动\Tips\src" />
+      <recent name="F:\Nukkit驱动\Tips\src\tip\lib" />
+      <recent name="F:\Nukkit驱动\Tips\resources" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="run" type="JarApplication">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/../nukkit-1.12.jar" />
+      <option name="WORKING_DIRECTORY" value="F:\Nukkit开服" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="[English]Tips_v1.6.8" />
+        </option>
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e68eee0a-2462-4e2f-a158-64826ef6f6d4" name="Default Changelist" comment="" />
+      <created>1571538097713</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1571538097713</updated>
+      <workItem from="1571538100895" duration="3721000" />
+      <workItem from="1573185343017" duration="2441000" />
+      <workItem from="1573272630423" duration="4693000" />
+      <workItem from="1573357738040" duration="4058000" />
+      <workItem from="1573362444664" duration="691000" />
+      <workItem from="1573363214053" duration="3192000" />
+      <workItem from="1574052636050" duration="5480000" />
+      <workItem from="1574241377706" duration="795000" />
+      <workItem from="1574331547390" duration="1270000" />
+      <workItem from="1574397185565" duration="599000" />
+      <workItem from="1574480412000" duration="1198000" />
+      <workItem from="1574572812515" duration="604000" />
+      <workItem from="1575868079181" duration="2437000" />
+      <workItem from="1575899730573" duration="1040000" />
+      <workItem from="1576164187890" duration="876000" />
+      <workItem from="1576753871652" duration="650000" />
+      <workItem from="1576815186595" duration="2434000" />
+      <workItem from="1576838731325" duration="595000" />
+      <workItem from="1576848459973" duration="599000" />
+      <workItem from="1576897731349" duration="5158000" />
+      <workItem from="1577193310444" duration="840000" />
+      <workItem from="1577246220946" duration="599000" />
+      <workItem from="1577272590780" duration="1763000" />
+      <workItem from="1577329671361" duration="595000" />
+      <workItem from="1577355929390" duration="597000" />
+      <workItem from="1577368297238" duration="440000" />
+      <workItem from="1577415025981" duration="598000" />
+      <workItem from="1577499819918" duration="597000" />
+      <workItem from="1577511634328" duration="3547000" />
+      <workItem from="1577593949992" duration="1815000" />
+      <workItem from="1577893902657" duration="2358000" />
+      <workItem from="1577968297888" duration="1698000" />
+      <workItem from="1578014082686" duration="2091000" />
+      <workItem from="1578307776528" duration="1042000" />
+      <workItem from="1578645381512" duration="1512000" />
+      <workItem from="1578673688027" duration="628000" />
+      <workItem from="1578708161310" duration="4055000" />
+      <workItem from="1578741654563" duration="101000" />
+      <workItem from="1578838809448" duration="1187000" />
+      <workItem from="1578878145156" duration="713000" />
+      <workItem from="1579272481015" duration="702000" />
+      <workItem from="1579311979061" duration="596000" />
+      <workItem from="1579432259858" duration="588000" />
+      <workItem from="1579436536470" duration="594000" />
+      <workItem from="1579443223672" duration="53000" />
+      <workItem from="1579932001266" duration="1896000" />
+      <workItem from="1582255283224" duration="3260000" />
+      <workItem from="1582287042060" duration="507000" />
+      <workItem from="1582341571400" duration="580000" />
+      <workItem from="1582343725836" duration="1758000" />
+      <workItem from="1582427190455" duration="5202000" />
+      <workItem from="1582445218536" duration="2649000" />
+      <workItem from="1582515750072" duration="590000" />
+      <workItem from="1582536800677" duration="3403000" />
+      <workItem from="1582600859078" duration="1369000" />
+      <workItem from="1582689119732" duration="1642000" />
+      <workItem from="1582805612047" duration="234000" />
+      <workItem from="1582805883269" duration="2010000" />
+      <workItem from="1582808343098" duration="3708000" />
+      <workItem from="1582881692441" duration="3870000" />
+      <workItem from="1582948068763" duration="598000" />
+      <workItem from="1582954591286" duration="37000" />
+      <workItem from="1582958600567" duration="1246000" />
+      <workItem from="1583031778615" duration="593000" />
+      <workItem from="1583153142448" duration="1239000" />
+      <workItem from="1583206265698" duration="1671000" />
+      <workItem from="1583239424706" duration="1876000" />
+      <workItem from="1583292673896" duration="598000" />
+      <workItem from="1583312635640" duration="740000" />
+      <workItem from="1583316325767" duration="905000" />
+      <workItem from="1583395615348" duration="622000" />
+      <workItem from="1583466866711" duration="594000" />
+      <workItem from="1583653964006" duration="2382000" />
+      <workItem from="1583729723676" duration="736000" />
+      <workItem from="1583810709745" duration="1525000" />
+      <workItem from="1583889087465" duration="591000" />
+      <workItem from="1584081408369" duration="1305000" />
+      <workItem from="1584163855244" duration="332000" />
+      <workItem from="1584250328634" duration="1393000" />
+      <workItem from="1584334796746" duration="1497000" />
+      <workItem from="1584423573968" duration="599000" />
+      <workItem from="1584537987149" duration="1450000" />
+      <workItem from="1584584299673" duration="1557000" />
+      <workItem from="1584668289430" duration="1182000" />
+      <workItem from="1584760204179" duration="2432000" />
+      <workItem from="1584789770668" duration="598000" />
+      <workItem from="1584846060221" duration="1120000" />
+      <workItem from="1584873791937" duration="702000" />
+      <workItem from="1585019866715" duration="630000" />
+      <workItem from="1585147373227" duration="1904000" />
+      <workItem from="1585215184398" duration="6098000" />
+      <workItem from="1585234503772" duration="673000" />
+      <workItem from="1585279222566" duration="597000" />
+      <workItem from="1585651353523" duration="4567000" />
+      <workItem from="1585708414570" duration="2829000" />
+      <workItem from="1585732062768" duration="403000" />
+      <workItem from="1585801582154" duration="1319000" />
+      <workItem from="1585909083041" duration="1506000" />
+      <workItem from="1585923864328" duration="1234000" />
+      <workItem from="1585968356656" duration="3449000" />
+      <workItem from="1586000707639" duration="1642000" />
+      <workItem from="1586054254425" duration="1342000" />
+      <workItem from="1586079564339" duration="679000" />
+      <workItem from="1586137110793" duration="4730000" />
+      <workItem from="1586258797625" duration="10106000" />
+      <workItem from="1586314434429" duration="1549000" />
+      <workItem from="1586319864283" duration="9211000" />
+      <workItem from="1586403125135" duration="4423000" />
+      <workItem from="1586447537032" duration="595000" />
+      <workItem from="1586493235247" duration="4643000" />
+      <workItem from="1586561812374" duration="7865000" />
+      <workItem from="1586702052179" duration="10373000" />
+      <workItem from="1586748970027" duration="3264000" />
+      <workItem from="1586844075513" duration="1836000" />
+      <workItem from="1586917113818" duration="2358000" />
+      <workItem from="1587029098692" duration="1351000" />
+      <workItem from="1587038506791" duration="1915000" />
+      <workItem from="1587090837396" duration="6902000" />
+      <workItem from="1587118803907" duration="55000" />
+      <workItem from="1587124837449" duration="1372000" />
+      <workItem from="1587179779657" duration="1951000" />
+      <workItem from="1587185750753" duration="598000" />
+      <workItem from="1587263154047" duration="4481000" />
+      <workItem from="1587306112314" duration="1178000" />
+      <workItem from="1587346721425" duration="582000" />
+      <workItem from="1587440700326" duration="804000" />
+      <workItem from="1587453935410" duration="1261000" />
+      <workItem from="1587535924178" duration="3389000" />
+      <workItem from="1587612590877" duration="5310000" />
+      <workItem from="1587698643755" duration="1904000" />
+      <workItem from="1587719028618" duration="818000" />
+      <workItem from="1587730210182" duration="596000" />
+      <workItem from="1587792789354" duration="7060000" />
+      <workItem from="1587895884250" duration="1850000" />
+      <workItem from="1587957384164" duration="2781000" />
+      <workItem from="1588041069193" duration="1051000" />
+      <workItem from="1588139514182" duration="2409000" />
+      <workItem from="1588212577696" duration="577000" />
+      <workItem from="1588396733933" duration="618000" />
+      <workItem from="1588403665732" duration="207000" />
+      <workItem from="1588479713395" duration="1254000" />
+      <workItem from="1588504454651" duration="6679000" />
+      <workItem from="1588561163784" duration="1582000" />
+      <workItem from="1588656333640" duration="3370000" />
+      <workItem from="1588743521493" duration="595000" />
+      <workItem from="1588845925424" duration="568000" />
+      <workItem from="1588905802882" duration="2647000" />
+      <workItem from="1589021977237" duration="590000" />
+      <workItem from="1589076050657" duration="342000" />
+      <workItem from="1589095378894" duration="942000" />
+      <workItem from="1589166971493" duration="2757000" />
+      <workItem from="1589269225724" duration="5840000" />
+      <workItem from="1589685267640" duration="3039000" />
+      <workItem from="1589770570365" duration="594000" />
+      <workItem from="1589798165601" duration="1534000" />
+      <workItem from="1589861747234" duration="1681000" />
+      <workItem from="1589950451006" duration="593000" />
+      <workItem from="1590035154355" duration="1714000" />
+      <workItem from="1590117421557" duration="7496000" />
+      <workItem from="1590204984909" duration="2617000" />
+      <workItem from="1590293223929" duration="605000" />
+      <workItem from="1590380583519" duration="1225000" />
+      <workItem from="1590464700539" duration="4171000" />
+      <workItem from="1590547324562" duration="1244000" />
+      <workItem from="1590661308719" duration="1282000" />
+      <workItem from="1590720231593" duration="595000" />
+      <workItem from="1590924318387" duration="597000" />
+      <workItem from="1590997228782" duration="595000" />
+      <workItem from="1591017822329" duration="597000" />
+      <workItem from="1591093173177" duration="599000" />
+      <workItem from="1591175038823" duration="592000" />
+      <workItem from="1591528142564" duration="5172000" />
+      <workItem from="1591582412599" duration="598000" />
+      <workItem from="1591672452368" duration="597000" />
+      <workItem from="1591765204206" duration="595000" />
+      <workItem from="1591841212322" duration="1523000" />
+      <workItem from="1591858800651" duration="791000" />
+      <workItem from="1591871296417" duration="1357000" />
+      <workItem from="1591929258845" duration="1215000" />
+      <workItem from="1592028143010" duration="6663000" />
+      <workItem from="1592121884885" duration="643000" />
+      <workItem from="1592229372224" duration="438000" />
+      <workItem from="1592302085549" duration="595000" />
+      <workItem from="1592444375089" duration="1580000" />
+      <workItem from="1592455515824" duration="557000" />
+      <workItem from="1595650173390" duration="266000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="356621000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28619304" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49128687" visible="true" weight="0.04411765" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32991204" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5087131" side_tool="true" weight="0.41911766" />
+      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49731904" weight="0.31323528" />
+      <window_info anchor="bottom" id="Database Changes" order="11" />
+      <window_info anchor="bottom" id="Version Control" order="12" />
+      <window_info anchor="bottom" id="Tail" order="13" />
+      <window_info anchor="bottom" id="Duplicates" order="14" weight="0.04411765" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="3" weight="0.10589813" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Theme Preview" order="7" />
+      <window_info anchor="right" id="Database" order="8" side_tool="true" weight="0.3299866" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="jar://F:/Nukkit驱动_Maven/healthapi/target/healthapi_v1.0.9.jar!/healthapi/PlayerHealth.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../EconomyAPI.jar!/plugin.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="16" selection-start-column="6" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../nukkit-1.14.60兼容插件/nukkit_1.14.6_b669.jar!/cn/nukkit/utils/DummyBossBar.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="25" column="12" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://F:/Nukkit驱动_Maven/healthapi/target/healthapi_v1.0.9.jar!/healthapi/module/commands/subcommand/BaseDefaultHealthSubCommand.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://F:/Nukkit驱动_Maven/healthapi/target/healthapi_v1.0.9.jar!/healthapi/module/commands/HealthCommand.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://F:/Nukkit驱动_Maven/healthapi/target/healthapi_v1.0.9.jar!/healthapi/HealthMainClass.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../nukkit-1.14.60兼容插件/nukkit_1.14.6_b669.jar!/cn/nukkit/Player.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100550">
+          <caret line="4462" selection-start-line="4462" selection-end-line="4462" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://F:/Nukkit开服/plugins/PlayerPoints_v1.1.3.jar!/net/player/api/Point.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6525">
+          <caret line="308" column="53" selection-start-line="308" selection-start-column="53" selection-end-line="308" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://F:/Java_Download/src.zip!/java/lang/Class.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42425">
+          <caret line="1780" column="18" selection-start-line="1780" selection-start-column="18" selection-end-line="1780" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../PlaceholderAPI v1.3.3.jar!/com/creeperface/nukkit/placeholderapi/placeholder/data/PlaceholderBuilder.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../PlaceholderAPI v1.3.3.jar!/com/creeperface/nukkit/placeholderapi/api/Placeholder.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../PlaceholderAPI v1.3.3.jar!/com/creeperface/nukkit/placeholderapi/api/PlaceholderParameters.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../PlaceholderAPI v1.3.3.jar!/com/creeperface/nukkit/placeholderapi/api/PlaceholderAPI.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1250">
+          <caret line="50" column="43" selection-start-line="50" selection-start-column="43" selection-end-line="50" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://F:/Nukkit开服/plugins/RSWeapon_v1.8.3.jar!/weapon/floatingtext/TextEntity.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1350">
+          <caret line="60" column="26" selection-start-line="60" selection-start-column="26" selection-end-line="60" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://F:/Nukkit开服/plugins/VIP系统_v1.9.8.jar!/SVIP/utils/ListerEvents.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12475">
+          <caret line="572" column="34" selection-start-line="572" selection-start-column="34" selection-end-line="572" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://F:/Nukkit开服/plugins/VIP系统_v1.9.8.jar!/SVIP/utils/Tools.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="700">
+          <caret line="36" column="28" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../nukkit-1.14.60兼容插件/nukkit_1.14.6_b669.jar!/cn/nukkit/inventory/InventoryType.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://F:/Nukkit开服/plugins/VIP系统_v1.9.8.jar!/SVIP/utils/ChestInventory.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://F:/Nukkit开服/plugins/VIP系统_v1.9.8.jar!/SVIP/VIP.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="50" column="13" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../nukkit-1.14.60兼容插件/nukkit_1.14.6_b669.jar!/cn/nukkit/inventory/CustomInventory.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="52" selection-start-line="10" selection-start-column="52" selection-end-line="10" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../nukkit-1.14.60兼容插件/nukkit_1.14.6_b669.jar!/cn/nukkit/inventory/ContainerInventory.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/messages.yml" />
+    <entry file="file://$PROJECT_DIR$/resources/Tips变量.txt" />
+    <entry file="file://$PROJECT_DIR$/Tips.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tip/commands/sub/AchAllSubCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="700">
+          <caret line="30" column="47" selection-start-line="30" selection-start-column="47" selection-end-line="30" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#463#464#0" expanded="true" />
+            <element signature="e#490#491#0" expanded="true" />
+            <element signature="e#2099#2100#0" expanded="true" />
+            <element signature="e#2139#2140#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tip/commands/sub/ReloadSubCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#337#338#0" expanded="true" />
+            <element signature="e#364#365#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tip/commands/base/BaseSubCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-405">
+          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tip/commands/sub/SendSubCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
+          <folding>
+            <element signature="e#405#406#0" expanded="true" />
+            <element signature="e#432#433#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tip/messages/ChatMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="46" column="26" selection-start-line="46" selection-start-column="26" selection-end-line="46" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tip/messages/ScoreBoardMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="42" column="21" selection-start-line="42" selection-start-column="21" selection-end-line="42" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tip/tasks/BossBarAllPlayerTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="23" column="31" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tip/tasks/BossBarTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-694">
+          <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tip/utils/BossMessageBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-30">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tip/utils/PlayerConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="800">
+          <caret line="36" column="20" lean-forward="true" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#679#680#0" expanded="true" />
+            <element signature="e#719#720#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tip/windows/ListenerWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7125">
+          <caret line="298" column="56" lean-forward="true" selection-start-line="298" selection-start-column="56" selection-end-line="298" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tip/tasks/ScoreBoardTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tip/messages/BossBarMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1200">
+          <caret line="68" column="25" selection-start-line="68" selection-start-column="25" selection-end-line="68" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#574#575#0" expanded="true" />
+            <element signature="e#639#640#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tip/tasks/TipTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1200">
+          <caret line="60" column="61" selection-start-line="60" selection-start-column="61" selection-end-line="60" selection-end-column="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tip/windows/CreateWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="825">
+          <caret line="42" column="38" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tip/messages/NameTagMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tip/messages/BaseMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tip/messages/TipMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1075">
+          <caret line="53" column="24" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tip/utils/Api.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8025">
+          <caret line="358" column="106" selection-start-line="357" selection-start-column="7" selection-end-line="358" selection-end-column="106" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tip/utils/OnListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1050">
+          <caret line="54" column="30" selection-start-line="54" selection-start-column="30" selection-end-line="54" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tip/commands/TipsCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/plugin.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/language.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="4" column="10" lean-forward="true" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tip/commands/base/BaseCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="46" column="57" selection-start-line="46" selection-start-column="57" selection-end-line="46" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tip/bossbar/BossBarApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-146">
+          <caret line="21" column="36" lean-forward="true" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="88" column="9" selection-start-line="88" selection-start-column="2" selection-end-line="88" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tip/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="56" column="62" selection-start-line="56" selection-start-column="62" selection-end-line="56" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#7082#7083#0" expanded="true" />
+            <element signature="e#7143#7144#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="ideajad">
+    <property name="annotate" value="false" />
+    <property name="annotateFully" value="false" />
+    <property name="braces" value="false" />
+    <property name="clear" value="false" />
+    <property name="confirmNavigationTriggeredDecompile" value="true" />
+    <property name="dead" value="true" />
+    <property name="defaultInitializers" value="false" />
+    <property name="dissassemblerOnly" value="false" />
+    <property name="fieldsFirst" value="true" />
+    <property name="fileExtension" value="java" />
+    <property name="fullyQualifiedNames" value="false" />
+    <property name="indentation" value="4" />
+    <property name="intRadix" value="10" />
+    <property name="lineNumbersAsComments" value="true" />
+    <property name="longRadix" value="10" />
+    <property name="maxStringLength" value="64" />
+    <property name="nocast" value="false" />
+    <property name="noclass" value="false" />
+    <property name="nocode" value="false" />
+    <property name="noconv" value="false" />
+    <property name="noctor" value="false" />
+    <property name="nodos" value="false" />
+    <property name="nofd" value="false" />
+    <property name="noinner" value="false" />
+    <property name="nolvt" value="false" />
+    <property name="nonlb" value="false" />
+    <property name="outputDirectory" value="" />
+    <property name="packFields" value="3" />
+    <property name="packImports" value="7" />
+    <property name="prefixNumericalClasses" value="_cls" />
+    <property name="prefixNumericalFields" value="_fld" />
+    <property name="prefixNumericalLocals" value="_lcl" />
+    <property name="prefixNumericalMethods" value="_mth" />
+    <property name="prefixNumericalParameters" value="_prm" />
+    <property name="prefixUnusedExceptions" value="_ex" />
+    <property name="readonly" value="false" />
+    <property name="safe" value="false" />
+    <property name="sort" value="false" />
+    <property name="spaceAfterKeyword" value="false" />
+    <property name="splitStringsAtNewline" value="false" />
+    <property name="useTabs" value="false" />
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>[English]Tips_v1.6.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.276273" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.276273" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.276273" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>Tips</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.276273" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>PlaceholderAPI v1.3.3</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.276273" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

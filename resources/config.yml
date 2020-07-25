@@ -1,0 +1,98 @@
+# Under the label,'default' is common to all worlds
+# Adding other world Name under the label will overwrite 'default'
+# can be used 'PlaceholderAPI'
+BossHealth:
+#  worldName:
+#    open: true
+#    changeByHealth: true
+#    messages:
+#      - "[ {ch} ]   Money> {money}"
+#    time: 5
+  default:
+    open: true
+    changeByHealth: true
+    messages:
+      - "[ {ch} ]   Money> {money}"
+    time: 5
+
+NameTag:
+#  worldName:
+#    open: true
+#    message: "{vip} ✤ {ch} ✤ {name} - {ms}\n§c❤ {m}/{mh}"
+  default:
+    open: true
+    message: "{vip} ✤ {ch} ✤ {name} - {ms}\n§c❤ {m}/{mh}"
+
+Chat:
+#  world:
+#    open: true
+#    onlyWorld: false
+#    message: "§7[§a{levelName}§7]§4[§6▶§f{ch}§4]§2[§cVIP♥§f{vip}§2]{name} §b>>> {msg}"
+  default:
+    open: true
+    onlyWorld: false
+    message: "§7[§a{levelName}§7]§4[§6▶§f{ch}§4]§2[§cVIP♥§f{vip}§2]{name} §b>>> {msg}"
+
+Tips:
+#  world:
+#    open: true
+#     0 : tip 1: popup 2:actionBar
+#    type: 0
+#    message: "§c✎hand>{id}:{damage}  §9☣level>{levelName}  §d♨health>{h}/{mh}  §f۞online>{online}/{maxplayer}  §b❉ping>{ms} \n §2✤[ {ch} ]
+#                 \  §e♈money>{money}   §7☼time>{时}:{分}:{秒}  §3❤pos>x: {x} y: {y} z: {z}"
+  default:
+    open: true
+    # 0 : tip 1: popup 2:actionBar
+    type: 0
+    message: "§c✎hand>{id}:{damage}  §9☣level>{levelName}  §d♨health>{h}/{mh}  §f۞online>{online}/{maxplayer}  §b❉ping>{ms} \n §2✤[ {ch} ]
+                 \  §e♈money>{money}   §7☼time>{时}:{分}:{秒}  §3❤pos>x: {x} y: {y} z: {z}"
+
+
+Scoreboard:
+#  world:
+#    open: true
+#    Title: "Server Name"
+#    Line:
+#      - "§6☼§rGameMode: {gm}"
+#      - "§6☼§rPermission: {op}"
+#      - "§6☼§rFly: {fly}"
+#      - "§6☼§rSatiety: {food}/{mfood}"
+  default:
+    open: true
+    Title: "Server Name"
+    Line:
+      - "§6☼§rGameMode: {gm}"
+      - "§6☼§rPermission: {op}"
+      - "§6☼§rFly: {fly}"
+      - "§6☼§rSatiety: {food}/{mfood}"
+
+Variable:
+  not-title: ""
+  not-vip: ""
+  not-guild: ""
+  not-marry: ""
+  player-permissions:
+    op: "§c[§dAdmin§c]§f"
+    player: "§c[§aPlayer§c]§f"
+  game-mode:
+    "0": "Survival"
+    "1": "Create"
+    "2": "Adventure"
+    "3": "Watch"
+  fly:
+    "0": "fly open"
+    "1": "fly close"
+
+Custom-Refresh-Scale:
+  Tip: 20
+  BossHealth: 20
+  NameTag: 20
+  Scoreboard: 20
+
+
+Command:
+  name: tips
+  aliases:
+    - tips
+  description: Custom player tips
+
