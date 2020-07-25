@@ -5,10 +5,13 @@
       <artifact name="Tips_v1.6.8" />
     </artifacts-to-build>
   </component>
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/README.md" line="8" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="e68eee0a-2462-4e2f-a158-64826ef6f6d4" name="Default Changelist" comment="">
+    <list default="true" id="e68eee0a-2462-4e2f-a158-64826ef6f6d4" name="Default Changelist" comment="修改 readme">
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Tips_v1_7_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Tips_v1_7_4.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Tips/tip/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tips/tip/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Tips/tip/tasks/BossBarAllPlayerTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tips/tip/tasks/BossBarAllPlayerTask.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Tips/tip/tasks/BossBarTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tips/tip/tasks/BossBarTask.class" afterDir="false" />
@@ -34,29 +37,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/plugin.yml">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/tip/utils/variables/defaults/PluginVariables.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="50">
-              <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
+            <state relative-caret-position="525">
+              <caret line="59" column="86" lean-forward="true" selection-start-line="59" selection-start-column="86" selection-end-line="59" selection-end-column="86" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/tip/tasks/NameTagTask.java">
+        <entry file="jar://E:/等级觉醒_v80.5.9.3.jar!/AwakenSystem/data/defaultAPI.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="19" selection-start-line="19" selection-end-line="19" />
+            <state relative-caret-position="53">
+              <caret line="368" column="25" selection-start-line="368" selection-start-column="25" selection-end-line="368" selection-end-column="25" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/tip/utils/variables/defaults/ChangeMessage.java">
+        <entry file="file://$PROJECT_DIR$/src/tip/utils/variables/defaults/DefaultVariables.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
-              <caret line="4" selection-start-line="4" selection-end-line="4" />
+              <caret line="16" column="44" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -64,8 +67,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/tip/utils/variables/BaseVariable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+            <state relative-caret-position="663">
+              <caret line="35" column="44" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -73,8 +76,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/tip/utils/Api.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1150">
-              <caret line="57" column="21" selection-start-line="57" selection-start-column="21" selection-end-line="57" selection-end-column="21" />
+            <state relative-caret-position="-789">
+              <caret line="30" column="40" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -85,32 +88,32 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/tip/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="38" column="39" selection-start-line="38" selection-start-column="39" selection-end-line="38" selection-end-column="39" />
+            <state relative-caret-position="180">
+              <caret line="72" column="46" selection-start-line="72" selection-start-column="46" selection-end-line="72" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/tip/tasks/ScoreBoardTask.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="73" column="51" selection-start-line="73" selection-start-column="51" selection-end-line="73" selection-end-column="51" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/tip/bossbar/BossBarApi.java">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="178">
+                <caret line="20" column="14" lean-forward="true" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/tip/messages/BaseMessage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="20" column="34" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="-825">
+              <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
             </state>
           </provider>
         </entry>
@@ -201,13 +204,14 @@
         <option value="$PROJECT_DIR$/src/tip/commands/TipsCommand.java" />
         <option value="$PROJECT_DIR$/src/tip/windows/ListenerWindow.java" />
         <option value="$PROJECT_DIR$/src/tip/tasks/BossBarTask.java" />
-        <option value="$PROJECT_DIR$/src/tip/Main.java" />
         <option value="$PROJECT_DIR$/src/tip/utils/OnListener.java" />
         <option value="$PROJECT_DIR$/src/tip/tasks/BossBarAllPlayerTask.java" />
         <option value="$PROJECT_DIR$/src/tip/bossbar/BossBarApi.java" />
         <option value="$PROJECT_DIR$/resources/config.yml" />
         <option value="$PROJECT_DIR$/src/tip/utils/Api.java" />
+        <option value="$PROJECT_DIR$/src/tip/Main.java" />
         <option value="$PROJECT_DIR$/resources/plugin.yml" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -220,17 +224,6 @@
   <component name="PhpServers">
     <servers />
   </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
-      <list>
-        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
-        <option value="$PROJECT_DIR$/.idea/libraries/OreArea_v1_2_7.xml" />
-        <option value="$PROJECT_DIR$/.idea/libraries/ScoreboardAPI.xml" />
-        <option value="$PROJECT_DIR$/.idea/libraries/nukkit_1_16.xml" />
-        <option value="$PROJECT_DIR$/.idea/artifacts/Tips_v1_7_3.xml" />
-      </list>
-    </option>
-  </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-5" />
     <option name="width" value="1940" />
@@ -241,7 +234,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -265,36 +257,6 @@
               <item name="Tips" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="tip" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Tips" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Tips" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="tip" type="462c0819:PsiDirectoryNode" />
-              <item name="bossbar" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Tips" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Tips" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="tip" type="462c0819:PsiDirectoryNode" />
-              <item name="commands" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Tips" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Tips" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="tip" type="462c0819:PsiDirectoryNode" />
-              <item name="commands" type="462c0819:PsiDirectoryNode" />
-              <item name="base" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Tips" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Tips" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="tip" type="462c0819:PsiDirectoryNode" />
-              <item name="commands" type="462c0819:PsiDirectoryNode" />
-              <item name="sub" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Tips" type="b2602c69:ProjectViewProjectNode" />
@@ -336,26 +298,20 @@
             </path>
             <path>
               <item name="Tips" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Tips" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="tip" type="462c0819:PsiDirectoryNode" />
-              <item name="windows" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Tips" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="F:/Nukkit开服/plugins/AutoUpData_v1.2.3.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SkyBlock_v0.4.8-ALPHA" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -365,12 +321,15 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.276273" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\Nukkit驱动\Tips" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\Nukkit驱动\Tips\src" />
       <recent name="F:\Nukkit驱动\Tips\src\tip\lib" />
@@ -395,7 +354,9 @@
       <option name="WORKING_DIRECTORY" value="F:\Nukkit开服" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
-        <option name="BuildArtifacts" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="Tips_v1.7.4" />
+        </option>
       </method>
     </configuration>
   </component>
@@ -581,7 +542,9 @@
       <workItem from="1591093173177" duration="599000" />
       <workItem from="1591175038823" duration="592000" />
       <workItem from="1595479677053" duration="2686000" />
-      <workItem from="1595498367217" duration="624000" />
+      <workItem from="1595498367217" duration="1120000" />
+      <workItem from="1595508948791" duration="594000" />
+      <workItem from="1595580472326" duration="6178000" />
     </task>
     <task id="LOCAL-00001" summary="更新 最新版">
       <created>1595480014617</created>
@@ -590,17 +553,38 @@
       <option name="project" value="LOCAL" />
       <updated>1595480014617</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="对接Tips">
+      <created>1595499245649</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1595499245649</updated>
+    </task>
+    <task id="LOCAL-00003" summary="更新 v1.7.4&#10;修改 README.md">
+      <created>1595591985545</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1595591985546</updated>
+    </task>
+    <task id="LOCAL-00004" summary="修改 readme">
+      <created>1595592319582</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1595592319582</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="337341000" />
+    <option name="totallyTimeSpent" value="344609000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19235925" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19772118" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -619,7 +603,7 @@
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5087131" side_tool="true" weight="0.41911766" />
       <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49731904" weight="0.3514706" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
-      <window_info anchor="bottom" id="Version Control" order="12" visible="true" weight="0.04411765" />
+      <window_info anchor="bottom" id="Version Control" order="12" visible="true" weight="0.34411764" />
       <window_info anchor="bottom" id="Tail" order="13" />
       <window_info anchor="bottom" id="Duplicates" order="14" weight="0.04411765" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -688,53 +672,13 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="更新 最新版" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新 最新版" />
+    <MESSAGE value="对接Tips" />
+    <MESSAGE value="更新 v1.7.4&#10;修改 README.md" />
+    <MESSAGE value="修改 readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改 readme" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/tip/commands/sub/SendSubCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="24" column="91" selection-start-line="24" selection-start-column="55" selection-end-line="24" selection-end-column="91" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tip/commands/TipsCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="925">
-          <caret line="46" column="20" selection-start-line="46" selection-start-column="20" selection-end-line="46" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#977#978#0" expanded="true" />
-            <element signature="e#1031#1032#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Nukkit开服/plugins/RSTask_v1.5.0.jar!/com/task/utils/tasks/PlayerFile.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Nukkit开服/plugins/Title_v1.0.7.jar!/title/utils/PlayerFile.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/messages.yml" />
-    <entry file="jar://E:/等级觉醒_v80.5.9.3.jar!/AwakenSystem/data/defaultAPI.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6925">
-          <caret line="312" column="43" selection-start-line="312" selection-start-column="43" selection-end-line="312" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/../VRole-v1.0.0.jar!/cn/techas/venja/vrole/GradeApi.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
@@ -1040,30 +984,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tip/utils/variables/BaseVariable.java">
+    <entry file="file://$PROJECT_DIR$/src/tip/tasks/ScoreBoardTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tip/utils/Api.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1150">
-          <caret line="57" column="21" selection-start-line="57" selection-start-column="21" selection-end-line="57" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tip/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="38" column="39" selection-start-line="38" selection-start-column="39" selection-end-line="38" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="1375">
+          <caret line="73" column="51" selection-start-line="73" selection-start-column="51" selection-end-line="73" selection-end-column="51" />
         </state>
       </provider>
     </entry>
@@ -1091,10 +1015,68 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tip/tasks/ScoreBoardTask.java">
+    <entry file="jar://E:/等级觉醒_v80.5.9.3.jar!/AwakenSystem/data/defaultAPI.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="73" column="51" selection-start-line="73" selection-start-column="51" selection-end-line="73" selection-end-column="51" />
+        <state relative-caret-position="53">
+          <caret line="368" column="25" selection-start-line="368" selection-start-column="25" selection-end-line="368" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tip/messages/BaseMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-825">
+          <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tip/utils/variables/defaults/DefaultVariables.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="16" column="44" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tip/utils/variables/BaseVariable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="35" column="44" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tip/utils/Api.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-789">
+          <caret line="30" column="40" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tip/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="72" column="46" selection-start-line="72" selection-start-column="46" selection-end-line="72" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="178">
+            <caret line="20" column="14" lean-forward="true" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tip/utils/variables/defaults/PluginVariables.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="59" column="86" lean-forward="true" selection-start-line="59" selection-start-column="86" selection-end-line="59" selection-end-column="86" />
         </state>
       </provider>
     </entry>
@@ -1147,7 +1129,7 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited>Tips_v1.6.8</last-edited>
+          <last-edited>Tips_v1.7.4</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1200,7 +1182,6 @@
             <option name="proportions">
               <list>
                 <option value="0.276273" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
@@ -1208,7 +1189,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>PlaceholderAPI v1.3.3</last-edited>
+          <last-edited>AutoUpData_v1.2.3</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
