@@ -71,10 +71,14 @@ public class Api {
 
     public static BaseMessage getSendPlayerMessage(String playerName,String levelName, BaseMessage.BaseTypes baseTypes){
         PlayerConfig config = Main.getInstance().getPlayerConfig(playerName);
+        BaseMessage message = null;
         if(config != null){
-            return config.getMessage(levelName,baseTypes.getType());
+             message = config.getMessage(levelName,baseTypes.getType());
         }
-        return getLevelDefaultMessage(levelName, baseTypes);
+        if(message == null){
+            message = getLevelDefaultMessage(levelName, baseTypes);
+        }
+        return message;
     }
 
 

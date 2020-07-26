@@ -7,7 +7,6 @@ import tip.messages.BaseMessage;
 import tip.messages.BossBarMessage;
 import tip.utils.Api;
 import tip.utils.BossMessageBuilder;
-import tip.utils.PlayerConfig;
 
 /**
  * @author 若水

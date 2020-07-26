@@ -85,7 +85,7 @@ public class ListenerWindow implements Listener {
             if(types != null){
                 defaultMessage = BaseMessage.getMessageByTypeAndWorld(worldName,types.getType());
                 if(defaultMessage == null){
-                    player.sendMessage("§c请不要将 config.yml 内的 default 删除~");
+//                    player.sendMessage("§c请不要将 config.yml 内的 default 删除~");
                     return;
                 }
                 if(!CHOSE_TYPE.containsKey(player.getName())){

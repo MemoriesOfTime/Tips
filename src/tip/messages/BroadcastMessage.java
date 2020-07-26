@@ -17,6 +17,11 @@ public class BroadcastMessage extends BaseMessage{
         this.messages = message;
     }
 
+    @Override
+    public int getType() {
+        return BROAD_CAST_TYPE;
+    }
+
     public LinkedList<String> getMessages() {
         return messages;
     }
