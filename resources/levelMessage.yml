@@ -15,10 +15,10 @@ Boss血条:
 头部:
   default:
     是否开启: true
-    显示: "{vip} ✤ {ch} ✤ {name} - {ms}\n§c❤ {m}/{mh}"
+    显示: "{vip} ✤ {ch} ✤ {name} - {ms}\n§c❤ {h}/{mh}"
   world:
     是否开启: true
-    显示: "{vip} ✤ {ch} ✤ {name} - {ms}\n§c❤ {m}/{mh}"
+    显示: "{vip} ✤ {ch} ✤ {name} - {ms}\n§c❤ {h}/{mh}"
 聊天:
   default:
     是否开启: true

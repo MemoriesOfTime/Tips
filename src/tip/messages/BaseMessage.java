@@ -107,7 +107,7 @@ public abstract class BaseMessage {
         Config config = Main.getInstance().getLevelMessage();
         BaseTypes types = getBaseTypeByInteger(getType());
         if(types != null){
-            config.set(types.getConfigName()+"."+getWorldName(),getConfig());
+            config.set(types.getConfigName(),getConfig());
             config.save();
         }
     }
