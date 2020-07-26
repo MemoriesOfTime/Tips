@@ -23,6 +23,9 @@ public class ListenerWindow implements Listener {
 
     private LinkedHashMap<String,String> clickPlayer = new LinkedHashMap<>();
 
+    // 0 为 改变选中玩家 1 为默认 2为自身
+    public static LinkedHashMap<String,Integer> CHOSE_TYPE = new LinkedHashMap<>();
+
     private LinkedHashMap<String, BaseMessage.BaseTypes> clickType = new LinkedHashMap<>();
 
     @EventHandler
@@ -85,8 +88,21 @@ public class ListenerWindow implements Listener {
                     player.sendMessage("§c请不要将 config.yml 内的 default 删除~");
                     return;
                 }
+                if(!CHOSE_TYPE.containsKey(player.getName())){
+                    CHOSE_TYPE.put(player.getName(),0);
+                }
+                if(CHOSE_TYPE.get(player.getName()) == 0){
+                    baseMessage = config.getMessage(worldName,types.getType());
+                }else if(CHOSE_TYPE.get(player.getName()) == 1){
+                    baseMessage = Api.getLevelDefaultMessage(worldName,types);
+                }else{
+                    config = Main.getInstance().getPlayerConfig(player.getName());
+                    if(config == null){
+                        config = new PlayerConfig(player.getName(),new LinkedList<>());
+                    }
+                    baseMessage = config.getMessage(worldName,types.getType());
+                }
 
-                baseMessage = config.getMessage(worldName,types.getType());
                 BaseMessage remove = baseMessage;
                 switch (types){
                     case CHAT_MESSAGE:
@@ -107,9 +123,13 @@ public class ListenerWindow implements Listener {
                     default:break;
                 }
                 if(baseMessage != null){
-                    config.setMessage(baseMessage);
-                    config.save();
-                    Main.getInstance().init();
+                    if(CHOSE_TYPE.get(player.getName()) == 1){
+                        Api.setLevelMessage(baseMessage);
+                    }else {
+                        config.setMessage(baseMessage);
+                        config.save();
+                        Main.getInstance().init();
+                    }
                     player.sendMessage("§7设置已保存..");
                 }else{
                     config.removeMessage(remove);

@@ -70,4 +70,6 @@ public class BossBarMessage extends BaseMessage{
         objectLinkedHashMap.put(getWorldName(),sub);
         return objectLinkedHashMap;
     }
+
+
 }

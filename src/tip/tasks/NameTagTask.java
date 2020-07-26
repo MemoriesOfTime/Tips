@@ -29,14 +29,8 @@ public class NameTagTask extends PluginTask<Main> {
                         return;
                     }
                     NameTagMessage nameTagMessage;
-                    nameTagMessage = (NameTagMessage) BaseMessage.getMessageByTypeAndWorld(player1.level.getFolderName(),
-                            BaseMessage.NAME_TAG_TYPE);
-                    PlayerConfig config = owner.getPlayerConfig(player1.getName());
-                    if (config != null) {
-                        if (config.getMessage(player1.getLevel().getFolderName(), BaseMessage.NAME_TAG_TYPE) != null) {
-                            nameTagMessage = (NameTagMessage) config.getMessage(player1.getLevel().getFolderName(), BaseMessage.NAME_TAG_TYPE);
-                        }
-                    }
+                    nameTagMessage = (NameTagMessage) Api.getSendPlayerMessage(player1.getName(),player1.level.getFolderName(),
+                            BaseMessage.BaseTypes.NAME_TAG);
                     if (nameTagMessage != null) {
                         if (nameTagMessage.isOpen()) {
                             Api api1 = new Api(nameTagMessage.getMessage(), player1);

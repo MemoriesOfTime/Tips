@@ -69,6 +69,25 @@ public class Api {
         return m;
     }
 
+    public static BaseMessage getSendPlayerMessage(String playerName,String levelName, BaseMessage.BaseTypes baseTypes){
+        PlayerConfig config = Main.getInstance().getPlayerConfig(playerName);
+        if(config != null){
+            return config.getMessage(levelName,baseTypes.getType());
+        }
+        return getLevelDefaultMessage(levelName, baseTypes);
+    }
+
+
+
+
+    public static BaseMessage getLevelDefaultMessage(String levelName, BaseMessage.BaseTypes baseTypes){
+        return BaseMessage.getMessageByTypeAndWorld(levelName,baseTypes.getType());
+    }
+
+    public static void setLevelMessage(BaseMessage message){
+        Main.getInstance().getShowMessages().remove(message);
+        Main.getInstance().getShowMessages().add(message);
+    }
 
     public static LinkedList<String> getSettingLevels(){
         LinkedList<String> linkedList = new LinkedList<>();

@@ -1,5 +1,6 @@
 package tip.messages;
 
+import cn.nukkit.utils.Config;
 import tip.Main;
 
 
@@ -81,6 +82,15 @@ public abstract class BaseMessage {
         return false;
     }
 
+    private static BaseTypes getBaseTypeByInteger(int type){
+        for(BaseTypes types:BaseTypes.values()){
+            if(types.getType() == type){
+                return types;
+            }
+        }
+        return null;
+    }
+
     public static BaseTypes getTypeByName(String name){
         for(BaseTypes types:BaseTypes.values()){
             if(types.getConfigName().equalsIgnoreCase(name)){
@@ -88,6 +98,18 @@ public abstract class BaseMessage {
             }
         }
         return null;
+    }
+
+    /**
+     * 保存
+     * */
+    public void save(){
+        Config config = Main.getInstance().getLevelMessage();
+        BaseTypes types = getBaseTypeByInteger(getType());
+        if(types != null){
+            config.set(types.getConfigName()+"."+getWorldName(),getConfig());
+            config.save();
+        }
     }
 
     public enum BaseTypes{

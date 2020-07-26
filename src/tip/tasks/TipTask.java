@@ -33,14 +33,8 @@ public class TipTask extends PluginTask<Plugin> {
                         return;
                     }
                     TipMessage tipMessage;
-                    tipMessage = (TipMessage) BaseMessage.getMessageByTypeAndWorld(player1.level.getFolderName(),
-                            BaseMessage.TIP_MESSAGE_TYPE);
-                    PlayerConfig config = Main.getInstance().getPlayerConfig(player1.getName());
-                    if (config != null) {
-                        if (config.getMessage(player1.getLevel().getFolderName(), BaseMessage.TIP_MESSAGE_TYPE) != null) {
-                            tipMessage = (TipMessage) config.getMessage(player1.getLevel().getFolderName(), BaseMessage.TIP_MESSAGE_TYPE);
-                        }
-                    }
+                    tipMessage = (TipMessage) Api.getSendPlayerMessage(player1.getName(),player1.level.getFolderName(),
+                            BaseMessage.BaseTypes.TIP);
                     if (tipMessage != null) {
                         if (tipMessage.isOpen()) {
                             Api api = new Api(tipMessage.getMessage(), player1);

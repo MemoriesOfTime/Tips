@@ -44,6 +44,8 @@ public class Main extends PluginBase implements Listener {
 
     private LinkedList<PlayerConfig> playerConfigs = new LinkedList<>();
 
+    private Config levelMessage;
+
     @Override
     public void onLoad() {
         Api.registerVariables("default", DefaultVariables.class);
@@ -77,9 +79,19 @@ public class Main extends PluginBase implements Listener {
         }
     }
 
+
+
+    public Config getLevelMessage() {
+        return levelMessage;
+    }
+
     public void init(){
         this.saveDefaultConfig();
         this.reloadConfig();
+        if(!new File(this.getDataFolder()+"/levelMessage.yml").exists()){
+            this.saveResource("levelMessage.yml");
+        }
+        levelMessage = new Config(this.getDataFolder()+"/levelMessage.yml",Config.YAML);
         tasks = new LinkedHashMap<>();
         showMessages = new LinkedList<>();
         this.getLogger().info("加载成功");
@@ -93,7 +105,7 @@ public class Main extends PluginBase implements Listener {
         }
         //开始加载Message
         for(BaseMessage.BaseTypes types: BaseMessage.BaseTypes.values()){
-            showMessages.addAll(addShowMessageByMap((Map) getConfig().get(types.getConfigName()),types.getType()));
+            showMessages.addAll(addShowMessageByMap((Map) getLevelMessage().get(types.getConfigName()),types.getType()));
         }
         playerConfigs = new LinkedList<>();
         //加载玩家覆盖..
@@ -219,5 +231,10 @@ public class Main extends PluginBase implements Listener {
         for(PlayerConfig config:playerConfigs){
             config.save();
         }
+        for(BaseMessage message: getShowMessages()){
+            message.save();
+        }
     }
+
+
 }

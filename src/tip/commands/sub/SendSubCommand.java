@@ -80,4 +80,9 @@ public class SendSubCommand extends BaseSubCommand {
                 new CommandParameter("message",CommandParamType.TEXT,true)
         };
     }
+
+    @Override
+    public boolean hasPermission(CommandSender sender) {
+        return sender.hasPermission("tips.ts");
+    }
 }

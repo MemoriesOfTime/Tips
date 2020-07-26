@@ -1,16 +1,17 @@
 package tip.commands.sub;
 
+import cn.nukkit.Player;
 import cn.nukkit.command.CommandSender;
 import cn.nukkit.command.data.CommandParameter;
-import cn.nukkit.utils.TextFormat;
-import tip.Main;
 import tip.commands.base.BaseSubCommand;
+import tip.windows.CreateWindow;
+import tip.windows.ListenerWindow;
 
 /**
  * @author SmallasWater
  */
-public class ReloadSubCommand extends BaseSubCommand {
-    public ReloadSubCommand(String name) {
+public class DefaultSubCommand extends BaseSubCommand {
+    public DefaultSubCommand(String name) {
         super(name);
     }
 
@@ -21,9 +22,14 @@ public class ReloadSubCommand extends BaseSubCommand {
 
     @Override
     public boolean execute(CommandSender sender, String label, String[] args) {
-        Main.getInstance().init();
-        sender.sendMessage(TextFormat.YELLOW+"配置文件重新读取完成");
-        return true;
+        if (sender instanceof Player) {
+            ListenerWindow.CHOSE_TYPE.put(sender.getName(),1);
+            CreateWindow.sendSettingType((Player) sender);
+            return true;
+        } else {
+            sender.sendMessage("请不要用控制台执行..");
+            return false;
+        }
     }
 
     @Override
@@ -31,8 +37,5 @@ public class ReloadSubCommand extends BaseSubCommand {
         return new CommandParameter[0];
     }
 
-    @Override
-    public boolean hasPermission(CommandSender sender) {
-        return sender.hasPermission("tips.ts");
-    }
+
 }

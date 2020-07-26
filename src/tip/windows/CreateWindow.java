@@ -30,12 +30,14 @@ public class CreateWindow {
         player.showFormWindow(simple,MENU);
     }
 
-    static void sendSettingType(Player player){
+    public static void sendSettingType(Player player){
         FormWindowSimple simple = new FormWindowSimple("显示类型","请选择你要修改显示类型");
         for(BaseMessage.BaseTypes types: BaseMessage.BaseTypes.values()){
             simple.addButton(new ElementButton(types.getConfigName(), new ElementButtonImageData("path", "textures/ui/message")));
         }
-        simple.addButton(getBackButton());
+        if(!ListenerWindow.CHOSE_TYPE.containsKey(player.getName()) || ListenerWindow.CHOSE_TYPE.get(player.getName()) == 0) {
+            simple.addButton(getBackButton());
+        }
         player.showFormWindow(simple,SETTING);
     }
 

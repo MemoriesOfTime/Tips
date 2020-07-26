@@ -39,7 +39,7 @@ public abstract class BaseSubCommand {
 
 
     public boolean hasPermission(CommandSender sender){
-        return sender.isOp();
+        return true;
     }
     /**
      * 指令参数.

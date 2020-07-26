@@ -18,17 +18,14 @@ public class BossBarTask {
 
 
     void onRun(Player player) {
+        if(player == null){
+            return;
+        }
         if(player.isOnline()){
             if(!Main.getInstance().apis.containsKey(player)){
                 return;
             }
-            BossBarMessage message = (BossBarMessage) BaseMessage.getMessageByTypeAndWorld(player.level.getFolderName(),0);
-            PlayerConfig config = Main.getInstance().getPlayerConfig(player.getName());
-            if(config != null){
-                if(config.getMessage(player.getLevel().getFolderName(),0) != null){
-                    message = (BossBarMessage) config.getMessage(player.getLevel().getFolderName(),0);
-                }
-            }
+            BossBarMessage message = (BossBarMessage) Api.getSendPlayerMessage(player.getName(),player.getLevel().getFolderName(), BaseMessage.BaseTypes.BOSS_BAR);
             if(message != null) {
                 if (message.isOpen()) {
                     BossMessageBuilder bossMessageBuilder = message.getBuilder();

@@ -40,13 +40,7 @@ public class ScoreBoardTask extends PluginTask<Main> {
                     if(player1 == null || !player.isOnline()){
                         return;
                     }
-                    ScoreBoardMessage message = (ScoreBoardMessage) BaseMessage.getMessageByTypeAndWorld(player1.level.getFolderName(), BaseMessage.SCOREBOARD_TYPE);
-                    PlayerConfig config = Main.getInstance().getPlayerConfig(player1.getName());
-                    if (config != null) {
-                        if (config.getMessage(player1.getLevel().getFolderName(), 3) != null) {
-                            message = (ScoreBoardMessage) config.getMessage(player1.getLevel().getFolderName(), BaseMessage.SCOREBOARD_TYPE);
-                        }
-                    }
+                    ScoreBoardMessage message = (ScoreBoardMessage) Api.getSendPlayerMessage(player1.getName(),player1.level.getFolderName(), BaseMessage.BaseTypes.SCORE_BOARD);
                     if (message == null) {
                         if (getOwner().scoreboards.containsKey(player1)) {
                             ScoreboardAPI.removeScorebaord(player1,
