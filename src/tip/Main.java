@@ -69,6 +69,7 @@ public class Main extends PluginBase implements Listener {
         this.getServer().getScheduler().scheduleRepeatingTask(this, new TipTask(this),getConfig().getInt("自定义刷新刻度.底部",20), true);
         this.getServer().getScheduler().scheduleRepeatingTask(this, new BossBarAllPlayerTask(this),getConfig().getInt("自定义刷新刻度.Boss血条",20), true);
         this.getServer().getScheduler().scheduleRepeatingTask(this, new NameTagTask(this),getConfig().getInt("自定义刷新刻度.头部",20), true);
+        this.getServer().getScheduler().scheduleRepeatingTask(this, new BroadCastTask(this),getConfig().getInt("自定义刷新刻度.聊天栏公告",20), true);
 
         try {
             Class.forName("de.theamychan.scoreboard.api.ScoreboardAPI");
@@ -182,6 +183,14 @@ public class Main extends PluginBase implements Listener {
                         messages.add(new TipMessage(o.toString(),
                                 (boolean) map.get("是否开启"), (int) map.get("显示类型"),
                                 (String) map.get("显示")));
+                    }
+                    break;
+                case BaseMessage.BROAD_CAST_TYPE:
+                    for (Object o : map1.keySet()) {
+                        Map map = (Map) map1.get(o);
+                        messages.add(new BroadcastMessage(o.toString(),
+                                (boolean) map.get("是否开启"),
+                                (int) map.get("间隔时间"), getList((List) map.get("消息轮播"))));
                     }
                     break;
                 default:

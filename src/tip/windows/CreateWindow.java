@@ -79,6 +79,11 @@ public class CreateWindow {
                 custom.addElement(new ElementToggle("请选择是否只在世界内聊天",false));
                 custom.addElement(new ElementInput("请编辑聊天内容","可空 变量参考变量文件"));
                 break;
+            case BROADCAST:
+                custom.setTitle(custom.getTitle()+"-- 聊天栏公告");
+                custom.addElement(new ElementInput("请编辑轮播时间(秒)","例如 30","30"));
+                custom.addElement(new ElementInput("请编辑显示内容 轮播内容请用 & 隔开","可空 变量参考变量文件"));
+                break;
             default:break;
         }
         player.showFormWindow(custom,CHOSE);

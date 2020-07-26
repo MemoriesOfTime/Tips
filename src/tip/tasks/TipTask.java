@@ -9,7 +9,6 @@ import tip.Main;
 import tip.messages.BaseMessage;
 import tip.messages.TipMessage;
 import tip.utils.Api;
-import tip.utils.PlayerConfig;
 
 
 /**

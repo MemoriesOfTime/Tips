@@ -21,6 +21,8 @@ public abstract class BaseMessage {
 
     public static final int TIP_MESSAGE_TYPE = 4;
 
+    public static final int BROAD_CAST_TYPE = 5;
+
     private String worldName;
 
 
@@ -118,7 +120,8 @@ public abstract class BaseMessage {
         CHAT_MESSAGE(1,"聊天"),
         NAME_TAG(2,"头部"),
         SCORE_BOARD(3,"计分板"),
-        TIP(4,"底部");
+        TIP(4,"底部"),
+        BROADCAST(5,"聊天栏公告");
         protected int type;
         protected String configName;
         BaseTypes(int type,String configName){

@@ -120,6 +120,9 @@ public class ListenerWindow implements Listener {
                     case BOSS_BAR:
                         baseMessage = setBossBar(baseMessage,open,worldName,window,player,defaultMessage);
                         break;
+                    case BROADCAST:
+                        baseMessage = setBroad(baseMessage,open,worldName,window,player,defaultMessage);
+                        break;
                     default:break;
                 }
                 if(baseMessage != null){
@@ -139,6 +142,36 @@ public class ListenerWindow implements Listener {
     }
 
 
+    private BaseMessage setBroadCast(BaseMessage baseMessage, boolean open, String worldName, Player player, BroadcastMessage defaultMessage, String lines,int time){
+        if(lines != null && !"".equals(lines)){
+            LinkedList<String> line = new LinkedList<>(Arrays.asList(lines.split("&")));
+            if(isEqualLine(line, defaultMessage.getMessages())){
+                if(open == baseMessage.isOpen() && worldName.equalsIgnoreCase(baseMessage.getWorldName())) {
+                    if(time ==  ((BroadcastMessage)baseMessage).getTime() ) {
+                        player.sendMessage("§c未更改");
+                        CreateWindow.sendSettingType(player);
+                        return null;
+                    }
+                }
+            }
+            if(baseMessage != null) {
+                ((BroadcastMessage) baseMessage).setMessages(line);
+            }
+
+        }else{
+            ((BroadcastMessage) baseMessage).setMessages(defaultMessage.getMessages());
+            if(open == baseMessage.isOpen() && worldName.equalsIgnoreCase(baseMessage.getWorldName())) {
+                if(time ==  ((BroadcastMessage)baseMessage).getTime()) {
+                    player.sendMessage("§7设置已初始化");
+                    return null;
+                }
+            }
+        }
+        if(baseMessage != null) {
+            ((BroadcastMessage) baseMessage).setTime(time);
+        }
+        return baseMessage;
+    }
 
     private BaseMessage setChatBase(BaseMessage baseMessage,boolean open,String worldName,FormWindowCustom window,Player player,BaseMessage defaultMessage){
         if(baseMessage == null){
@@ -259,6 +292,31 @@ public class ListenerWindow implements Listener {
 
     private boolean isEqualLine(LinkedList<String> str1,LinkedList<String> str2){
         return str1.toString().equalsIgnoreCase(str2.toString());
+    }
+
+    private BaseMessage setBroad(BaseMessage baseMessage,boolean open,String worldName,FormWindowCustom window,Player player,BaseMessage defaultMessage){
+        if(baseMessage == null){
+            baseMessage = new BroadcastMessage(defaultMessage.getWorldName(),defaultMessage.isOpen(),((BroadcastMessage)defaultMessage).getTime(),((BroadcastMessage)defaultMessage).getMessages());
+        }
+        String timeString = window.getResponse().getInputResponse(2);
+        String message = window.getResponse().getInputResponse(3);
+        int time = ((BroadcastMessage) defaultMessage).getTime();
+        if(timeString != null && !"".equals(timeString)) {
+            try{
+                time = Integer.parseInt(timeString);
+            }catch (Exception ignore){}
+            baseMessage = setBroadCast(baseMessage,open,worldName,player, (BroadcastMessage) defaultMessage,message,time);
+        }else{
+            baseMessage = setBroadCast(baseMessage,open,worldName,player, (BroadcastMessage) defaultMessage,message,time);
+        }
+
+        if(baseMessage != null){
+            baseMessage.setOpen(open);
+            baseMessage.setWorldName(worldName);
+        }
+
+        return baseMessage;
+
     }
 
     private BaseMessage setBossBar(BaseMessage baseMessage,boolean open,String worldName,FormWindowCustom window,Player player,BaseMessage defaultMessage){

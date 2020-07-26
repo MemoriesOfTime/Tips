@@ -41,6 +41,13 @@ Boss血条:
     显示类型: 0
     显示: "§c✎手持>{id}:{damage}  §9☣地图>{levelName}  §d♨生命>{h}/{mh}  §f۞在线>{online}/{maxplayer}  §b❉延迟>{ms} \n §2✤称号>{ch}
                \  §e♈金币>{money}   §7☼时间>{时}:{分}:{秒}  §3❤坐标>x: {x} y: {y} z: {z}"
+聊天栏公告:
+  default:
+    是否开启: true
+    间隔时间: 30
+    消息轮播:
+      - "§7[ 公告 ]§a 欢迎大家来到本服务器"
+      - "§7[ 公告 ]§e 当前在线玩家 {online} / {maxplayer}"
 
 计分板:
   default:
