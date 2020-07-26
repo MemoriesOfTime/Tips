@@ -5,14 +5,13 @@ import tip.messages.BaseMessage;
 import tip.messages.BroadcastMessage;
 import tip.utils.Api;
 
-class BroadCastPlayerTask {
-    private int i = 0;
+import java.util.LinkedHashMap;
 
-    private int time = -1;
+class BroadCastPlayerTask {
 
     private Player player;
+    private LinkedHashMap<String,MessageType> type = new LinkedHashMap<>();
 
-    private boolean key = false;
 
     BroadCastPlayerTask(Player owner) {
         this.player = owner;
@@ -27,29 +26,42 @@ class BroadCastPlayerTask {
                 BaseMessage.BaseTypes.BROADCAST);
         if (message != null) {
             if (message.isOpen()) {
-                if (time == -1) {
-                    time = message.getTime();
-                    key = true;
-                } else if (time <= 0) {
-                    this.i++;
-                    time = message.getTime();
-                    key = true;
+                if(!type.containsKey(player.getLevel().getFolderName())){
+                    type.put(player.getLevel().getFolderName(),new MessageType());
                 }
-                if (this.i >= message.getMessages().size()) {
-                    this.i = 0;
+                MessageType m = type.get(player.getLevel().getFolderName());
+                if (m.time == -1) {
+                    m.time = message.getTime();
+                    m.key = true;
+                } else if (m.time <= 0) {
+                    m.i++;
+                    m.time = message.getTime();
+                    m.key = true;
                 }
-                if (key) {
-                    key = false;
-                    String text = message.getMessages().get(this.i);
+                if (m.i >= message.getMessages().size()) {
+                    m.i = 0;
+                }
+                if (m.key) {
+                    m.key = false;
+                    String text = message.getMessages().get(m.i);
                     Api api = new Api(text, player);
                     text = api.strReplace();
                     player.sendMessage(text);
 
                 }
-                if (time > 0) {
-                    time--;
+                if (m.time > 0) {
+                    m.time--;
                 }
             }
         }
+    }
+
+    private class MessageType{
+        public int i = 0;
+
+        public int time = -1;
+
+        boolean key = false;
+
     }
 }
