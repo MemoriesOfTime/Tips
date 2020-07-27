@@ -240,9 +240,23 @@ public class Main extends PluginBase implements Listener {
         for(PlayerConfig config:playerConfigs){
             config.save();
         }
+        LinkedHashMap<String,LinkedHashMap<String,Object>> configs = new LinkedHashMap<>();
         for(BaseMessage message: getShowMessages()){
-            message.save();
+            BaseMessage.BaseTypes type = BaseMessage.getBaseTypeByInteger(message.getType());
+            if(type != null){
+                if(configs.containsKey(type.getConfigName())){
+                    LinkedHashMap<String,Object> map = configs.get(type.getConfigName());
+                    map.putAll(message.getConfig());
+                }else {
+                    configs.put(type.getConfigName(), message.getConfig());
+                }
+            }
         }
+        Config config = getLevelMessage();
+        for(String name: configs.keySet()){
+            config.set(name,configs.get(name));
+        }
+        config.save();
     }
 
 

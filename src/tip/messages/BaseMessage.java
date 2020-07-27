@@ -84,7 +84,7 @@ public abstract class BaseMessage {
         return false;
     }
 
-    private static BaseTypes getBaseTypeByInteger(int type){
+    public static BaseTypes getBaseTypeByInteger(int type){
         for(BaseTypes types:BaseTypes.values()){
             if(types.getType() == type){
                 return types;
@@ -102,17 +102,7 @@ public abstract class BaseMessage {
         return null;
     }
 
-    /**
-     * 保存
-     * */
-    public void save(){
-        Config config = Main.getInstance().getLevelMessage();
-        BaseTypes types = getBaseTypeByInteger(getType());
-        if(types != null){
-            config.set(types.getConfigName(),getConfig());
-            config.save();
-        }
-    }
+
 
     public enum BaseTypes{
         /**显示类型*/
