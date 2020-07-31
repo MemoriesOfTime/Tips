@@ -38,6 +38,10 @@ public abstract class BaseVariable {
 
     }
 
+    public void setString(String string) {
+        this.string = string;
+    }
+
     /**
      * 执行 变量转换..(在这个方法里执行添加变量..)
      * */

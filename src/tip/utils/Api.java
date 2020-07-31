@@ -1,7 +1,6 @@
 package tip.utils;
 
 import cn.nukkit.IPlayer;
-import cn.nukkit.Player;
 import cn.nukkit.Server;
 import cn.nukkit.level.Level;
 import tip.Main;
@@ -46,6 +45,9 @@ public class Api {
                     try {
                         if(constructor.getParameterCount() == 1){
                             variable = (BaseVariable) constructor.newInstance(player);
+                            if(var.isAnnotationPresent(ChangeMessage.class)){
+                                variable.setString(string);
+                            }
                         }else{
                             variable = (BaseVariable) constructor.newInstance(player,m);
                         }

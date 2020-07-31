@@ -6,25 +6,12 @@ Boss血条:
     消息轮播:
       - "称号 {ch} 金钱 {money}"
     间隔时间: 5
-  world:
-    是否开启: true
-    是否根据玩家血量变化: true
-    消息轮播:
-      - "称号 {ch} 金钱 {money}"
-    间隔时间: 5
 头部:
   default:
     是否开启: true
     显示: "{vip} ✤ {ch} ✤ {name} - {ms}\n§c❤ {h}/{mh}"
-  world:
-    是否开启: true
-    显示: "{vip} ✤ {ch} ✤ {name} - {ms}\n§c❤ {h}/{mh}"
 聊天:
   default:
-    是否开启: true
-    是否仅在世界内有效: false
-    显示: "§7[§a{levelName}§7]§4[§6▶§f{ch}§4]§2[§cVIP♥§f{vip}§2]{name} §b>>> {msg}"
-  world:
     是否开启: true
     是否仅在世界内有效: false
     显示: "§7[§a{levelName}§7]§4[§6▶§f{ch}§4]§2[§cVIP♥§f{vip}§2]{name} §b>>> {msg}"
@@ -35,12 +22,6 @@ Boss血条:
     显示类型: 0
     显示: "§c✎手持>{id}:{damage}  §9☣地图>{levelName}  §d♨生命>{h}/{mh}  §f۞在线>{online}/{maxplayer}  §b❉延迟>{ms} \n §2✤称号>{ch}
                  \  §e♈金币>{money}   §7☼时间>{时}:{分}:{秒}  §3❤坐标>x: {x} y: {y} z: {z}"
-  world:
-    是否开启: true
-    # 0 : tip 1: popup 2:actionBar
-    显示类型: 0
-    显示: "§c✎手持>{id}:{damage}  §9☣地图>{levelName}  §d♨生命>{h}/{mh}  §f۞在线>{online}/{maxplayer}  §b❉延迟>{ms} \n §2✤称号>{ch}
-               \  §e♈金币>{money}   §7☼时间>{时}:{分}:{秒}  §3❤坐标>x: {x} y: {y} z: {z}"
 聊天栏公告:
   default:
     是否开启: true
@@ -51,14 +32,6 @@ Boss血条:
 
 计分板:
   default:
-    是否开启: true
-    Title: "Server Name"
-    Line:
-      - "§6☼§r当前模式: {gm}"
-      - "§6☼§r当前权限: {op}"
-      - "§6☼§r飞行状态: {fly}"
-      - "§6☼§r饥饿度: {food}/{mfood}"
-  world:
     是否开启: true
     Title: "Server Name"
     Line:
