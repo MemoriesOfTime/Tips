@@ -128,32 +128,32 @@ public class PluginVariables extends BaseVariable {
             }
         }
         if (Server.getInstance().getPluginManager().getPlugin("Proficiency") != null) {
-            PlayerRPG playerRPGC = PlayerRPG.getPlayer(player, "采集");
-            PlayerRPG playerRPGM = PlayerRPG.getPlayer(player, "制作");
-            PlayerRPG playerRPGF = PlayerRPG.getPlayer(player, "战斗");
-            if (playerRPGC != null && playerRPGM != null && playerRPGF != null) {
-                RpgLevel pRPG = playerRPGC.getLevel();
-                int rpg = pRPG.getLevel();
-                int rpgMin = (int) pRPG.getExpMin();
-                int rpgMax = pRPG.getExpMax();
+            PlayerRPG playerRpgC = PlayerRPG.getPlayer(player, "采集");
+            PlayerRPG playerRpgM = PlayerRPG.getPlayer(player, "制作");
+            PlayerRPG playerRpgF = PlayerRPG.getPlayer(player, "战斗");
+            if (playerRpgC != null && playerRpgM != null && playerRpgF != null) {
+                RpgLevel pRpg = playerRpgC.getLevel();
+                int rpg = pRpg.getLevel();
+                int rpgMin = (int) pRpg.getExpMin();
+                int rpgMax = pRpg.getExpMax();
                 int rpgExp = (int) (Proficiency.getInstance().getDefault("采集", true) * (float) rpg);
                 addStrReplaceString("{采集熟练度}", rpg + "");
                 addStrReplaceString("{采集经验}", rpgMin + "");
                 addStrReplaceString("{采集技能加成}", rpgExp + "");
                 addStrReplaceString("{采集最大经验}", rpgMax + "");
-                pRPG = playerRPGM.getLevel();
-                rpg = pRPG.getLevel();
-                rpgMin = (int) pRPG.getExpMin();
-                rpgMax = pRPG.getExpMax();
+                pRpg = playerRpgM.getLevel();
+                rpg = pRpg.getLevel();
+                rpgMin = (int) pRpg.getExpMin();
+                rpgMax = pRpg.getExpMax();
                 rpgExp = (int) (Proficiency.getInstance().getDefault("制作", true) * (float) rpg);
                 addStrReplaceString("{制作熟练度}", rpg + "");
                 addStrReplaceString("{制作经验}", rpgMin + "");
                 addStrReplaceString("{制作技能加成}", rpgExp + "");
                 addStrReplaceString("{制作最大经验}", rpgMax + "");
-                pRPG = playerRPGF.getLevel();
-                rpg = pRPG.getLevel();
-                rpgMin = (int) pRPG.getExpMin();
-                rpgMax = pRPG.getExpMax();
+                pRpg = playerRpgF.getLevel();
+                rpg = pRpg.getLevel();
+                rpgMin = (int) pRpg.getExpMin();
+                rpgMax = pRpg.getExpMax();
                 rpgExp = (int) (Proficiency.getInstance().getDefault("战斗", true) * (float) rpg);
                 addStrReplaceString("{战斗熟练度}", rpg + "");
                 addStrReplaceString("{战斗经验}", rpgMin + "");

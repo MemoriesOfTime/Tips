@@ -3,6 +3,7 @@ package tip.utils;
 import cn.nukkit.IPlayer;
 import cn.nukkit.Server;
 import cn.nukkit.level.Level;
+import cn.nukkit.utils.TextFormat;
 import tip.Main;
 import tip.messages.BaseMessage;
 import tip.utils.variables.BaseVariable;
@@ -18,10 +19,10 @@ import java.util.*;
  * */
 public class Api {
 
-    private String string;
-    private IPlayer player;
+    private final String string;
+    private final IPlayer player;
 
-    private static LinkedHashMap<String, Class<? extends BaseVariable>> VARIABLE = new LinkedHashMap<>();
+    private static final LinkedHashMap<String, Class<? extends BaseVariable>> VARIABLE = new LinkedHashMap<>();
     public Api(String string, IPlayer player){
         this.string = string;
         this.player = player;
@@ -39,8 +40,7 @@ public class Api {
         String m = string;
         LinkedHashMap<String,String> message = new LinkedHashMap<>();
         for(Class<? extends BaseVariable> var:VARIABLE.values()){
-            Constructor[] constructors = var.getConstructors();
-            for (Constructor constructor : constructors) {
+            for (Constructor<?> constructor : var.getConstructors()) {
                 try {
                     try {
                         if(constructor.getParameterCount() == 1){
@@ -68,7 +68,7 @@ public class Api {
         for(String key:message.keySet()){
             m = m.replace(key,message.get(key));
         }
-        return m;
+        return TextFormat.colorize('&',m);
     }
 
     public static BaseMessage getSendPlayerMessage(String playerName,String levelName, BaseMessage.BaseTypes baseTypes){

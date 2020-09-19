@@ -6,6 +6,7 @@ import tip.Main;
 import tip.commands.base.BaseCommand;
 import tip.commands.sub.*;
 import tip.windows.CreateWindow;
+import tip.windows.ListenerWindow;
 
 /**
  * @author SmallasWater
@@ -35,6 +36,7 @@ public class TipsCommand extends BaseCommand {
         if(hasPermission(sender)) {
             if (args.length == 0) {
                 if (sender instanceof Player) {
+                    ListenerWindow.CHOSE_TYPE.put(sender.getName(),0);
                     CreateWindow.sendSetting((Player) sender);
                     return true;
                 } else {

@@ -23,7 +23,7 @@ public class ListenerWindow implements Listener {
 
     private LinkedHashMap<String,String> clickPlayer = new LinkedHashMap<>();
 
-    // 0 为 改变选中玩家 1 为默认 2为自身
+    /** 0 为 改变选中玩家(展示玩家列表) 1 为default触发 (不展示玩家列表) 2为自身 (不展示玩家列表)*/
     public static LinkedHashMap<String,Integer> CHOSE_TYPE = new LinkedHashMap<>();
 
     private LinkedHashMap<String, BaseMessage.BaseTypes> clickType = new LinkedHashMap<>();
@@ -54,17 +54,30 @@ public class ListenerWindow implements Listener {
             CreateWindow.sendSettingType(player);
         }
         if(id == CreateWindow.SETTING){
-            String playerName = clickPlayer.get(player.getName());
-            if(playerName != null){
+            if(ListenerWindow.CHOSE_TYPE.containsKey(player.getName())){
                 BaseMessage.BaseTypes types = BaseMessage.getTypeByName(window.getResponse().getClickedButton().getText());
-                if(types == null){
-                    CreateWindow.sendSetting(player);
+                if(ListenerWindow.CHOSE_TYPE.get(player.getName()) == 1 || ListenerWindow.CHOSE_TYPE.get(player.getName()) == 2) {
+                    if (types != null) {
+                        clickType.put(player.getName(), types);
+                        CreateWindow.sendSettingShow(player, types);
+                    }
                 }else{
-                    clickType.put(player.getName(),types);
-                    CreateWindow.sendSettingShow(player,types);
+                    CreateWindow.sendSetting(player);
                 }
-            }else{
-                CreateWindow.sendSetting(player);
+
+            }else {
+                String playerName = clickPlayer.get(player.getName());
+                if (playerName != null) {
+                    BaseMessage.BaseTypes types = BaseMessage.getTypeByName(window.getResponse().getClickedButton().getText());
+                    if (types == null) {
+                        CreateWindow.sendSetting(player);
+                    } else {
+                        clickType.put(player.getName(), types);
+                        CreateWindow.sendSettingShow(player, types);
+                    }
+                } else {
+                    CreateWindow.sendSetting(player);
+                }
             }
         }
     }
@@ -85,11 +98,7 @@ public class ListenerWindow implements Listener {
             if(types != null){
                 defaultMessage = BaseMessage.getMessageByTypeAndWorld(worldName,types.getType());
                 if(defaultMessage == null){
-//                    player.sendMessage("§c请不要将 config.yml 内的 default 删除~");
                     return;
-                }
-                if(!CHOSE_TYPE.containsKey(player.getName())){
-                    CHOSE_TYPE.put(player.getName(),0);
                 }
                 if(CHOSE_TYPE.get(player.getName()) == 0){
                     baseMessage = config.getMessage(worldName,types.getType());

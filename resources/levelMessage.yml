@@ -4,12 +4,13 @@ Boss血条:
     是否开启: true
     是否根据玩家血量变化: true
     消息轮播:
-      - "称号 {ch} 金钱 {money}"
+      - "{color} 欢迎来到 本服务器 "
+      - "{color} 您当前位于 §2{levelName} {color}世界"
     间隔时间: 5
 头部:
   default:
     是否开启: true
-    显示: "{vip} ✤ {ch} ✤ {name} - {ms}\n§c❤ {h}/{mh}"
+    显示: "{vip} §2✤§r {ch} §2✤§6 {name}§2  {ms}\n§2❤§b {h}/{mh}"
 聊天:
   default:
     是否开启: true
@@ -17,7 +18,7 @@ Boss血条:
     显示: "§7[§a{levelName}§7]§4[§6▶§f{ch}§4]§2[§cVIP♥§f{vip}§2]{name} §b>>> {msg}"
 底部:
   default:
-    是否开启: true
+    是否开启: false
     # 0 : tip 1: popup 2:actionBar
     显示类型: 0
     显示: "§c✎手持>{id}:{damage}  §9☣地图>{levelName}  §d♨生命>{h}/{mh}  §f۞在线>{online}/{maxplayer}  §b❉延迟>{ms} \n §2✤称号>{ch}
@@ -33,9 +34,16 @@ Boss血条:
 计分板:
   default:
     是否开启: true
-    Title: "Server Name"
+    Title: "§7--§e◎{color} 服务器名 §e◎§7--"
     Line:
-      - "§6☼§r当前模式: {gm}"
-      - "§6☼§r当前权限: {op}"
-      - "§6☼§r飞行状态: {fly}"
-      - "§6☼§r饥饿度: {food}/{mfood}"
+      - ""
+      - "§6◎世界:  §b {levelName}"
+      - "§6◎位置:  §2 {x},{y},{z}"
+      - "  "
+      - "§6◎金币:  §e {money}"
+      - "§6◎手持:  §e {id}:{damage}"
+      - "    "
+      - "§6◎人数:  §c {online} / {maxplayer}"
+      - "§6◎延迟:  §2 {ms}"
+      - "     "
+      - "§7--§e◎§2==>> ~*..*~§2<<==§e◎§7--"

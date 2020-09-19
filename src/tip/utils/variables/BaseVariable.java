@@ -17,12 +17,13 @@ public abstract class BaseVariable {
 
     protected String string;
 
-
-    private LinkedHashMap<String,String> var = new LinkedHashMap<>();
+    private final LinkedHashMap<String,String> var = new LinkedHashMap<>();
 
     public BaseVariable(Player player){
         this.player = player;
     }
+
+
 
 
     public String getString() {

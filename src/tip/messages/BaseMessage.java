@@ -50,6 +50,7 @@ public abstract class BaseMessage {
         return open;
     }
 
+
     public void setOpen(boolean open) {
         this.open = open;
     }

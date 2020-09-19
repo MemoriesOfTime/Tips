@@ -20,12 +20,10 @@
     <orderEntry type="library" name="union(2)(1)" level="project" />
     <orderEntry type="library" name="等级觉醒_v80.5.9.3" level="project" />
     <orderEntry type="library" name="VIP系统_v1.9.8" level="project" />
-    <orderEntry type="library" name="PlayerPoints_v1.1.3" level="project" />
     <orderEntry type="library" name="RSWeapon_v1.8.3" level="project" />
     <orderEntry type="library" name="EasyAPI-1.1.3" level="project" />
     <orderEntry type="library" name="BadWordKiller【1.0.1】" level="project" />
     <orderEntry type="library" name="ZSociety-1.0.6alpha" level="project" />
-    <orderEntry type="library" name="healthapi_v1.0.9" level="project" />
     <orderEntry type="library" name="achievements_v1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="RSTask_v1.5.0" level="project" />
     <orderEntry type="library" name="PlaceholderAPI v1.3.3" level="project" />
@@ -33,5 +31,7 @@
     <orderEntry type="library" name="ScoreboardAPI" level="project" />
     <orderEntry type="library" name="OreArea_v1.2.7" level="project" />
     <orderEntry type="library" name="AutoUpData_v1.2.3" level="project" />
+    <orderEntry type="library" name="healthapi_v1.1.8" level="project" />
+    <orderEntry type="library" name="PlayerPoints_v1.1.5" level="project" />
   </component>
 </module>

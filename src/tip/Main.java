@@ -115,7 +115,7 @@ public class Main extends PluginBase implements Listener {
             LinkedList<BaseMessage> messages = new LinkedList<>();
             config = new Config(this.getDataFolder()+"/Players/"+playerName+".yml",2);
             for(BaseMessage.BaseTypes types: BaseMessage.BaseTypes.values()){
-                LinkedList<BaseMessage> messages1 = addShowMessageByMap((Map) config.get(types.getConfigName()),types.getType());
+                LinkedList<BaseMessage> messages1 = addShowMessageByMap((Map<?,?>) config.get(types.getConfigName()),types.getType());
                 if(messages1.size() > 0){
                     messages.addAll(messages1);
                 }
