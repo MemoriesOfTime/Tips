@@ -1,3 +1,7 @@
+<a href="https://github.com/SmallasWater/Tips/releases/latest" alt="Latest release">
+    <img src="https://img.shields.io/github/v/release/SmallasWater/Tips?include_prereleases" alt="Latest release">
+</a>
+
 # **Tips**
 一款多功能显示插件
 

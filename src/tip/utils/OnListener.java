@@ -18,7 +18,7 @@ import java.util.List;
 public class OnListener implements Listener {
 
 
-    private String getBadWorld(String msg,List<String> badWords){
+    private String getBadWorld(String msg,List badWords){
         for (Object badWord : badWords) {
             if (msg.contains((String) badWord)) {
                 msg = msg.replace((String) badWord, "*");
@@ -28,12 +28,22 @@ public class OnListener implements Listener {
     }
 
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGH)
     public void onChat(PlayerChatEvent event){
-
+        if(event.isCancelled()){
+            return;
+        }
         Player player = event.getPlayer();
         String msg = event.getMessage();
-        ChatMessage message = (ChatMessage) Api.getSendPlayerMessage(player.getName(),player.getLevel().getFolderName(), BaseMessage.BaseTypes.CHAT_MESSAGE);
+
+        ChatMessage message = (ChatMessage) BaseMessage.getMessageByTypeAndWorld(player.level.getFolderName()
+                ,BaseMessage.CHAT_MESSAGE_TYPE);
+        PlayerConfig config = Main.getInstance().getPlayerConfig(player.getName());
+        if(config != null){
+            if(config.getMessage(player.getLevel().getFolderName(),BaseMessage.CHAT_MESSAGE_TYPE) != null){
+                message = (ChatMessage) config.getMessage(player.getLevel().getFolderName(),BaseMessage.CHAT_MESSAGE_TYPE);
+            }
+        }
         if(message != null) {
             String s = message.getMessage();
             if(!message.isOpen()){
@@ -41,13 +51,13 @@ public class OnListener implements Listener {
             }
             if (!"".equals(s)) {
                 Api api = new Api(s, player);
-                s = api.strReplace().replace("{msg}",msg);
+                String send = api.strReplace().replace("{msg}", msg);
                 if(message.isInWorld()){
-                    for(Player player1:event.getPlayer().getLevel().getPlayers().values()){
-                        player1.sendMessage(s);
+                    for(Player player1:player.getLevel().getPlayers().values()){
+                        player1.sendMessage(send);
                     }
                 }else {
-                    Server.getInstance().broadcastMessage(s);
+                    Server.getInstance().broadcastMessage(send);
                 }
             }
             event.setCancelled();
