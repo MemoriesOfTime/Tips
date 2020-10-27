@@ -8,7 +8,6 @@ import tip.Main;
 import tip.messages.BaseMessage;
 import tip.messages.NameTagMessage;
 import tip.utils.Api;
-import tip.utils.PlayerConfig;
 
 /**
  * @author SmallasWater

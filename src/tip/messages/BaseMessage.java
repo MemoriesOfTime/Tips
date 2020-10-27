@@ -1,6 +1,6 @@
 package tip.messages;
 
-import cn.nukkit.utils.Config;
+
 import tip.Main;
 
 

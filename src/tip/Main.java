@@ -17,12 +17,16 @@ import tip.tasks.*;
 import tip.utils.Api;
 import tip.utils.OnListener;
 import tip.utils.PlayerConfig;
+import tip.utils.variables.BaseVariable;
+import tip.utils.variables.VariableManager;
+import tip.utils.variables.defaults.ChangeMessage;
 import tip.utils.variables.defaults.DefaultVariables;
 import tip.utils.variables.defaults.PluginVariables;
 import tip.windows.ListenerWindow;
 import updata.AutoData;
 
 import java.io.File;
+import java.lang.reflect.Constructor;
 import java.util.*;
 
 /**
@@ -34,6 +38,7 @@ public class Main extends PluginBase implements Listener {
 
     private static Main instance;
 
+    private VariableManager varManager;
     public Map<Player, Scoreboard> scoreboards = new HashMap<>();
 
     public LinkedHashMap<Player,BossBarTask> tasks = new LinkedHashMap<>();
@@ -122,13 +127,37 @@ public class Main extends PluginBase implements Listener {
             }
             playerConfigs.add(new PlayerConfig(playerName,messages));
         }
+        // 初始化注册类
+        initVariable();
+
     }
 
+    private void initVariable(){
+        varManager = new VariableManager();
+        BaseVariable variable;
+        for(Class<? extends BaseVariable> var:Api.VARIABLE.values()){
+            for (Constructor<?> constructor : var.getConstructors()) {
+                try {
+                    if(constructor.getParameterCount() == 1) {
+                        variable = (BaseVariable) constructor.newInstance((Object) null);
+                    }else{
+                        variable = (BaseVariable) constructor.newInstance((Object) null,null);
+                    }
+                    varManager.addVariableClass(variable);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    return;
+                }
+            }
+        }
+    }
     public LinkedList<PlayerConfig> getPlayerConfigs() {
         return playerConfigs;
     }
 
-
+    public VariableManager getVarManager() {
+        return varManager;
+    }
 
     public PlayerConfig getPlayerConfig(String playerName){
         for(PlayerConfig config:playerConfigs){

@@ -1,16 +1,13 @@
 package tip.utils;
 
 import cn.nukkit.IPlayer;
+import cn.nukkit.Player;
 import cn.nukkit.Server;
 import cn.nukkit.level.Level;
 import cn.nukkit.utils.TextFormat;
 import tip.Main;
 import tip.messages.BaseMessage;
 import tip.utils.variables.BaseVariable;
-import tip.utils.variables.defaults.ChangeMessage;
-
-
-import java.lang.reflect.Constructor;
 import java.util.*;
 
 /**
@@ -22,7 +19,7 @@ public class Api {
     private final String string;
     private final IPlayer player;
 
-    private static final LinkedHashMap<String, Class<? extends BaseVariable>> VARIABLE = new LinkedHashMap<>();
+    public static final LinkedHashMap<String, Class<? extends BaseVariable>> VARIABLE = new LinkedHashMap<>();
     public Api(String string, IPlayer player){
         this.string = string;
         this.player = player;
@@ -36,40 +33,20 @@ public class Api {
     }
 
     public String strReplace(){
-        BaseVariable variable;
         String m = string;
-        LinkedHashMap<String,String> message = new LinkedHashMap<>();
-        for(Class<? extends BaseVariable> var:VARIABLE.values()){
-            for (Constructor<?> constructor : var.getConstructors()) {
-                try {
-                    try {
-                        if(constructor.getParameterCount() == 1){
-                            variable = (BaseVariable) constructor.newInstance(player);
-                            if(var.isAnnotationPresent(ChangeMessage.class)){
-                                variable.setString(string);
-                            }
-                        }else{
-                            variable = (BaseVariable) constructor.newInstance(player,m);
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        return string;
-                    }
-                    variable.strReplace();
-                    if(var.isAnnotationPresent(ChangeMessage.class)){
-                        m = variable.getString();
-                    }
-                    message.putAll(variable.getVar());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        for(String key:message.keySet()){
-            m = m.replace(key,message.get(key));
+        if(player instanceof Player){
+            m = Main.getInstance().getVarManager().toMessage((Player) player,m);
         }
         return TextFormat.colorize('&',m);
     }
+
+    /**
+     * 增加单个变量
+     * */
+    public void addVariable(String var,String message){
+        Main.getInstance().getVarManager().addVariable(var, message);
+    }
+
 
     public static BaseMessage getSendPlayerMessage(String playerName,String levelName, BaseMessage.BaseTypes baseTypes){
         PlayerConfig config = Main.getInstance().getPlayerConfig(playerName);

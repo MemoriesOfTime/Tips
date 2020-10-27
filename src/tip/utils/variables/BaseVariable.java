@@ -11,10 +11,7 @@ import java.util.LinkedHashMap;
  */
 public abstract class BaseVariable {
 
-
-    protected final Player player;
-
-
+    protected Player player;
     protected String string;
 
     private final LinkedHashMap<String,String> var = new LinkedHashMap<>();
@@ -23,6 +20,9 @@ public abstract class BaseVariable {
         this.player = player;
     }
 
+    public boolean isResetMessage(){
+        return false;
+    }
 
 
 
@@ -51,4 +51,6 @@ public abstract class BaseVariable {
     public LinkedHashMap<String, String> getVar() {
         return var;
     }
+
+
 }

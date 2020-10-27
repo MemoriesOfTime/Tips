@@ -40,7 +40,6 @@ import java.util.LinkedList;
  * 插件变量
  * @author SmallasWater
  */
-@ChangeMessage
 public class PluginVariables extends BaseVariable {
 
 
@@ -49,6 +48,11 @@ public class PluginVariables extends BaseVariable {
         this.string = str;
     }
 
+
+    @Override
+    public boolean isResetMessage() {
+        return true;
+    }
 
     @Override
     public String getString() {
