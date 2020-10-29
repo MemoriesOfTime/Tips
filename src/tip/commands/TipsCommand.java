@@ -22,7 +22,7 @@ public class TipsCommand extends BaseCommand {
         this.addSubCommand(new ReloadSubCommand("reload"));
         this.addSubCommand(new SendSubCommand("send"));
         this.addSubCommand(new DefaultSubCommand("default"));
-        this.addSubCommand(new MeSubCommand("me"));
+        this.addSubCommand(new ThemeSubCommand("theme"));
         this.loadCommandBase();
     }
 
@@ -34,30 +34,43 @@ public class TipsCommand extends BaseCommand {
     @Override
     public boolean execute(CommandSender sender, String s, String[] args) {
         if(hasPermission(sender)) {
-            if (args.length == 0) {
-                if (sender instanceof Player) {
-                    ListenerWindow.CHOSE_TYPE.put(sender.getName(),0);
-                    CreateWindow.sendSetting((Player) sender);
-                    return true;
-                } else {
-                    sender.sendMessage("请不要用控制台执行..");
-                    return false;
+            if(sender.isOp()){
+                if (args.length == 0) {
+                    if (sender instanceof Player) {
+                        ListenerWindow.CHOSE_TYPE.put(sender.getName(),0);
+                        CreateWindow.sendSetting((Player) sender);
+                        return true;
+                    } else {
+                        sender.sendMessage("请不要用控制台执行..");
+                        return false;
+                    }
                 }
             }
-            return super.execute(sender, s, args);
         }
-        return true;
+        return super.execute(sender, s, args);
     }
 
     @Override
     public void sendHelp(CommandSender sender) {
-        sender.sendMessage("§a====================");
-        sender.sendMessage("§e/"+getName()+" §e打开设置玩家显示GUI");
-        sender.sendMessage("§e/"+getName()+" §7default §e打开设置默认显示GUI");
-        sender.sendMessage("§e/"+getName()+" §7me §e打开设置默认显示GUI");
-        sender.sendMessage("§e/"+getName()+" §7reload §e重新读取配置");
-        sender.sendMessage("§e/"+getName()+" §7achAll §e打开成就GUI");
-        sender.sendMessage("§e/"+getName()+" §7send <类型> <信息>§e给玩家发送消息\n§r类型: tip,popup,action,title,msg");
-        sender.sendMessage("§a====================");
+        if(sender.isOp()){
+            sender.sendMessage("§a====================");
+            sender.sendMessage("§e/"+getName()+" §e打开设置玩家显示GUI");
+            sender.sendMessage("§e/"+getName()+" §7default §e打开设置默认显示GUI");
+            sender.sendMessage("§e/"+getName()+" §7me §e打开设置默认显示GUI");
+            sender.sendMessage("§e/"+getName()+" §7reload §e重新读取配置");
+            sender.sendMessage("§e/"+getName()+" §7achAll §e打开成就GUI");
+            sender.sendMessage("§e/"+getName()+" §7theme §e打开设置样式GUI");
+            sender.sendMessage("§e/"+getName()+" §7send <类型> <信息>§e给玩家发送消息\n§r类型: tip,popup,action,title,msg");
+            sender.sendMessage("§a====================");
+        }else{
+            sender.sendMessage("§a====================");
+            if(sender.hasPermission("tips.me")){
+                sender.sendMessage("§e/"+getName()+" §7me §e打开设置默认显示GUI");
+            }
+            sender.sendMessage("§e/"+getName()+" §7achAll §e打开成就GUI");
+            sender.sendMessage("§e/"+getName()+" §7theme §e打开设置样式GUI");
+            sender.sendMessage("§a====================");
+        }
+
     }
 }

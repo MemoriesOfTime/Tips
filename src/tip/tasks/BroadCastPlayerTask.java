@@ -2,7 +2,7 @@ package tip.tasks;
 
 import cn.nukkit.Player;
 import tip.messages.BaseMessage;
-import tip.messages.BroadcastMessage;
+import tip.messages.defaults.BroadcastMessage;
 import tip.utils.Api;
 
 import java.util.LinkedHashMap;

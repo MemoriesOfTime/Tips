@@ -4,7 +4,7 @@ import cn.nukkit.Player;
 import tip.Main;
 import tip.bossbar.BossBarApi;
 import tip.messages.BaseMessage;
-import tip.messages.BossBarMessage;
+import tip.messages.defaults.BossBarMessage;
 import tip.utils.Api;
 import tip.utils.BossMessageBuilder;
 

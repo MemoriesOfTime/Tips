@@ -1,5 +1,6 @@
-package tip.messages;
+package tip.messages.defaults;
 
+import tip.messages.BaseMessage;
 import tip.utils.BossMessageBuilder;
 
 
@@ -9,7 +10,7 @@ import java.util.LinkedList;
 /**
  * @author SmallasWater
  */
-public class BossBarMessage extends BaseMessage{
+public class BossBarMessage extends BaseMessage {
 
 
     private int time;

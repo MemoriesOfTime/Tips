@@ -28,7 +28,7 @@ public abstract class BaseMessage {
 
     private boolean open;
 
-    BaseMessage(String worldName, boolean open){
+    public BaseMessage(String worldName, boolean open){
         this.worldName = worldName;
         this.open = open;
     }
@@ -36,6 +36,7 @@ public abstract class BaseMessage {
     public int getType(){
         return -1;
     }
+
 
 
     public void setWorldName(String worldName) {
@@ -56,19 +57,6 @@ public abstract class BaseMessage {
     }
 
 
-    public static BaseMessage getMessageByTypeAndWorld(String worldName,int type){
-        BaseMessage baseMessage = null;
-        for(BaseMessage message: Main.getInstance().getShowMessages()){
-            if("default".equals(message.worldName) && message.getType() == type){
-                baseMessage = message;
-            }
-            if(worldName.equalsIgnoreCase(message.worldName) && type == message.getType()){
-                baseMessage =  message;
-            }
-
-        }
-        return baseMessage;
-    }
 
     /**
      * 保存在配置的..

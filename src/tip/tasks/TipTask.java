@@ -3,11 +3,10 @@ package tip.tasks;
 import cn.nukkit.Player;
 import cn.nukkit.Server;
 import cn.nukkit.plugin.Plugin;
-import cn.nukkit.scheduler.AsyncTask;
 import cn.nukkit.scheduler.PluginTask;
 import tip.Main;
 import tip.messages.BaseMessage;
-import tip.messages.TipMessage;
+import tip.messages.defaults.TipMessage;
 import tip.utils.Api;
 
 
@@ -24,20 +23,19 @@ public class TipTask extends PluginTask<Plugin> {
     @Override
     public void onRun(int i) {
         for (Player player : Server.getInstance().getOnlinePlayers().values()) {
-            final  Player player1 = player;
-            Server.getInstance().getScheduler().scheduleAsyncTask(Main.getInstance(), new AsyncTask() {
+            Server.getInstance().getScheduler().scheduleAsyncTask(Main.getInstance(), new AbstractPlayerAsyncTask(player) {
                 @Override
                 public void onRun() {
-                    if(player1 == null || !player.isOnline()){
+                    if(player == null || !player.isOnline()){
                         return;
                     }
                     TipMessage tipMessage;
-                    tipMessage = (TipMessage) Api.getSendPlayerMessage(player1.getName(),player1.level.getFolderName(),
+                    tipMessage = (TipMessage) Api.getSendPlayerMessage(player.getName(),player.level.getFolderName(),
                             BaseMessage.BaseTypes.TIP);
                     if (tipMessage != null) {
                         if (tipMessage.isOpen()) {
-                            Api api = new Api(tipMessage.getMessage(), player1);
-                            sendTip(player1, api.strReplace(), tipMessage.getShowType());
+                            Api api = new Api(tipMessage.getMessage(), player);
+                            sendTip(player, api.strReplace(), tipMessage.getShowType());
                         }
                     }
                 }

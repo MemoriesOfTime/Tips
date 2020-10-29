@@ -6,8 +6,10 @@ import cn.nukkit.event.Listener;
 import cn.nukkit.event.player.PlayerFormRespondedEvent;
 import cn.nukkit.form.window.FormWindowCustom;
 import cn.nukkit.form.window.FormWindowSimple;
+import cn.nukkit.utils.Config;
 import tip.Main;
 import tip.messages.*;
+import tip.messages.defaults.*;
 import tip.utils.Api;
 import tip.utils.PlayerConfig;
 
@@ -36,7 +38,8 @@ public class ListenerWindow implements Listener {
             int formId = event.getFormID();
             if (formId == CreateWindow.MENU
                     || formId == CreateWindow.SETTING
-                    || formId == CreateWindow.CHOSE){
+                    || formId == CreateWindow.CHOSE
+                    || formId == CreateWindow.CHOSE_THEME){
                 if (event.getWindow() instanceof FormWindowSimple) {
                     onListenerSimpleWindow(p, (FormWindowSimple) event.getWindow(), formId);
                 }
@@ -87,7 +90,7 @@ public class ListenerWindow implements Listener {
             String playerName = clickPlayer.get(player.getName());
             PlayerConfig config = Main.getInstance().getPlayerConfig(playerName);
             if(config == null){
-                config = new PlayerConfig(playerName,new LinkedList<>());
+                config = new PlayerConfig(playerName,new MessageManager());
             }
             BaseMessage defaultMessage;
             BaseMessage baseMessage;
@@ -96,7 +99,7 @@ public class ListenerWindow implements Listener {
                     .getDropdownResponse(0).getElementID());
             boolean open = window.getResponse().getToggleResponse(1);
             if(types != null){
-                defaultMessage = BaseMessage.getMessageByTypeAndWorld(worldName,types.getType());
+                defaultMessage = Main.getInstance().getShowMessages().getMessageByTypeAndWorld(worldName,types.getType());
                 if(defaultMessage == null){
                     return;
                 }
@@ -107,7 +110,7 @@ public class ListenerWindow implements Listener {
                 }else{
                     config = Main.getInstance().getPlayerConfig(player.getName());
                     if(config == null){
-                        config = new PlayerConfig(player.getName(),new LinkedList<>());
+                        config = new PlayerConfig(player.getName(),new MessageManager());
                     }
                     baseMessage = config.getMessage(worldName,types.getType());
                 }
@@ -148,10 +151,23 @@ public class ListenerWindow implements Listener {
                 }
             }
         }
+        if(id == CreateWindow.CHOSE_THEME){
+            PlayerConfig config = Main.getInstance().getPlayerConfig(player.getName());
+            if(config == null){
+                config = new PlayerConfig(player.getName(),new MessageManager());
+            }
+            String name = Main.getInstance().getThemeManager().getNames().get(window.getResponse()
+                    .getDropdownResponse(0).getElementID());
+            config.setTheme(name);
+            Main.getInstance().getPlayerConfigs().add(config);
+            player.sendMessage("§2你已切换到 "+window.getResponse()
+                    .getDropdownResponse(0).getElementContent()+" §2样式");
+
+        }
     }
 
 
-    private BaseMessage setBroadCast(BaseMessage baseMessage, boolean open, String worldName, Player player, BroadcastMessage defaultMessage, String lines,int time){
+    private BaseMessage setBroadCast(BaseMessage baseMessage, boolean open, String worldName, Player player, BroadcastMessage defaultMessage, String lines, int time){
         if(lines != null && !"".equals(lines)){
             LinkedList<String> line = new LinkedList<>(Arrays.asList(lines.split("&")));
             if(isEqualLine(line, defaultMessage.getMessages())){
@@ -267,7 +283,7 @@ public class ListenerWindow implements Listener {
 
     }
 
-    private BaseMessage setBossBarMessage(BaseMessage baseMessage, boolean open, String worldName, Player player, BossBarMessage defaultMessage, String lines,int time,boolean size) {
+    private BaseMessage setBossBarMessage(BaseMessage baseMessage, boolean open, String worldName, Player player, BossBarMessage defaultMessage, String lines, int time, boolean size) {
         if(lines != null && !"".equals(lines)){
             LinkedList<String> line = new LinkedList<>(Arrays.asList(lines.split("&")));
             if(isEqualLine(line, defaultMessage.getMessages())){

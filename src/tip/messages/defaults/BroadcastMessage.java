@@ -1,4 +1,6 @@
-package tip.messages;
+package tip.messages.defaults;
+
+import tip.messages.BaseMessage;
 
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
@@ -6,7 +8,7 @@ import java.util.LinkedList;
 /**
  * @author SmallasWater
  */
-public class BroadcastMessage extends BaseMessage{
+public class BroadcastMessage extends BaseMessage {
 
     private int time;
 

@@ -12,14 +12,15 @@ import tip.bossbar.BossBarApi;
 import tip.commands.TipsCommand;
 import tip.lib.viewcompass.ViewCompassVariable;
 import tip.messages.*;
+import tip.messages.defaults.*;
 import tip.tasks.*;
 
 import tip.utils.Api;
 import tip.utils.OnListener;
 import tip.utils.PlayerConfig;
+import tip.utils.ThemeManager;
 import tip.utils.variables.BaseVariable;
 import tip.utils.variables.VariableManager;
-import tip.utils.variables.defaults.ChangeMessage;
 import tip.utils.variables.defaults.DefaultVariables;
 import tip.utils.variables.defaults.PluginVariables;
 import tip.windows.ListenerWindow;
@@ -38,18 +39,22 @@ public class Main extends PluginBase implements Listener {
 
     private static Main instance;
 
+    private String theme;
+
+
     private VariableManager varManager;
     public Map<Player, Scoreboard> scoreboards = new HashMap<>();
 
     public LinkedHashMap<Player,BossBarTask> tasks = new LinkedHashMap<>();
 
-    private LinkedList<BaseMessage> showMessages = new LinkedList<>();
+    private MessageManager showMessages = new MessageManager();
+
+    private ThemeManager themeManager = new ThemeManager();
 
     public LinkedHashMap<Player, BossBarApi> apis = new LinkedHashMap<>();
 
     private LinkedList<PlayerConfig> playerConfigs = new LinkedList<>();
 
-    private Config levelMessage;
 
     @Override
     public void onLoad() {
@@ -85,53 +90,78 @@ public class Main extends PluginBase implements Listener {
         }
     }
 
+    public ThemeManager getThemeManager() {
+        return themeManager;
+    }
 
-
-    public Config getLevelMessage() {
-        return levelMessage;
+    private Config getLevelMessage() {
+        return themeManager.getConfig(theme);
     }
 
     public void init(){
         this.saveDefaultConfig();
         this.reloadConfig();
-        if(!new File(this.getDataFolder()+"/levelMessage.yml").exists()){
-            this.saveResource("levelMessage.yml");
-        }
-        levelMessage = new Config(this.getDataFolder()+"/levelMessage.yml",Config.YAML);
+        theme = getConfig().getString("默认样式","default");
+        getLogger().info("当前样式为: "+theme);
         tasks = new LinkedHashMap<>();
-        showMessages = new LinkedList<>();
+        showMessages = new MessageManager();
         this.getLogger().info("加载成功");
-        if(!new File(this.getDataFolder()+"/Tips变量参考.txt").exists()){
-            this.saveResource("Tips变量.txt","/Tips变量参考.txt",false);
+        if(!new File(this.getDataFolder()+"/theme").exists()){
+            if(!new File(this.getDataFolder()+"/theme").mkdirs()){
+                getLogger().info("创建 theme 文件夹失败");
+            }
+            if(!new File(this.getDataFolder()+"/theme/easy.yml").exists()){
+                this.saveResource("theme/easy.yml","/theme/easy.yml",false);
+            }
         }
+
+        if(!new File(this.getDataFolder()+"/theme/default.yml").exists()){
+            this.saveResource("theme/default.yml","/theme/default.yml",false);
+        }
+
         if(!new File(this.getDataFolder()+"/Players").exists()){
             if(!new File(this.getDataFolder()+"/Players").mkdirs()){
                 this.getLogger().info("玩家文件夹创建失败");
             }
         }
+        //加载风格
+        loadTheme();
+
+        showMessages.addAll(getManagerByConfig(getLevelMessage()));
         //开始加载Message
-        for(BaseMessage.BaseTypes types: BaseMessage.BaseTypes.values()){
-            showMessages.addAll(addShowMessageByMap((Map) getLevelMessage().get(types.getConfigName()),types.getType()));
-        }
         playerConfigs = new LinkedList<>();
-        //加载玩家覆盖..
-        Config config;
-        for(String playerName:getPlayerFiles()){
-            LinkedList<BaseMessage> messages = new LinkedList<>();
-            config = new Config(this.getDataFolder()+"/Players/"+playerName+".yml",2);
-            for(BaseMessage.BaseTypes types: BaseMessage.BaseTypes.values()){
-                LinkedList<BaseMessage> messages1 = addShowMessageByMap((Map<?,?>) config.get(types.getConfigName()),types.getType());
-                if(messages1.size() > 0){
-                    messages.addAll(messages1);
-                }
-            }
-            playerConfigs.add(new PlayerConfig(playerName,messages));
-        }
+
         // 初始化注册类
         initVariable();
 
     }
 
+    public MessageManager getManagerByConfig(Config config){
+        MessageManager messages = new MessageManager();
+        if(config == null){
+            return messages;
+        }
+        for(BaseMessage.BaseTypes types: BaseMessage.BaseTypes.values()){
+            LinkedList<BaseMessage> messages1 = addShowMessageByMap((Map<?,?>) config.get(types.getConfigName()),types.getType());
+            if(messages1.size() > 0){
+                messages.addAll(messages1);
+            }
+        }
+        return messages;
+    }
+
+    private void loadTheme(){
+        String[] strings = getFileNames("theme");
+        if(strings.length > 0){
+            for(String file:strings){
+                Config config = new Config(this.getDataFolder()+"/theme/"+file+".yml",2);
+                themeManager.put(file,getManagerByConfig(config),config);
+                getLogger().info("加载样式: "+file);
+            }
+        }else{
+            getLogger().info("未加载任何样式");
+        }
+    }
     private void initVariable(){
         varManager = new VariableManager();
         BaseVariable variable;
@@ -168,13 +198,12 @@ public class Main extends PluginBase implements Listener {
         return null;
     }
 
-    public LinkedList<BaseMessage> getShowMessages() {
+    public MessageManager getShowMessages() {
         return showMessages;
     }
 
-    private LinkedList<BaseMessage> addShowMessageByMap(Map map1, int type){
-
-        LinkedList<BaseMessage> messages = new LinkedList<>();
+    public MessageManager addShowMessageByMap(Map map1, int type){
+        MessageManager messages = new MessageManager();
         if(map1 != null && map1.size() > 0) {
             switch (type) {
                 case BaseMessage.BOSS_BAR_TYPE:
@@ -237,7 +266,7 @@ public class Main extends PluginBase implements Listener {
         return strings;
     }
 
-    public void setShowMessages(LinkedList<BaseMessage> showMessages) {
+    public void setShowMessages(MessageManager showMessages) {
         this.showMessages = showMessages;
     }
 
@@ -247,10 +276,9 @@ public class Main extends PluginBase implements Listener {
         return instance;
     }
 
-
-    private String[] getPlayerFiles() {
+    private String[] getFileNames(String fileName) {
         List<String> names = new ArrayList<>();
-        File files = new File(getDataFolder()+ "/Players");
+        File files = new File(getDataFolder()+ "/"+fileName);
         if(files.isDirectory()){
             File[] filesArray = files.listFiles();
             if(filesArray != null){
@@ -262,6 +290,10 @@ public class Main extends PluginBase implements Listener {
             }
         }
         return names.toArray(new String[0]);
+    }
+
+    private String[] getPlayerFiles() {
+       return getFileNames("Players");
     }
 
     @Override
@@ -282,10 +314,12 @@ public class Main extends PluginBase implements Listener {
             }
         }
         Config config = getLevelMessage();
-        for(String name: configs.keySet()){
-            config.set(name,configs.get(name));
+        if(config != null) {
+            for (String name : configs.keySet()) {
+                config.set(name, configs.get(name));
+            }
+            config.save();
         }
-        config.save();
     }
 
 

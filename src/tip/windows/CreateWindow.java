@@ -5,6 +5,8 @@ import cn.nukkit.Server;
 import cn.nukkit.form.element.*;
 import cn.nukkit.form.window.FormWindowCustom;
 import cn.nukkit.form.window.FormWindowSimple;
+import cn.nukkit.utils.Config;
+import tip.Main;
 import tip.messages.BaseMessage;
 import tip.utils.Api;
 
@@ -20,6 +22,19 @@ public class CreateWindow {
     static int MENU = 0x123Ac01;
     static int SETTING = 0x123Ac02;
     static int CHOSE = 0x123Ac03;
+    static int CHOSE_THEME = 0x123Ac04;
+
+    public static void sendChoseTheme(Player player){
+        FormWindowCustom simple = new FormWindowCustom("样式选择");
+        LinkedList<String> list = new LinkedList<>();
+        for(Config config: Main.getInstance().getThemeManager().getConfigs()){
+            list.add(config.getString("name", "未命名"));
+        }
+        simple.addElement(new ElementDropdown("请选择你喜欢的样式",list));
+        player.showFormWindow(simple,CHOSE_THEME);
+
+    }
+
 
     public static void sendSetting(Player player){
         FormWindowSimple simple = new FormWindowSimple("玩家列表","请选择你要修改的玩家");

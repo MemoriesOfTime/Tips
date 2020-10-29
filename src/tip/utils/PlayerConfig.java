@@ -3,6 +3,7 @@ package tip.utils;
 import cn.nukkit.utils.Config;
 import tip.Main;
 import tip.messages.BaseMessage;
+import tip.messages.MessageManager;
 
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
@@ -12,14 +13,17 @@ import java.util.LinkedList;
  */
 public class PlayerConfig {
 
-    public LinkedList<BaseMessage> messages;
+    public MessageManager messages;
 
     private String playerName;
 
-    public PlayerConfig(String playerName,LinkedList<BaseMessage>  baseMessages){
+    public PlayerConfig(String playerName,MessageManager  baseMessages){
         this.playerName = playerName;
         this.messages = baseMessages;
     }
+
+
+    private String theme;
 
 
 
@@ -32,42 +36,43 @@ public class PlayerConfig {
     }
 
 
+    public void setTheme(String theme) {
+        this.theme = theme;
+    }
 
     public void removeMessage(BaseMessage message){
         messages.remove(message);
     }
 
     public void setMessage(BaseMessage message){
-        BaseMessage message1 = getMessage(message.getWorldName(),message.getType());
-        if(message1 == null){
-            messages.add(message);
-        }else{
-            int i = messages.indexOf(message1);
-            if(i != -1) {
-                messages.set(i, message);
-            }else{
-                messages.add(message);
-            }
-        }
+        messages.setMessage(message);
+
     }
 
     public BaseMessage getMessage(String levelName,int type){
-        BaseMessage getMessage = null;
-        for(BaseMessage baseMessage:messages){
-            if("default".equalsIgnoreCase(baseMessage.getWorldName()) && baseMessage.getType() == type){
-                getMessage = baseMessage;
-            }
-            if(baseMessage.getWorldName().equalsIgnoreCase(levelName) && baseMessage.getType() == type){
-                getMessage = baseMessage;
+        BaseMessage message = null;
+        if(!"default".equalsIgnoreCase(theme)){
+            MessageManager message1 = Main.getInstance().getThemeManager().get(theme);
+            if(message1 != null){
+                message =  message1.getMessageByTypeAndWorld(levelName, type);
             }
         }
-
-        return getMessage;
+        if(message == null){
+            message = messages.getMessageByTypeAndWorld(levelName, type);
+        }
+        return message;
     }
 
-    private LinkedList<BaseMessage> getMessagesByType(int type){
-        LinkedList<BaseMessage> messages = new LinkedList<>();
-        for(BaseMessage baseMessage:this.messages){
+    private MessageManager getMessagesByType(int type){
+        MessageManager messages = new MessageManager();
+        MessageManager baseMessages = this.messages;
+        if(!"default".equalsIgnoreCase(theme)){
+            baseMessages = Main.getInstance().getThemeManager().get(theme);
+            if(baseMessages == null){
+                baseMessages = this.messages;
+            }
+        }
+        for(BaseMessage baseMessage:baseMessages){
             if(baseMessage.getType() == type){
                 messages.add(baseMessage);
             }
@@ -75,15 +80,16 @@ public class PlayerConfig {
         return messages;
     }
 
-    public LinkedList<BaseMessage> getMessages() {
+    public MessageManager getMessages() {
         return messages;
     }
 
     public void save(){
        Config config = new Config(Main.getInstance().getDataFolder()+"/Players/"+playerName+".yml",2);
        LinkedHashMap<String,Object> map = new LinkedHashMap<>();
+       map.put("样式",theme);
        for(BaseMessage.BaseTypes types: BaseMessage.BaseTypes.values()){
-           LinkedList<BaseMessage> linkedList = getMessagesByType(types.getType());
+           MessageManager linkedList = getMessagesByType(types.getType());
            LinkedHashMap<String,Object> sub = new LinkedHashMap<>();
            if(linkedList.size() > 0){
                for(BaseMessage message:linkedList){

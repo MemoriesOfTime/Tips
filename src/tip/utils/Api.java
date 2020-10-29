@@ -7,6 +7,7 @@ import cn.nukkit.level.Level;
 import cn.nukkit.utils.TextFormat;
 import tip.Main;
 import tip.messages.BaseMessage;
+import tip.messages.MessageManager;
 import tip.utils.variables.BaseVariable;
 import java.util.*;
 
@@ -64,12 +65,11 @@ public class Api {
 
 
     public static BaseMessage getLevelDefaultMessage(String levelName, BaseMessage.BaseTypes baseTypes){
-        return BaseMessage.getMessageByTypeAndWorld(levelName,baseTypes.getType());
+        return Main.getInstance().getShowMessages().getMessageByTypeAndWorld(levelName,baseTypes.getType());
     }
 
     public static void setLevelMessage(BaseMessage message){
-        Main.getInstance().getShowMessages().remove(message);
-        Main.getInstance().getShowMessages().add(message);
+        Main.getInstance().getShowMessages().setMessage(message);
     }
 
     public static LinkedList<String> getSettingLevels(){
@@ -86,7 +86,7 @@ public class Api {
     public static void setPlayerShowMessage(String playerName,BaseMessage message){
         PlayerConfig config = Main.getInstance().getPlayerConfig(playerName);
         if(config == null){
-            config = new PlayerConfig(playerName,new LinkedList<>());
+            config = new PlayerConfig(playerName, new MessageManager());
         }
         config.setMessage(message);
         if(!Main.getInstance().getPlayerConfigs().contains(config)) {
@@ -98,7 +98,7 @@ public class Api {
     public static void removePlayerShowMessage(String playerName,BaseMessage message){
         PlayerConfig config = Main.getInstance().getPlayerConfig(playerName);
         if(config == null){
-            config = new PlayerConfig(playerName,new LinkedList<>());
+            config = new PlayerConfig(playerName,new MessageManager());
         }
         if(config.messages.contains(message)){
             config.removeMessage(message);

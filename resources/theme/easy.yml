@@ -1,0 +1,18 @@
+# 均可使用RPG 里的变量 VIP 称号
+name: "§a简易风格"
+头部:
+  default:
+    是否开启: true
+    显示: "§e {name}§2  {ms}\n[§2❤§b {h}/{mh}]"
+聊天:
+  default:
+    是否开启: true
+    是否仅在世界内有效: false
+    显示: "§7[§a{levelName}§7] §e{name} §7->§r {msg}"
+底部:
+  default:
+    是否开启: true
+    # 0 : tip 1: popup 2:actionBar
+    显示类型: 0
+    显示: "§b{id}:{damage} §7||§r §a{levelName} §7||§r §l§o§e￥{money}§r  §7||§r §a{online}§d/§c{maxplayer}"
+
