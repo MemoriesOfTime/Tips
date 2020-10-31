@@ -27,8 +27,7 @@ public class OnListener implements Listener {
         Player player = event.getPlayer();
         if(new File(Main.getInstance().getDataFolder()+"/Players/"+player.getName()+".yml").exists()){
             Config config = new Config(Main.getInstance().getDataFolder()+"/Players/"+player.getName()+".yml",2);
-            PlayerConfig playerConfig = new PlayerConfig(player.getName(),Main.getInstance().getManagerByConfig(config));
-            playerConfig.setTheme(config.getString("样式",null));
+            PlayerConfig playerConfig = new PlayerConfig(player.getName(),Main.getInstance().getManagerByConfig(config),config.getString("样式",null));
             Main.getInstance().getPlayerConfigs().add(playerConfig);
         }
     }
@@ -36,7 +35,12 @@ public class OnListener implements Listener {
     @EventHandler
     public void onQuit(PlayerQuitEvent event){
         Player player = event.getPlayer();
-        Main.getInstance().getPlayerConfigs().remove(new PlayerConfig(player.getName(),new MessageManager()));
+        PlayerConfig config = Main.getInstance().getPlayerConfig(player.getName());
+        if(config != null){
+            config.save();
+            Main.getInstance().getPlayerConfigs().remove(config);
+        }
+
     }
 
     private String getBadWorld(String msg,List badWords){

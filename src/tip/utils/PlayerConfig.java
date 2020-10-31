@@ -17,9 +17,10 @@ public class PlayerConfig {
 
     private String playerName;
 
-    public PlayerConfig(String playerName,MessageManager  baseMessages){
+    public PlayerConfig(String playerName,MessageManager  baseMessages,String theme){
         this.playerName = playerName;
         this.messages = baseMessages;
+        this.theme = theme;
     }
 
 

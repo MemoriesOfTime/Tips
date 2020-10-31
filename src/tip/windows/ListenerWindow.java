@@ -90,7 +90,7 @@ public class ListenerWindow implements Listener {
             String playerName = clickPlayer.get(player.getName());
             PlayerConfig config = Main.getInstance().getPlayerConfig(playerName);
             if(config == null){
-                config = new PlayerConfig(playerName,new MessageManager());
+                config = new PlayerConfig(playerName,new MessageManager(),Main.getInstance().getTheme());
             }
             BaseMessage defaultMessage;
             BaseMessage baseMessage;
@@ -110,7 +110,7 @@ public class ListenerWindow implements Listener {
                 }else{
                     config = Main.getInstance().getPlayerConfig(player.getName());
                     if(config == null){
-                        config = new PlayerConfig(player.getName(),new MessageManager());
+                        config = new PlayerConfig(player.getName(),new MessageManager(),Main.getInstance().getTheme());
                     }
                     baseMessage = config.getMessage(worldName,types.getType());
                 }
@@ -154,7 +154,7 @@ public class ListenerWindow implements Listener {
         if(id == CreateWindow.CHOSE_THEME){
             PlayerConfig config = Main.getInstance().getPlayerConfig(player.getName());
             if(config == null){
-                config = new PlayerConfig(player.getName(),new MessageManager());
+                config = new PlayerConfig(player.getName(),new MessageManager(),Main.getInstance().getTheme());
             }
             String name = Main.getInstance().getThemeManager().getNames().get(window.getResponse()
                     .getDropdownResponse(0).getElementID());

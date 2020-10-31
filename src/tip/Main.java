@@ -90,6 +90,10 @@ public class Main extends PluginBase implements Listener {
         }
     }
 
+    public String getTheme() {
+        return theme;
+    }
+
     public ThemeManager getThemeManager() {
         return themeManager;
     }
@@ -106,6 +110,9 @@ public class Main extends PluginBase implements Listener {
         tasks = new LinkedHashMap<>();
         showMessages = new MessageManager();
         this.getLogger().info("加载成功");
+        if(!new File(this.getDataFolder()+"/Tips变量.txt").exists()){
+            this.saveResource("Tips变量.txt","/Tips变量.txt",false);
+        }
         if(!new File(this.getDataFolder()+"/theme").exists()){
             if(!new File(this.getDataFolder()+"/theme").mkdirs()){
                 getLogger().info("创建 theme 文件夹失败");

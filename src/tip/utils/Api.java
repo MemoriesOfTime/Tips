@@ -86,7 +86,7 @@ public class Api {
     public static void setPlayerShowMessage(String playerName,BaseMessage message){
         PlayerConfig config = Main.getInstance().getPlayerConfig(playerName);
         if(config == null){
-            config = new PlayerConfig(playerName, new MessageManager());
+            config = new PlayerConfig(playerName, new MessageManager(),Main.getInstance().getTheme());
         }
         config.setMessage(message);
         if(!Main.getInstance().getPlayerConfigs().contains(config)) {
@@ -98,7 +98,7 @@ public class Api {
     public static void removePlayerShowMessage(String playerName,BaseMessage message){
         PlayerConfig config = Main.getInstance().getPlayerConfig(playerName);
         if(config == null){
-            config = new PlayerConfig(playerName,new MessageManager());
+            config = new PlayerConfig(playerName,new MessageManager(),Main.getInstance().getTheme());
         }
         if(config.messages.contains(message)){
             config.removeMessage(message);
