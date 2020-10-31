@@ -44,7 +44,7 @@ public class Api {
     /**
      * 增加单个变量
      * */
-    public void addVariable(String var,String message){
+    public static void addVariable(String var,String message){
         Main.getInstance().getVarManager().addVariable(var, message);
     }
 
