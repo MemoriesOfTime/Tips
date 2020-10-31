@@ -16,7 +16,7 @@
       delfault 内容即可 然后将 default 替换成 
       那个地图的名称
      
-    - 开发者 
+     开发者 
       > 注册变量
       >> 创建一个类继承 `BaseVariable `  
       调用`BaseVariable `类里的` addStrReplaceString`方法  
@@ -25,6 +25,12 @@
        ```java
       Api.registerVariables("插件名",<? extends BaseVariable>class);
        ```
-      >修改内容
-      >> 调用Api类内的方法 修改
+      >添加单一变量
+      ```java
+      Api.addVariable("变量字符","值");
+     ```
+       
+     修改内容
+     >  调用Api类内的方法 修改
+     
    
