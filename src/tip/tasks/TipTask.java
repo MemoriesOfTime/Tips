@@ -16,32 +16,29 @@ import tip.utils.Api;
 public class TipTask extends PluginTask<Plugin> {
 
 
-    public TipTask(Plugin owner) {
+    private Player player;
+    public TipTask(Player player,Plugin owner) {
         super(owner);
+        this.player = player;
     }
 
     @Override
     public void onRun(int i) {
-        for (Player player : Server.getInstance().getOnlinePlayers().values()) {
-            Server.getInstance().getScheduler().scheduleAsyncTask(Main.getInstance(), new AbstractPlayerAsyncTask(player) {
-                @Override
-                public void onRun() {
-                    if(player == null || !player.isOnline()){
-                        return;
-                    }
-                    TipMessage tipMessage;
-                    tipMessage = (TipMessage) Api.getSendPlayerMessage(player.getName(),player.level.getFolderName(),
-                            BaseMessage.BaseTypes.TIP);
-                    if (tipMessage != null) {
-                        if (tipMessage.isOpen()) {
-                            Api api = new Api(tipMessage.getMessage(), player);
-                            sendTip(player, api.strReplace(), tipMessage.getShowType());
-                        }
-                    }
+//        for (Player player : Server.getInstance().getOnlinePlayers().values()) {
+            if(player == null || !player.isOnline()){
+                this.cancel();
+                return;
+            }
+            TipMessage tipMessage;
+            tipMessage = (TipMessage) Api.getSendPlayerMessage(player.getName(),player.level.getFolderName(),
+                    BaseMessage.BaseTypes.TIP);
+            if (tipMessage != null) {
+                if (tipMessage.isOpen()) {
+                    Api api = new Api(tipMessage.getMessage(), player);
+                    sendTip(player, api.strReplace(), tipMessage.getShowType());
                 }
-
-            });
-        }
+            }
+//        }
 
     }
 

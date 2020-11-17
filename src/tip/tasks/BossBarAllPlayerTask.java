@@ -14,27 +14,25 @@ import tip.bossbar.BossBarApi;
 public class BossBarAllPlayerTask extends PluginTask<Main> {
 
 
-    public BossBarAllPlayerTask(Main owner) {
+    private Player player;
+    public BossBarAllPlayerTask(Player player,Main owner) {
         super(owner);
+        this.player = player;
     }
 
     @Override
     public void onRun(int i) {
-        for(Player player: Server.getInstance().getOnlinePlayers().values()){
-            owner.getServer().getScheduler().scheduleAsyncTask(owner, new AbstractPlayerAsyncTask(player) {
-                @Override
-                public void onRun() {
-                    if(player == null || !player.isOnline()){
-                        return;
-                    }
-                    BossBarApi.createBossBar(player);
-                    if(!Main.getInstance().tasks.containsKey(player)){
-                        Main.getInstance().tasks.put(player,new BossBarTask());
-                    }
-                    BossBarTask task = Main.getInstance().tasks.get(player);
-                    task.onRun(player);
-                }
-            });
+//        for(Player player: Server.getInstance().getOnlinePlayers().values()){
+            if(player == null || !player.isOnline()){
+                this.cancel();
+                return;
+            }
+            BossBarApi.createBossBar(player);
+            if(!Main.getInstance().tasks.containsKey(player)){
+                Main.getInstance().tasks.put(player,new BossBarTask());
+            }
+            BossBarTask task = Main.getInstance().tasks.get(player);
+            task.onRun(player);
         }
-    }
+//    }
 }

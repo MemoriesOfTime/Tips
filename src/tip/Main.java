@@ -41,6 +41,8 @@ public class Main extends PluginBase implements Listener {
 
     private String theme;
 
+    private boolean scoreboard = false;
+
 
     private VariableManager varManager;
     public Map<Player, Scoreboard> scoreboards = new HashMap<>();
@@ -76,18 +78,19 @@ public class Main extends PluginBase implements Listener {
         this.getServer().getCommandMap().register("tips", new TipsCommand(getConfig().getString("自定义指令.name","tips")));
         this.getServer().getPluginManager().registerEvents(new OnListener(),this);
         this.getServer().getPluginManager().registerEvents(new ListenerWindow(),this);
-        this.getServer().getScheduler().scheduleRepeatingTask(this, new TipTask(this),getConfig().getInt("自定义刷新刻度.底部",20), true);
-        this.getServer().getScheduler().scheduleRepeatingTask(this, new BossBarAllPlayerTask(this),getConfig().getInt("自定义刷新刻度.Boss血条",20), true);
-        this.getServer().getScheduler().scheduleRepeatingTask(this, new NameTagTask(this),getConfig().getInt("自定义刷新刻度.头部",20), true);
-        this.getServer().getScheduler().scheduleRepeatingTask(this, new BroadCastTask(this),getConfig().getInt("自定义刷新刻度.聊天栏公告",20), true);
 
         try {
             Class.forName("de.theamychan.scoreboard.api.ScoreboardAPI");
             Main.getInstance().getLogger().info("检测到 ScoreboardAPI 成功开启计分板功能");
-            this.getServer().getScheduler().scheduleRepeatingTask(new ScoreBoardTask(this), getConfig().getInt("自定义刷新刻度.计分板",20));
+            scoreboard = true;
+
         } catch (Exception e) {
             Main.getInstance().getLogger().info("未检测到计分板API 无法使用计分板功能");
         }
+    }
+
+    public boolean isScoreboard() {
+        return scoreboard;
     }
 
     public String getTheme() {
