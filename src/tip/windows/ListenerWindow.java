@@ -6,10 +6,15 @@ import cn.nukkit.event.Listener;
 import cn.nukkit.event.player.PlayerFormRespondedEvent;
 import cn.nukkit.form.window.FormWindowCustom;
 import cn.nukkit.form.window.FormWindowSimple;
-import cn.nukkit.utils.Config;
 import tip.Main;
 import tip.messages.*;
 import tip.messages.defaults.*;
+import tip.messages.defaults.BossBarMessage;
+import tip.messages.defaults.BroadcastMessage;
+import tip.messages.defaults.ChatMessage;
+import tip.messages.defaults.NameTagMessage;
+import tip.messages.defaults.ScoreBoardMessage;
+import tip.messages.defaults.TipMessage;
 import tip.utils.Api;
 import tip.utils.PlayerConfig;
 
@@ -59,14 +64,14 @@ public class ListenerWindow implements Listener {
         if(id == CreateWindow.SETTING){
             if(ListenerWindow.CHOSE_TYPE.containsKey(player.getName())){
                 BaseMessage.BaseTypes types = BaseMessage.getTypeByName(window.getResponse().getClickedButton().getText());
-                if(ListenerWindow.CHOSE_TYPE.get(player.getName()) == 1 || ListenerWindow.CHOSE_TYPE.get(player.getName()) == 2) {
+//                if(ListenerWindow.CHOSE_TYPE.get(player.getName()) == 1 || ListenerWindow.CHOSE_TYPE.get(player.getName()) == 2) {
                     if (types != null) {
                         clickType.put(player.getName(), types);
                         CreateWindow.sendSettingShow(player, types);
                     }
-                }else{
-                    CreateWindow.sendSetting(player);
-                }
+//                }else{
+//                    CreateWindow.sendSetting(player);
+//                }
 
             }else {
                 String playerName = clickPlayer.get(player.getName());
@@ -143,7 +148,7 @@ public class ListenerWindow implements Listener {
                     }else {
                         config.setMessage(baseMessage);
                         config.save();
-                        Main.getInstance().init();
+//                        Main.getInstance().init();
                     }
                     player.sendMessage("§7设置已保存..");
                 }else{

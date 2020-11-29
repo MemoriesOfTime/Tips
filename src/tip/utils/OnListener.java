@@ -9,14 +9,11 @@ import cn.nukkit.event.player.*;
 import cn.nukkit.utils.Config;
 import tip.Main;
 import tip.messages.BaseMessage;
-import tip.messages.MessageManager;
 import tip.messages.defaults.ChatMessage;
 import tip.tasks.*;
 
 import java.io.File;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author 若水

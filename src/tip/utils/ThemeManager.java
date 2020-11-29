@@ -1,7 +1,7 @@
 package tip.utils;
 
 import cn.nukkit.utils.Config;
-import tip.messages.MessageManager;
+import tip.messages.defaults.MessageManager;
 
 import java.util.LinkedHashMap;
 import java.util.LinkedList;

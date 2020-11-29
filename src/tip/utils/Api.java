@@ -7,7 +7,7 @@ import cn.nukkit.level.Level;
 import cn.nukkit.utils.TextFormat;
 import tip.Main;
 import tip.messages.BaseMessage;
-import tip.messages.MessageManager;
+import tip.messages.defaults.MessageManager;
 import tip.utils.variables.BaseVariable;
 import java.util.*;
 
@@ -53,11 +53,12 @@ public class Api {
         PlayerConfig config = Main.getInstance().getPlayerConfig(playerName);
         BaseMessage message = null;
         if(config != null){
-             message = config.getMessage(levelName,baseTypes.getType());
+            message = config.getMessage(levelName,baseTypes.getType());
         }
         if(message == null){
             message = getLevelDefaultMessage(levelName, baseTypes);
         }
+
         return message;
     }
 

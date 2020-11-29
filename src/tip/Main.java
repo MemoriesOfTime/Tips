@@ -13,6 +13,12 @@ import tip.commands.TipsCommand;
 import tip.lib.viewcompass.ViewCompassVariable;
 import tip.messages.*;
 import tip.messages.defaults.*;
+import tip.messages.defaults.BossBarMessage;
+import tip.messages.defaults.BroadcastMessage;
+import tip.messages.defaults.ChatMessage;
+import tip.messages.defaults.NameTagMessage;
+import tip.messages.defaults.ScoreBoardMessage;
+import tip.messages.defaults.TipMessage;
 import tip.tasks.*;
 
 import tip.utils.Api;

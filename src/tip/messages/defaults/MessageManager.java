@@ -1,12 +1,24 @@
-package tip.messages;
+package tip.messages.defaults;
 
 
+import tip.messages.BaseMessage;
+
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 
 /**
- * @author ZXR
+ * @author SmallasWater
  */
 public class MessageManager extends LinkedList<BaseMessage> {
+
+    public boolean hasExistsType(BaseMessage.BaseTypes types){
+        for(BaseMessage message:this){
+            if(message.getType() == types.getType()){
+                return true;
+            }
+        }
+        return false;
+    }
 
     public void setMessage(BaseMessage message){
         BaseMessage message1 = getMessageByTypeAndWorld(message.getWorldName(),message.getType());
@@ -31,6 +43,18 @@ public class MessageManager extends LinkedList<BaseMessage> {
             }
         }
         return baseMessage;
+    }
+
+    public LinkedHashMap<String,Object> saveConfig(){
+        LinkedHashMap<String,Object> config = new LinkedHashMap<>();
+        for(BaseMessage message:this){
+            BaseMessage.BaseTypes types = BaseMessage.getBaseTypeByInteger(message.getType());
+            if(types != null){
+                config.put(types.getConfigName(),message.getConfig());
+            }
+        }
+        return config;
+
     }
 
 

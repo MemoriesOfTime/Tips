@@ -28,12 +28,16 @@ public class VariableManager {
 
     public String toMessage(Player player,String msg){
         String message = msg;
+        if(message == null){
+            return "";
+        }
         for(BaseVariable variable: variablesClass){
             variable.player = player;
-            if(variable.isResetMessage()){
-                variable.setString(msg);
-            }
+            variable.string = msg;
             variable.strReplace();
+            if(variable.isResetMessage()){
+                message = variable.getString();
+            }
             variables.putAll(variable.getVar());
             variables.putAll(otherVariables);
         }
