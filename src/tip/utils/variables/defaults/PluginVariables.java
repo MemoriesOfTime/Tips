@@ -9,6 +9,7 @@ import cn.nukkit.utils.TextFormat;
 import cn.xiaokai.stockings.py.PY;
 import com.bc.marryN.load.loadCfg;
 import com.bc.marryN.load.loadData;
+import com.blocklynukkit.loader.Loader;
 import com.creeperface.nukkit.placeholderapi.api.PlaceholderAPI;
 import com.smallaswater.SociatyMainClass;
 import com.smallaswater.data.IDataStore;
@@ -34,6 +35,7 @@ import world.proficiency.utils.player.RpgLevel;
 
 import java.lang.reflect.Field;
 import java.util.LinkedList;
+import java.util.Map;
 
 
 /**
@@ -57,6 +59,28 @@ public class PluginVariables extends BaseVariable {
     @Override
     public String getString() {
         return string;
+    }
+
+    private void getB(){
+        try {
+            if(Server.getInstance().getPluginManager().getPlugin("BlocklyNukkit") != null){
+                for(Map.Entry<String,String> entry : Loader.tipsVar.entrySet()){
+                    if(entry.getValue().startsWith("function->")){
+                        if(player != null){
+                            String value = Loader.plugin.callbackString(
+                                    entry.getValue().replaceFirst("function->",""),
+                                    player);
+                            addStrReplaceString(entry.getKey(),value);
+                        }
+                    }else{
+                        addStrReplaceString(entry.getKey(),entry.getValue());
+                    }
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
     private void getE(){
@@ -349,6 +373,7 @@ public class PluginVariables extends BaseVariable {
 
     @Override
     public void strReplace() {
+        getB();
         getE();
         getH();
         getK();

@@ -49,6 +49,8 @@ public class Main extends PluginBase implements Listener {
 
     private boolean scoreboard = false;
 
+    private String motd;
+
 
     private VariableManager varManager;
     public Map<Player, Scoreboard> scoreboards = new HashMap<>();
@@ -81,6 +83,10 @@ public class Main extends PluginBase implements Listener {
         }
         init();
 
+        motd = getConfig().getString("自定义MOTD.内容","&l{color}在线 -{online}/{maxplayer}\n {version}");
+        if(getConfig().getBoolean("自定义MOTD.是否启用",false)){
+            this.getServer().getScheduler().scheduleRepeatingTask(this,new MotdTask(this),getConfig().getInt("自定义刷新刻度.motd",20));
+        }
         this.getServer().getCommandMap().register("tips", new TipsCommand(getConfig().getString("自定义指令.name","tips")));
         this.getServer().getPluginManager().registerEvents(new OnListener(),this);
         this.getServer().getPluginManager().registerEvents(new ListenerWindow(),this);
@@ -93,6 +99,10 @@ public class Main extends PluginBase implements Listener {
         } catch (Exception e) {
             Main.getInstance().getLogger().info("未检测到计分板API 无法使用计分板功能");
         }
+    }
+
+    public String getMotd() {
+        return motd;
     }
 
     public boolean isScoreboard() {

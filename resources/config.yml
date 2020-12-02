@@ -26,8 +26,11 @@
   头部: 20
   计分板: 20
   聊天栏公告: 20
+  motd: 20
 
-
+自定义MOTD:
+  是否启用: false
+  内容: "&l{color}当前在线人数 {online}/{maxplayer}\n{version}"
 自定义指令:
   name: tips
   aliases:
