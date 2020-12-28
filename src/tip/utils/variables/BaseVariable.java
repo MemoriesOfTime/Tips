@@ -2,8 +2,9 @@ package tip.utils.variables;
 
 
 import cn.nukkit.Player;
+import tip.utils.variables.defaults.Variable;
 
-import java.util.LinkedHashMap;
+import java.util.ArrayList;
 
 
 /**
@@ -14,7 +15,7 @@ public abstract class BaseVariable {
     protected Player player;
     protected String string;
 
-    private final LinkedHashMap<String,String> var = new LinkedHashMap<>();
+    private final ArrayList<Variable> var = new ArrayList<>();
 
     public BaseVariable(Player player){
         this.player = player;
@@ -34,8 +35,19 @@ public abstract class BaseVariable {
      * 增加变量
      *
      * */
-    protected final void addStrReplaceString(String key, String value){
-        var.put(key, value);
+    protected final void addStrReplaceString(String name,String msg){
+        var.add(new Variable(name){
+            @Override
+            public String value(Object args) {
+                return msg;
+            }
+        });
+
+    }
+
+
+    protected final void addStrReplaceString(Variable variable){
+        var.add(variable);
 
     }
 
@@ -48,7 +60,7 @@ public abstract class BaseVariable {
      * */
     public abstract void strReplace();
 
-    public LinkedHashMap<String, String> getVar() {
+    public ArrayList<Variable> getVar() {
         return var;
     }
 
