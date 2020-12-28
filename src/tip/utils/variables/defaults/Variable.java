@@ -12,6 +12,14 @@ public class Variable {
         this.name = name;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Variable){
+            return ((Variable) obj).name.equalsIgnoreCase(name);
+        }
+        return false;
+    }
+
     public String getName(){
         return this.name;
     }

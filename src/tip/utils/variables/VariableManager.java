@@ -48,13 +48,9 @@ public class VariableManager {
             variables.addAll(variable.getVar());
             variables.addAll(otherVariables);
         }
-        Iterator<Variable> iterator = variables.iterator();
-        String str = msg;
-        while(iterator.hasNext()){
-            Variable var = iterator.next();
-            str = str.replace(String.format("{%s}",var.getName()),var.value(player));
+        for (Variable var : variables) {
+            message = message.replace(var.getName(), var.value(player));
         }
-
         return message;
     }
 
