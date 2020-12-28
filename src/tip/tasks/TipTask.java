@@ -24,7 +24,6 @@ public class TipTask extends PluginTask<Plugin> {
 
     @Override
     public void onRun(int i) {
-//        for (Player player : Server.getInstance().getOnlinePlayers().values()) {
             if(player == null || !player.isOnline()){
                 this.cancel();
                 return;
@@ -38,7 +37,6 @@ public class TipTask extends PluginTask<Plugin> {
                     sendTip(player, api.strReplace(), tipMessage.getShowType());
                 }
             }
-//        }
 
     }
 
