@@ -9,8 +9,6 @@ import tip.Main;
 import tip.messages.BaseMessage;
 import tip.messages.defaults.MessageManager;
 import tip.utils.variables.BaseVariable;
-import tip.utils.variables.defaults.Variable;
-
 import java.util.*;
 
 /**
@@ -46,32 +44,8 @@ public class Api {
     /**
      * 增加单个变量
      * */
-    @Deprecated
     public static void addVariable(String var,String message){
-        Main.getInstance().getVarManager().addVariable(new Variable(var){
-            @Override
-            public String value(Object args) {
-                return message;
-            }
-        });
-    }
-
-    /**
-     * 请直接使用VariableManager调用*/
-    @Deprecated
-    public static String format(String in,Player player){
-        return TextFormat.colorize('&',Main.getInstance().getVarManager().format(player,in));
-    }
-    /**
-     * 请直接使用VariableManager调用*/
-    @Deprecated
-    public static String format(String in){
-        return TextFormat.colorize('&',Main.getInstance().getVarManager().format(null,in));
-    }
-
-
-    public static void addVariable(Variable variable){
-        Main.getInstance().getVarManager().addVariable(variable);
+        Main.getInstance().getVarManager().addVariable(var, message);
     }
 
 

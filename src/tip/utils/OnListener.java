@@ -29,11 +29,7 @@ public class OnListener implements Listener {
             Main.getInstance().getPlayerConfigs().add(playerConfig);
         }
 
-        AddPlayerTask.add(new TipTask(player,Main.getInstance()),Main.getInstance().getConfig().getInt("自定义刷新刻度.底部",20));
-        AddPlayerTask.add(new BossBarAllPlayerTask(player,Main.getInstance()),Main.getInstance().getConfig().getInt("自定义刷新刻度.Boss血条",20));
-        AddPlayerTask.add(new NameTagTask(player,Main.getInstance()),Main.getInstance().getConfig().getInt("自定义刷新刻度.头部",20));
-        AddPlayerTask.add(new BroadCastTask(player,Main.getInstance()),Main.getInstance().getConfig().getInt("自定义刷新刻度.聊天栏公告",20));
-        AddPlayerTask.add(new ScoreBoardTask(player,Main.getInstance()), Main.getInstance().getConfig().getInt("自定义刷新刻度.计分板",20));
+
     }
 
     @EventHandler

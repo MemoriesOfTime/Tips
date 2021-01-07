@@ -16,17 +16,17 @@ import tip.utils.Api;
 public class TipTask extends PluginTask<Plugin> {
 
 
-    private Player player;
-    public TipTask(Player player,Plugin owner) {
+
+    public TipTask(Plugin owner) {
         super(owner);
-        this.player = player;
+
     }
 
     @Override
     public void onRun(int i) {
+        for (Player player : Server.getInstance().getOnlinePlayers().values()) {
             if(player == null || !player.isOnline()){
-                this.cancel();
-                return;
+                continue;
             }
             TipMessage tipMessage;
             tipMessage = (TipMessage) Api.getSendPlayerMessage(player.getName(),player.level.getFolderName(),
@@ -37,6 +37,7 @@ public class TipTask extends PluginTask<Plugin> {
                     sendTip(player, api.strReplace(), tipMessage.getShowType());
                 }
             }
+        }
 
     }
 

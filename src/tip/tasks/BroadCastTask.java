@@ -14,22 +14,24 @@ import java.util.LinkedHashMap;
 public class BroadCastTask extends PluginTask<Main> {
 
 
-    private Player player;
     private LinkedHashMap<String,BroadCastPlayerTask> taskLinkedHashMap = new LinkedHashMap<>();
 
-    public BroadCastTask(Player player,Main owner) {
+    public BroadCastTask(Main owner) {
         super(owner);
-        this.player = player;
+
     }
 
     @Override
     public void onRun(int i) {
-
-            if(!taskLinkedHashMap.containsKey(player.getName())){
-                taskLinkedHashMap.put(player.getName(),new BroadCastPlayerTask(player));
+        for(Player player:Server.getInstance().getOnlinePlayers().values()) {
+            if(player == null || !player.isOnline()){
+                continue;
+            }
+            if (!taskLinkedHashMap.containsKey(player.getName())) {
+                taskLinkedHashMap.put(player.getName(), new BroadCastPlayerTask(player));
             }
             BroadCastPlayerTask task = taskLinkedHashMap.get(player.getName());
             task.onRun();
-
+        }
     }
 }

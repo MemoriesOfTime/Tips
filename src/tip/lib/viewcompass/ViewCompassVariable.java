@@ -2,7 +2,6 @@ package tip.lib.viewcompass;
 
 import cn.nukkit.Player;
 import tip.utils.variables.BaseVariable;
-import tip.utils.variables.defaults.Variable;
 
 /**
  * 本类引用 @PetteriM1 作者 的ViewCompass 方法
@@ -64,11 +63,6 @@ public class ViewCompassVariable extends BaseVariable {
 
     @Override
     public void strReplace() {
-        addStrReplaceString(new Variable("view"){
-            @Override
-            public String value(Object args) {
-                return getCompass(player.getYaw());
-            }
-        });
+        addStrReplaceString("{view}",getCompass(player.getYaw()));
     }
 }

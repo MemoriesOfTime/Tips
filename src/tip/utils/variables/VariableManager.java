@@ -1,14 +1,11 @@
 package tip.utils.variables;
 
 import cn.nukkit.Player;
-import tip.utils.variables.defaults.Variable;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 
 /**
- * 可以直接通过Main调用
  * @author SmallasWater
  */
 public class VariableManager {
@@ -20,18 +17,14 @@ public class VariableManager {
     /**
      * 增加变量
      * */
-    public void addVariable(Variable variable){
-        otherVariables.add(variable);
+    public void addVariable(String var,String message){
+        otherVariables.put(var,message);
     }
-    private ArrayList<Variable> otherVariables = new ArrayList<>();
+    private LinkedHashMap<String,String> otherVariables = new LinkedHashMap<>();
 
-    private ArrayList<Variable> variables = new ArrayList<>();
+    private LinkedHashMap<String,String> variables = new LinkedHashMap<>();
 
     private LinkedList<BaseVariable> variablesClass = new LinkedList<>();
-
-    public String format(String in){
-        return format(null,in);
-    }
 
     public String format(Player player,String msg){
         String message = msg;
@@ -45,11 +38,12 @@ public class VariableManager {
             if(variable.isResetMessage()){
                 message = variable.getString();
             }
-            variables.addAll(variable.getVar());
-            variables.addAll(otherVariables);
+            variables.putAll(variable.getVar());
+            variables.putAll(otherVariables);
         }
-        for (Variable var : variables) {
-            message = message.replace(var.getName(), var.value(player));
+
+        for(String s: variables.keySet()){
+            message = message.replace(s,variables.get(s));
         }
         return message;
     }
