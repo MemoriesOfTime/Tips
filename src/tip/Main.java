@@ -100,10 +100,6 @@ public class Main extends PluginBase implements Listener {
             Main.getInstance().getLogger().info("未检测到计分板API 无法使用计分板功能");
         }
         AddPlayerTask.add(new TipTask(Main.getInstance()),Main.getInstance().getConfig().getInt("自定义刷新刻度.底部",20));
-        AddPlayerTask.add(new BossBarAllPlayerTask(Main.getInstance()),Main.getInstance().getConfig().getInt("自定义刷新刻度.Boss血条",20));
-        AddPlayerTask.add(new NameTagTask(Main.getInstance()),Main.getInstance().getConfig().getInt("自定义刷新刻度.头部",20));
-        AddPlayerTask.add(new BroadCastTask(Main.getInstance()),Main.getInstance().getConfig().getInt("自定义刷新刻度.聊天栏公告",20));
-        AddPlayerTask.add(new ScoreBoardTask(Main.getInstance()), Main.getInstance().getConfig().getInt("自定义刷新刻度.计分板",20));
     }
 
     public String getMotd() {
@@ -164,7 +160,6 @@ public class Main extends PluginBase implements Listener {
 
         // 初始化注册类
         initVariable();
-
 
     }
 

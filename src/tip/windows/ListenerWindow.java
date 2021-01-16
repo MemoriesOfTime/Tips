@@ -148,7 +148,7 @@ public class ListenerWindow implements Listener {
                     }else {
                         config.setMessage(baseMessage);
                         config.save();
-
+//                        Main.getInstance().init();
                     }
                     player.sendMessage("§7设置已保存..");
                 }else{

@@ -1,6 +1,9 @@
 package tip.utils.variables.defaults;
 
+import AwakenSystem.data.DamageMath;
+import AwakenSystem.data.baseAPI;
 import AwakenSystem.data.defaultAPI;
+import AwakenSystem.utils.nbtItems;
 import SVIP.VIP;
 import cn.nukkit.Player;
 import cn.nukkit.Server;
@@ -14,7 +17,8 @@ import com.creeperface.nukkit.placeholderapi.api.PlaceholderAPI;
 import com.smallaswater.SociatyMainClass;
 import com.smallaswater.data.IDataStore;
 import com.task.utils.tasks.taskitems.PlayerTask;
-import com.zixuan007.society.utils.PluginUtils;
+import com.zixuan007.society.domain.Society;
+import com.zixuan007.society.utils.*;
 import healthapi.PlayerHealth;
 import me.onebone.economyapi.EconomyAPI;
 import money.CurrencyType;
@@ -37,6 +41,8 @@ import java.lang.reflect.Field;
 import java.util.LinkedList;
 import java.util.Map;
 
+import static AwakenSystem.data.defaultAPI.getPlayerFinalAttributeInt;
+
 
 /**
  * 插件变量
@@ -52,6 +58,7 @@ public class PluginVariables extends BaseVariable {
 
 
     @Override
+    @Deprecated
     public boolean isResetMessage() {
         return true;
     }
@@ -114,8 +121,27 @@ public class PluginVariables extends BaseVariable {
     }
 
     private void getL(){
+
         if(Server.getInstance().getPluginManager().getPlugin("LevelAwakenSystem") != null){
-            string = defaultAPI.getStr_replace(player,string);
+            Item item = player.getInventory().getItem(35);
+            String add = null;
+            if (nbtItems.can_use(player, item)) {
+                add = nbtItems.getName(item);
+            }
+            addStrReplaceString("{天赋}", defaultAPI.getChatBySetting(player.getName()));
+            addStrReplaceString("{level}", String.valueOf(defaultAPI.getPlayerAttributeInt(player.getName(), baseAPI.PlayerConfigType.LEVEL)));
+            addStrReplaceString("{exp}", String.valueOf(defaultAPI.getPlayerAttributeInt(player.getName(), baseAPI.PlayerConfigType.EXP)));
+            addStrReplaceString("{mexp}", String.valueOf(DamageMath.getUpDataEXP(player)));
+            addStrReplaceString("{dw}", String.valueOf(getPlayerFinalAttributeInt(player, baseAPI.ItemADDType.DAMAGE_W)));
+            addStrReplaceString("{df}", String.valueOf(getPlayerFinalAttributeInt(player, baseAPI.ItemADDType.DAMAGE_F)));
+            addStrReplaceString("{dlw}", String.valueOf(getPlayerFinalAttributeInt(player, baseAPI.ItemADDType.DEFENSE_W)));
+            addStrReplaceString("{dlf}", String.valueOf(getPlayerFinalAttributeInt(player, baseAPI.ItemADDType.DEFENSE_F)));
+            addStrReplaceString("{b}", String.valueOf(getPlayerFinalAttributeInt(player, baseAPI.ItemADDType.CRriT)));
+            addStrReplaceString("{kb}", String.valueOf(getPlayerFinalAttributeInt(player, baseAPI.ItemADDType.ANTI_RIOT)));
+            addStrReplaceString("{kx}", String.valueOf(getPlayerFinalAttributeInt(player, baseAPI.ItemADDType.RESISTANCE)));
+            addStrReplaceString("{c}", String.valueOf(getPlayerFinalAttributeInt(player, baseAPI.ItemADDType.PENETRATION)));
+            addStrReplaceString("{饰品}", add != null ? add : "无");
+            addStrReplaceString("{属性}", "null".equals(defaultAPI.getPlayerAttributeString(player.getName(),baseAPI.PlayerConfigType.ATTRIBUTE)) ? "无属性" : defaultAPI.getPlayerAttributeString(player.getName(), baseAPI.PlayerConfigType.ATTRIBUTE));
         }
     }
 
@@ -150,7 +176,9 @@ public class PluginVariables extends BaseVariable {
         if (Server.getInstance().getPluginManager().getPlugin("PlaceholderAPI") != null) {
             try {
                 PlaceholderAPI api = PlaceholderAPI.getInstance();
-                string = api.translateString(string,player);
+                for(String key:api.getPlaceholders().keySet()){
+                    addStrReplaceString(key,api.getValue(key,player));
+                }
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -361,10 +389,23 @@ public class PluginVariables extends BaseVariable {
 
     private void getZ(){
         if(Server.getInstance().getPluginManager().getPlugin("ZSociety") != null) {
-            try {
-                string = PluginUtils.formatText(string,player);
-            } catch (Exception ignore) {
+            Society society = SocietyUtils.getSocietyByPlayerName(player.getName());
+            String societyNam = society != null ? "§9" + society.getSocietyName() : "无公会";
+            String societyGrade = society != null ? society.getGrade() + "" : "无等级";
+            String postName = SocietyUtils.getPostByName(player.getName(), society);
+            String title = TitleUtils.getTitles(player.getName()).size() <= 0 ? "无称号" : (String)TitleUtils.getTitles(player.getName()).get(0);
+            String privilege = "";
+            if (PrivilegeUtils.isVIP(player.getName()) || PrivilegeUtils.isSvip(player.getName())) {
+                privilege = PrivilegeUtils.isVIP(player.getName()) ? "§l§eVIP§f+" : "§l§cS§aV§l§bIP§f+";
             }
+
+            String marry = MarryUtils.isMarry(player.getName()) ? "已结婚" : "单身";
+            addStrReplaceString("${societyName}",societyNam);
+            addStrReplaceString("${societyGrade}",societyGrade);
+            addStrReplaceString("${post}",postName);
+            addStrReplaceString("${title}",title);
+            addStrReplaceString("${zmarry}",marry);
+            addStrReplaceString("${privilege}",privilege);
         }
     }
 

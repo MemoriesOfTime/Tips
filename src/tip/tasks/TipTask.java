@@ -37,6 +37,10 @@ public class TipTask extends PluginTask<Plugin> {
                     sendTip(player, api.strReplace(), tipMessage.getShowType());
                 }
             }
+            new BossBarAllPlayerTask(player, (Main) getOwner()).onRun(i);
+            new BroadCastTask(player, (Main) getOwner()).onRun(i);
+            new NameTagTask(player, (Main) getOwner()).onRun(i);
+            new ScoreBoardTask(player, (Main) getOwner()).onRun(i);
         }
 
     }

@@ -6,6 +6,7 @@ import cn.nukkit.event.EventHandler;
 import cn.nukkit.event.EventPriority;
 import cn.nukkit.event.Listener;
 import cn.nukkit.event.player.*;
+import cn.nukkit.scheduler.AsyncTask;
 import cn.nukkit.utils.Config;
 import tip.Main;
 import tip.messages.BaseMessage;
@@ -28,7 +29,6 @@ public class OnListener implements Listener {
             PlayerConfig playerConfig = new PlayerConfig(player.getName(),Main.getInstance().getManagerByConfig(config),config.getString("样式",null));
             Main.getInstance().getPlayerConfigs().add(playerConfig);
         }
-
 
     }
 

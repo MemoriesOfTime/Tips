@@ -21,7 +21,6 @@ public class ReloadSubCommand extends BaseSubCommand {
 
     @Override
     public boolean execute(CommandSender sender, String label, String[] args) {
-
         Main.getInstance().init();
         sender.sendMessage(TextFormat.YELLOW+"配置文件重新读取完成");
         return true;

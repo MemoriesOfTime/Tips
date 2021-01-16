@@ -21,16 +21,19 @@ import java.util.LinkedList;
  */
 public class ScoreBoardTask extends PluginTask<Main> {
 
+    private Player player;
 
-    public ScoreBoardTask(Main owner) {
+    public ScoreBoardTask(Player player,Main owner) {
         super(owner);
+        this.player = player;
     }
 
     @Override
     public void onRun(int i) {
-        for (Player player : Server.getInstance().getOnlinePlayers().values()) {
-            if(player == null || !player.isOnline()){
-                continue;
+//        for (Player player : Server.getInstance().getOnlinePlayers().values()) {
+            if (player == null || !player.isOnline()) {
+//                this.cancel();
+                return;
             }
             ScoreBoardMessage message = (ScoreBoardMessage) Api.getSendPlayerMessage(player.getName(), player.level.getFolderName(), BaseMessage.BaseTypes.SCORE_BOARD);
             if (message == null) {
@@ -70,7 +73,7 @@ public class ScoreBoardTask extends PluginTask<Main> {
                 } catch (Exception ignored) {
                 }
             }
-        }
+//        }
     }
 
 }
