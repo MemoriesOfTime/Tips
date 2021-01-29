@@ -47,11 +47,11 @@ class BroadCastPlayerTask {
                     Api api = new Api(text, player);
                     text = api.strReplace();
                     player.sendMessage(text);
-
                 }
                 if (m.time > 0) {
                     m.time--;
                 }
+                type.put(player.getLevel().getFolderName(),m);
             }
         }
     }

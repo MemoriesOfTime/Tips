@@ -299,6 +299,13 @@ public class PluginVariables extends BaseVariable {
                 addStrReplaceString("{靴子}", bootName);addStrReplaceString("{靴子宝石}", bSize + "");
                 addStrReplaceString("{武器名称}", name);
                 addStrReplaceString("{宝石个数}", c + "");
+                addStrReplaceString("{we-damage}",PlayerAddAttributes.getDamage(player)+"");
+                addStrReplaceString("{we-armor}",PlayerAddAttributes.getArmor(player)+"");
+                addStrReplaceString("{we-health}",PlayerAddAttributes.getHealth(player)+"");
+                addStrReplaceString("{we-kick}",String.format("%.2f",PlayerAddAttributes.getKick(player)));
+                addStrReplaceString("{we-dkick}",String.format("%.2f",PlayerAddAttributes.getDKick(player)));
+                addStrReplaceString("{we-todamage}",PlayerAddAttributes.getToDamage(player)+"");
+
             }
         }catch (Exception ignore){}
     }

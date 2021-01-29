@@ -7,6 +7,9 @@ import tip.commands.base.BaseSubCommand;
 import tip.windows.CreateWindow;
 
 
+/**
+ * @author SmallasWater
+ */
 public class ThemeSubCommand extends BaseSubCommand {
     public ThemeSubCommand(String name) {
         super(name);

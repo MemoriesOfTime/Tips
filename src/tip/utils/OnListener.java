@@ -28,7 +28,9 @@ public class OnListener implements Listener {
             Config config = new Config(Main.getInstance().getDataFolder()+"/Players/"+player.getName()+".yml",2);
             PlayerConfig playerConfig = new PlayerConfig(player.getName(),Main.getInstance().getManagerByConfig(config),config.getString("样式",null));
             Main.getInstance().getPlayerConfigs().add(playerConfig);
+
         }
+        AddPlayerTask.add(new TipTask(player,Main.getInstance()),Main.getInstance().getConfig().getInt("自定义刷新刻度.底部",20));
 
     }
 

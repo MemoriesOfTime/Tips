@@ -99,7 +99,7 @@ public class Main extends PluginBase implements Listener {
         } catch (Exception e) {
             Main.getInstance().getLogger().info("未检测到计分板API 无法使用计分板功能");
         }
-        AddPlayerTask.add(new TipTask(Main.getInstance()),Main.getInstance().getConfig().getInt("自定义刷新刻度.底部",20));
+
     }
 
     public String getMotd() {
