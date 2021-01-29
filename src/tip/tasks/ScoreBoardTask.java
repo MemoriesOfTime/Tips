@@ -19,17 +19,21 @@ import java.util.LinkedList;
 /**
  * @author 若水
  */
-public class ScoreBoardTask extends PluginTask<Main> {
+public class ScoreBoardTask {
 
     private Player player;
+    private Main main;
 
-    public ScoreBoardTask(Player player,Main owner) {
-        super(owner);
+    public ScoreBoardTask(Player player,Main main) {
         this.player = player;
+        this.main = main;
     }
 
-    @Override
-    public void onRun(int i) {
+    private Main getOwner() {
+        return main;
+    }
+
+    public void onRun() {
 //        for (Player player : Server.getInstance().getOnlinePlayers().values()) {
             if (player == null || !player.isOnline()) {
 //                this.cancel();

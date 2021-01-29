@@ -31,7 +31,7 @@ public class OnListener implements Listener {
             Main.getInstance().getPlayerConfigs().add(playerConfig);
 
         }
-        AddPlayerTask.add(new TipTask(player,Main.getInstance()),Main.getInstance().getConfig().getInt("自定义刷新刻度.底部",20));
+
 
     }
 

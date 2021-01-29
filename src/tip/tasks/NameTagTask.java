@@ -11,17 +11,15 @@ import tip.utils.Api;
 /**
  * @author SmallasWater
  */
-public class NameTagTask extends PluginTask<Main> {
+public class NameTagTask {
     private Player player;
-    public NameTagTask(Player player,Main owner) {
-        super(owner);
+    public NameTagTask(Player player) {
+
         this.player = player;
     }
 
-    @Override
-    public void onRun(int i) {
+    public void onRun() {
         if(player == null || !player.isOnline()){
-//            this.cancel();
             return;
         }
         NameTagMessage nameTagMessage;

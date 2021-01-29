@@ -11,17 +11,16 @@ import tip.bossbar.BossBarApi;
 /**
  * @author SmallasWater
  */
-public class BossBarAllPlayerTask extends PluginTask<Main> {
+public class BossBarAllPlayerTask {
 
 
     private Player player;
-    public BossBarAllPlayerTask(Player player,Main owner) {
-        super(owner);
+    public BossBarAllPlayerTask(Player player) {
         this.player = player;
     }
 
-    @Override
-    public void onRun(int i) {
+
+    public void onRun() {
 //        for(Player player: Server.getInstance().getOnlinePlayers().values()){
             if(player == null || !player.isOnline()){
 //                this.cancel();

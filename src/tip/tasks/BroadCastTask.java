@@ -11,19 +11,17 @@ import java.util.LinkedHashMap;
 /**
  * @author SmallasWater
  */
-public class BroadCastTask extends PluginTask<Main> {
+public class BroadCastTask {
 
 
     private Player player;
     private LinkedHashMap<String,BroadCastPlayerTask> taskLinkedHashMap = new LinkedHashMap<>();
 
-    public BroadCastTask(Player player,Main owner) {
-        super(owner);
+    public BroadCastTask(Player player) {
         this.player = player;
     }
 
-    @Override
-    public void onRun(int i) {
+    public void onRun() {
 
             if(!taskLinkedHashMap.containsKey(player.getName())){
                 taskLinkedHashMap.put(player.getName(),new BroadCastPlayerTask(player));
