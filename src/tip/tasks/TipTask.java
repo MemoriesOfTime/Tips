@@ -3,11 +3,9 @@ package tip.tasks;
 import cn.nukkit.Player;
 import cn.nukkit.Server;
 import cn.nukkit.plugin.Plugin;
-import cn.nukkit.scheduler.AsyncTask;
 import cn.nukkit.scheduler.PluginTask;
 import tip.Main;
 import tip.messages.BaseMessage;
-import tip.messages.defaults.BroadcastMessage;
 import tip.messages.defaults.TipMessage;
 import tip.utils.Api;
 
@@ -17,10 +15,10 @@ import tip.utils.Api;
  */
 public class TipTask extends PluginTask<Plugin> {
 
-    private Player player;
-    public TipTask(Player player,Plugin owner) {
+
+    public TipTask(Plugin owner) {
         super(owner);
-        this.player = player;
+
 
     }
 
@@ -34,9 +32,9 @@ public class TipTask extends PluginTask<Plugin> {
 
     @Override
     public void onRun(int i) {
-//        for (Player player : Server.getInstance().getOnlinePlayers().values()) {
+        for (Player player : Server.getInstance().getOnlinePlayers().values()) {
             if(player == null || !player.isOnline()){
-                return;
+                continue;
             }
             TipMessage tipMessage;
             tipMessage = (TipMessage) Api.getSendPlayerMessage(player.getName(),player.level.getFolderName(),
@@ -58,7 +56,7 @@ public class TipTask extends PluginTask<Plugin> {
             broadtask.onRun(i);
             nametask.onRun(i);
             scoreTask.onRun(i);
-//        }
+        }
     }
 
 

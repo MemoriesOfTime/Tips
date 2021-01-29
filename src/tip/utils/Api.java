@@ -38,7 +38,7 @@ public class Api {
         if(player instanceof Player){
             m = Main.getInstance().getVarManager().toMessage((Player) player,m);
         }
-        return TextFormat.colorize('&',m);
+        return m;
     }
 
     /**
