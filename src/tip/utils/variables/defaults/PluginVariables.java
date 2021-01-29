@@ -177,7 +177,7 @@ public class PluginVariables extends BaseVariable {
             try {
                 PlaceholderAPI api = PlaceholderAPI.getInstance();
                 for(String key:api.getPlaceholders().keySet()){
-                    addStrReplaceString(key,api.getValue(key,player));
+                    addStrReplaceString("%"+key+"%", api.getValue(key,player));
                 }
             }catch (Exception e){
                 e.printStackTrace();

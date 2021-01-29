@@ -11,6 +11,7 @@ import cn.nukkit.utils.Config;
 import tip.Main;
 import tip.messages.BaseMessage;
 import tip.messages.defaults.ChatMessage;
+import tip.messages.defaults.MessageManager;
 import tip.tasks.*;
 
 import java.io.File;
@@ -26,11 +27,11 @@ public class OnListener implements Listener {
         Player player = event.getPlayer();
         if(new File(Main.getInstance().getDataFolder()+"/Players/"+player.getName()+".yml").exists()){
             Config config = new Config(Main.getInstance().getDataFolder()+"/Players/"+player.getName()+".yml",2);
-            PlayerConfig playerConfig = new PlayerConfig(player.getName(),Main.getInstance().getManagerByConfig(config),config.getString("样式",null));
+            PlayerConfig playerConfig = new PlayerConfig(player.getName(),new MessageManager(),config.getString("样式",null));
             Main.getInstance().getPlayerConfigs().add(playerConfig);
 
         }
-
+        AddPlayerTask.add(new TipTask(player,Main.getInstance()),Main.getInstance().getConfig().getInt("自定义刷新刻度.底部",20));
 
     }
 

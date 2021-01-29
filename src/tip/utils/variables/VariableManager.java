@@ -39,12 +39,14 @@ public class VariableManager {
 //                message = variable.getString();
 //            }
             variables.putAll(variable.getVar());
-            variables.putAll(otherVariables);
         }
+        variables.putAll(otherVariables);
 
         for(String s: variables.keySet()){
             message = message.replace(s,variables.get(s));
         }
+
+
         return message;
     }
 
