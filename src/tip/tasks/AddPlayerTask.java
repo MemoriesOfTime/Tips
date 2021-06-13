@@ -9,7 +9,7 @@ import tip.Main;
  */
 public class AddPlayerTask {
 
-    public static void add(Task task, int clock){
-        Server.getInstance().getScheduler().scheduleRepeatingTask(Main.getInstance(), task,clock);
+    public static void add(BaseTipsRunnable task){
+        Main.executor.execute(task);
     }
 }

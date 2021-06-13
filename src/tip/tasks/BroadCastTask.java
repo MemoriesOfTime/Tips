@@ -22,12 +22,11 @@ public class BroadCastTask {
     }
 
     public void onRun() {
-
-            if(!taskLinkedHashMap.containsKey(player.getName())){
-                taskLinkedHashMap.put(player.getName(),new BroadCastPlayerTask(player));
-            }
-            BroadCastPlayerTask task = taskLinkedHashMap.get(player.getName());
-            task.onRun();
+        if(!taskLinkedHashMap.containsKey(player.getName())){
+            taskLinkedHashMap.put(player.getName(),new BroadCastPlayerTask(player));
+        }
+        BroadCastPlayerTask task = taskLinkedHashMap.get(player.getName());
+        task.onRun();
 
     }
 }

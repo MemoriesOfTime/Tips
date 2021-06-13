@@ -31,7 +31,9 @@ public class BossBarApi extends DummyBossBar.Builder{
 
     public static void removeBossBar(Player player){
         if(Main.getInstance().apis.containsKey(player)){
-            player.removeBossBar(Main.getInstance().apis.get(player).build().getBossBarId());
+            if(player.getDummyBossBar(Main.getInstance().apis.get(player).build().getBossBarId()) != null) {
+                player.removeBossBar(Main.getInstance().apis.get(player).build().getBossBarId());
+            }
         }
     }
 

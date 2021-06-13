@@ -15,7 +15,7 @@ import java.util.*;
  * @author 若水
  * Tips变量
  * */
-public class Api {
+public final class Api {
 
     private final String string;
     private final IPlayer player;
@@ -33,7 +33,7 @@ public class Api {
         VARIABLE.put(name, variable);
     }
 
-    public String strReplace(){
+    public final String strReplace(){
         String m = string;
         if(player instanceof Player){
             m = Main.getInstance().getVarManager().toMessage((Player) player,m);

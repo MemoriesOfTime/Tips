@@ -24,14 +24,7 @@ public class OnListener implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event){
-        Player player = event.getPlayer();
-        if(new File(Main.getInstance().getDataFolder()+"/Players/"+player.getName()+".yml").exists()){
-            Config config = new Config(Main.getInstance().getDataFolder()+"/Players/"+player.getName()+".yml",2);
-            PlayerConfig playerConfig = new PlayerConfig(player.getName(),new MessageManager(),config.getString("样式",null));
-            Main.getInstance().getPlayerConfigs().add(playerConfig);
-
-        }
-
+        Main.getInstance().loadPlayerConfig(event.getPlayer());
 
     }
 

@@ -35,6 +35,8 @@ import updata.AutoData;
 import java.io.File;
 import java.lang.reflect.Constructor;
 import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * @author 若水
@@ -65,6 +67,8 @@ public class Main extends PluginBase implements Listener {
 
     private LinkedList<PlayerConfig> playerConfigs = new LinkedList<>();
 
+    public static ExecutorService executor = Executors.newCachedThreadPool();
+
 
     @Override
     public void onLoad() {
@@ -85,7 +89,7 @@ public class Main extends PluginBase implements Listener {
 
         motd = getConfig().getString("自定义MOTD.内容","&l{color}在线 -{online}/{maxplayer}\n {version}");
         if(getConfig().getBoolean("自定义MOTD.是否启用",false)){
-            this.getServer().getScheduler().scheduleRepeatingTask(this,new MotdTask(this),getConfig().getInt("自定义刷新刻度.motd",20));
+            executor.submit(new MotdTask(this));
         }
         this.getServer().getCommandMap().register("tips", new TipsCommand(getConfig().getString("自定义指令.name","tips")));
         this.getServer().getPluginManager().registerEvents(new OnListener(),this);
@@ -99,7 +103,7 @@ public class Main extends PluginBase implements Listener {
         } catch (Exception e) {
             Main.getInstance().getLogger().info("未检测到计分板API 无法使用计分板功能");
         }
-        AddPlayerTask.add(new TipTask(Main.getInstance()),Main.getInstance().getConfig().getInt("自定义刷新刻度.底部",20));
+        AddPlayerTask.add(new TipTask(Main.getInstance(),Main.getInstance().getConfig().getInt("自定义刷新刻度.底部",20)));
 
     }
 
@@ -132,7 +136,7 @@ public class Main extends PluginBase implements Listener {
         showMessages = new MessageManager();
         this.getLogger().info("加载成功");
         if(!new File(this.getDataFolder()+"/Tips变量.txt").exists()){
-            this.saveResource("Tips变量.txt","/Tips变量.txt",false);
+            this.saveResource("Tips变量.txt","/Tips变量.txt",true);
         }
         if(!new File(this.getDataFolder()+"/theme").exists()){
             if(!new File(this.getDataFolder()+"/theme").mkdirs()){
@@ -159,9 +163,19 @@ public class Main extends PluginBase implements Listener {
         //开始加载Message
         playerConfigs = new LinkedList<>();
 
+
         // 初始化注册类
         initVariable();
 
+    }
+
+    public void loadPlayerConfig(Player player){
+        if(new File(Main.getInstance().getDataFolder()+"/Players/"+player.getName()+".yml").exists()){
+            Config config = new Config(Main.getInstance().getDataFolder()+"/Players/"+player.getName()+".yml",2);
+            PlayerConfig playerConfig = new PlayerConfig(player.getName(),Main.getInstance().getManagerByConfig(config),config.getString("样式",null));
+            Main.getInstance().getPlayerConfigs().add(playerConfig);
+
+        }
     }
 
     public MessageManager getManagerByConfig(Config config){
@@ -170,9 +184,11 @@ public class Main extends PluginBase implements Listener {
             return messages;
         }
         for(BaseMessage.BaseTypes types: BaseMessage.BaseTypes.values()){
-            LinkedList<BaseMessage> messages1 = addShowMessageByMap((Map<?,?>) config.get(types.getConfigName()),types.getType());
-            if(messages1.size() > 0){
-                messages.addAll(messages1);
+            if(config.exists(types.getConfigName())) {
+                LinkedList<BaseMessage> messages1 = addShowMessageByMap((Map<?, ?>) config.get(types.getConfigName()), types.getType());
+                if (messages1.size() > 0) {
+                    messages.addAll(messages1);
+                }
             }
         }
         return messages;

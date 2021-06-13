@@ -1,5 +1,7 @@
 package tip.commands.sub;
 
+import cn.nukkit.Player;
+import cn.nukkit.Server;
 import cn.nukkit.command.CommandSender;
 import cn.nukkit.command.data.CommandParameter;
 import cn.nukkit.utils.TextFormat;
@@ -22,6 +24,9 @@ public class ReloadSubCommand extends BaseSubCommand {
     @Override
     public boolean execute(CommandSender sender, String label, String[] args) {
         Main.getInstance().init();
+        for(Player player: Server.getInstance().getOnlinePlayers().values()){
+            Main.getInstance().loadPlayerConfig(player);
+        }
         sender.sendMessage(TextFormat.YELLOW+"配置文件重新读取完成");
         return true;
     }

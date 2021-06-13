@@ -1,6 +1,6 @@
 name: Tips
 main: tip.Main
-version: 1.9.2
+version: 1.9.5
 api: ["1.0.8"]
 
 load: POSTWORLD

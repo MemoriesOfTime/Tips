@@ -60,12 +60,12 @@ public class PlayerConfig {
             }
 
         }
-//        if(!"default".equalsIgnoreCase(theme)){
-//            MessageManager message1 = Main.getInstance().getThemeManager().get(theme);
-//            if(message1 != null && message == null){
-//                message =  message1.getMessageByTypeAndWorld(levelName, type);
-//            }
-//        }
+        if(!"default".equalsIgnoreCase(theme)){
+            MessageManager message1 = Main.getInstance().getThemeManager().get(theme);
+            if(message1 != null && message == null){
+                message =  message1.getMessageByTypeAndWorld(levelName, type);
+            }
+        }
         return message;
     }
 

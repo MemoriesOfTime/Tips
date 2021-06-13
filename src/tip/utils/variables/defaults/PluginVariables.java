@@ -8,6 +8,7 @@ import SVIP.VIP;
 import cn.nukkit.Player;
 import cn.nukkit.Server;
 import cn.nukkit.item.Item;
+import cn.nukkit.utils.Config;
 import cn.nukkit.utils.TextFormat;
 import cn.xiaokai.stockings.py.PY;
 import com.bc.marryN.load.loadCfg;
@@ -17,6 +18,8 @@ import com.creeperface.nukkit.placeholderapi.api.PlaceholderAPI;
 import com.smallaswater.SociatyMainClass;
 import com.smallaswater.data.IDataStore;
 import com.task.utils.tasks.taskitems.PlayerTask;
+import com.yirankuma.yrjob.YRJob;
+import com.yirankuma.yrrpg.YRRPG;
 import com.zixuan007.society.domain.Society;
 import com.zixuan007.society.utils.*;
 import healthapi.PlayerHealth;
@@ -37,7 +40,9 @@ import world.proficiency.Proficiency;
 import world.proficiency.utils.player.PlayerRPG;
 import world.proficiency.utils.player.RpgLevel;
 
+import java.io.File;
 import java.lang.reflect.Field;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
@@ -55,7 +60,6 @@ public class PluginVariables extends BaseVariable {
         super(player);
         this.string = str;
     }
-
 
     @Override
     @Deprecated
@@ -94,12 +98,17 @@ public class PluginVariables extends BaseVariable {
         if(Server.getInstance().getPluginManager().getPlugin("EasyAPI") != null){
             string = MessageFormatAPI.INSTANCE.format(string,player,player.getName());
         }
+        try {
+            if(Server.getInstance().getPluginManager().getPlugin("EconomyAPI") != null) {
 
-        if(Server.getInstance().getPluginManager().getPlugin("EconomyAPI") != null) {
-            addStrReplaceString("{money}", String.format("%.2f", EconomyAPI.getInstance().myMoney(player)));
-        }else{
-            addStrReplaceString("{money}", TextFormat.RED+"无经济插件");
+                addStrReplaceString("{money}", String.format("%.2f", EconomyAPI.getInstance().myMoney(player)));
+            }else{
+                addStrReplaceString("{money}", TextFormat.RED+"无经济插件");
+            }
+        }catch (Exception e){
+            addStrReplaceString("{money}", TextFormat.RED+"读取中");
         }
+
     }
 
     private void getH(){
@@ -394,6 +403,32 @@ public class PluginVariables extends BaseVariable {
         }
     }
 
+    private void getY(){
+        if(Server.getInstance().getPluginManager().getPlugin("YRJob") != null){
+            addStrReplaceString("{yr-job}", YRJob.getJob(player));
+        }
+        if(Server.getInstance().getPluginManager().getPlugin("YRRPG") != null) {
+            Config config = new Config(new File(YRRPG.getPlayersFolderPath().resolve(player.getName() + ".yml").toString()),Config.YAML);
+            int maxExp = config.getInt("升级所需经验");
+            addStrReplaceString("{yr-level}", YRRPG.getlevel(player)+"");
+            addStrReplaceString("{yr-exp}",YRRPG.main.playerMap.get(player.getName()) +"");
+            addStrReplaceString("{yr-maxExp}",maxExp +"");
+            addStrReplaceString("{yr-damage}",YRRPG.getDamage(player)+"");
+            addStrReplaceString("{yr-defense}",YRRPG.getDefense(player)+"");
+            addStrReplaceString("{yr-suckblood}",YRRPG.getSuckBlood(player)+"");
+            addStrReplaceString("{yr-health}",YRRPG.getHealth(player)+"");
+            addStrReplaceString("{yr-defusedamage}",YRRPG.getDefuseDamage(player)+"");
+            addStrReplaceString("{yr-counterattack}",YRRPG.getCounterAttack(player)+"");
+            addStrReplaceString("{yr-critprobability}",YRRPG.getCritProbability(player)+"");
+            addStrReplaceString("{yr-critrate}",YRRPG.getCritRate(player)+"");
+            String title = "";
+            if(YRRPG.main.playerMap.get(player.getName()).containsKey("当前称号")){
+                title = YRRPG.main.playerMap.get(player.getName()).get("当前称号").toString();
+            }
+            addStrReplaceString("{yr-title}",title);
+        }
+    }   
+
     private void getZ(){
         if(Server.getInstance().getPluginManager().getPlugin("ZSociety") != null) {
             Society society = SocietyUtils.getSocietyByPlayerName(player.getName());
@@ -434,6 +469,7 @@ public class PluginVariables extends BaseVariable {
         getS();
         getT();
         getU();
+        getY();
         getZ();
     }
 }

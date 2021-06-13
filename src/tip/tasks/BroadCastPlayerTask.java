@@ -7,17 +7,20 @@ import tip.utils.Api;
 
 import java.util.LinkedHashMap;
 
-class BroadCastPlayerTask {
+/**
+ * @author SmallasWater
+ */
+public class BroadCastPlayerTask {
 
     private Player player;
     private LinkedHashMap<String,MessageType> type = new LinkedHashMap<>();
 
 
-    BroadCastPlayerTask(Player owner) {
+    public BroadCastPlayerTask(Player owner) {
         this.player = owner;
     }
 
-    void onRun() {
+    public void onRun() {
         if(player == null || !player.isOnline()){
             return;
         }

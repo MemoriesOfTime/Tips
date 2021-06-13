@@ -8,7 +8,7 @@ import java.util.LinkedList;
 /**
  * @author SmallasWater
  */
-public class VariableManager {
+public final class VariableManager {
 
     public void addVariableClass(BaseVariable variable){
         variablesClass.add(variable);
@@ -26,7 +26,7 @@ public class VariableManager {
 
     private LinkedList<BaseVariable> variablesClass = new LinkedList<>();
 
-    public String toMessage(Player player,String msg){
+    public final synchronized String toMessage(Player player,String msg){
         String message = msg;
         if(message == null){
             return "";
@@ -35,9 +35,6 @@ public class VariableManager {
             variable.player = player;
             variable.string = msg;
             variable.strReplace();
-//            if(variable.isResetMessage()){
-//                message = variable.getString();
-//            }
             variables.putAll(variable.getVar());
         }
         variables.putAll(otherVariables);

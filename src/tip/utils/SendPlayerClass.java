@@ -29,14 +29,14 @@ public class SendPlayerClass {
     public SendPlayerClass(Player player,Main main){
         this.player = player;
         this.main = main;
-        init();
+
     }
 
     private Main getOwner() {
         return main;
     }
 
-    private void init(){
+    public void init(){
         if(player == null || !player.isOnline()){
             return;
         }
@@ -49,17 +49,23 @@ public class SendPlayerClass {
                 sendTip(player, api.strReplace(), tipMessage.getShowType());
             }
         }
-
-        if(bossTask == null || broadtask == null || nametask == null || scoreTask == null) {
+        if(bossTask == null){
             bossTask = new BossBarAllPlayerTask(player);
-            broadtask = new BroadCastTask(player);
-            nametask = new NameTagTask(player);
-            scoreTask = new ScoreBoardTask(player,getOwner());
         }
         bossTask.onRun();
+        if(broadtask == null){
+            broadtask = new BroadCastTask(player);
+        }
         broadtask.onRun();
+        if(nametask == null){
+            nametask = new NameTagTask(player);
+        }
         nametask.onRun();
+        if(scoreTask == null){
+            scoreTask = new ScoreBoardTask(player,getOwner());
+        }
         scoreTask.onRun();
+
     }
 
     private void sendTip(Player player,String tip,int type){
