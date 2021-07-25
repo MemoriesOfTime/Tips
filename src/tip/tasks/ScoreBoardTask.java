@@ -3,6 +3,7 @@ package tip.tasks;
 import cn.nukkit.Player;
 import cn.nukkit.Server;
 import cn.nukkit.scheduler.PluginTask;
+import cn.nukkit.utils.TextFormat;
 import de.theamychan.scoreboard.api.ScoreboardAPI;
 import de.theamychan.scoreboard.network.DisplaySlot;
 import de.theamychan.scoreboard.network.Scoreboard;
@@ -34,9 +35,14 @@ public class ScoreBoardTask {
     }
 
     public void onRun() {
+        try{
+            Class.forName("de.theamychan.scoreboard.api.ScoreboardAPI");
+        }catch (Exception e){
+            player.sendActionBar(TextFormat.RED+"计分板未安装\n\n\n\n");
+            return;
+        }
 //        for (Player player : Server.getInstance().getOnlinePlayers().values()) {
             if (player == null || !player.isOnline()) {
-//                this.cancel();
                 return;
             }
             ScoreBoardMessage message = (ScoreBoardMessage) Api.getSendPlayerMessage(player.getName(), player.level.getFolderName(), BaseMessage.BaseTypes.SCORE_BOARD);
@@ -58,15 +64,14 @@ public class ScoreBoardTask {
                 try {
                     Scoreboard scoreboard = ScoreboardAPI.createScoreboard();
                     String title = message.getTitle();
-                    Api api = new Api(title, player);
+
                     ScoreboardDisplay scoreboardDisplay = scoreboard.addDisplay(DisplaySlot.SIDEBAR,
-                            "dumy", api.strReplace());
+                            "dumy", Api.strReplace(title, player));
                     LinkedList<String> list = message.getMessages();
                     for (int line = 0; line < list.size(); line++) {
                         String s = list.get(line);
-                        api = new Api(s, player);
-                        s = api.strReplace();
-                        scoreboardDisplay.addLine(s, line);
+
+                        scoreboardDisplay.addLine(Api.strReplace(s,player), line);
                     }
                     try {
                         getOwner().scoreboards.get(player).hideFor(player);

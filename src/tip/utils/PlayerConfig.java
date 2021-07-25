@@ -50,41 +50,21 @@ public class PlayerConfig {
     }
 
     public BaseMessage getMessage(String levelName,int type){
-        BaseMessage message = messages.getMessageByTypeAndWorld(levelName, type);
-        if(message == null){
-            if(!"default".equalsIgnoreCase(theme)){
-                MessageManager message1 = Main.getInstance().getThemeManager().get(theme);
-                if(message1 != null){
-                    message =  message1.getMessageByTypeAndWorld(levelName, type);
-                }
-            }
-
-        }
-        if(!"default".equalsIgnoreCase(theme)){
-            MessageManager message1 = Main.getInstance().getThemeManager().get(theme);
-            if(message1 != null && message == null){
+        //Theme 优先级要高
+        BaseMessage message = null;
+        MessageManager message1 = Main.getInstance().getThemeManager().get(theme);
+        if(theme != null){
+            if(message1 != null){
                 message =  message1.getMessageByTypeAndWorld(levelName, type);
             }
+        }
+        if(message == null) {
+            message = messages.getMessageByTypeAndWorld(levelName, type);
+
         }
         return message;
     }
 
-//    private MessageManager getMessagesByType(int type){
-//        MessageManager messages = new MessageManager();
-//        MessageManager baseMessages = this.messages;
-//        if(!"default".equalsIgnoreCase(theme)){
-//            baseMessages = Main.getInstance().getThemeManager().get(theme);
-//            if(baseMessages == null){
-//                baseMessages = this.messages;
-//            }
-//        }
-//        for(BaseMessage baseMessage:baseMessages){
-//            if(baseMessage.getType() == type){
-//                messages.add(baseMessage);
-//            }
-//        }
-//        return messages;
-//    }
 
     public MessageManager getMessages() {
         return messages;

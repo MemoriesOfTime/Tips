@@ -30,6 +30,7 @@ public class CreateWindow {
         for(Config config: Main.getInstance().getThemeManager().getConfigs()){
             list.add(config.getString("name", "未命名"));
         }
+        list.add("关闭样式");
         simple.addElement(new ElementDropdown("请选择你喜欢的样式",list));
         player.showFormWindow(simple,CHOSE_THEME);
 

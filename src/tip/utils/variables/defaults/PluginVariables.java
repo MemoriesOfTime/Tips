@@ -174,24 +174,20 @@ public class PluginVariables extends BaseVariable {
 
 
     private void getO(){
-        if (Server.getInstance().getPluginManager().getPlugin("OreArea") != null) {
-            PlayerClass playerClass = PlayerClass.getPlayerClass(player.getName());
-            addStrReplaceString("{arealevel}", playerClass.getMaxAreaLevel() + "");
-            addStrReplaceString("{nextarealevel}", playerClass.getMaxAreaLevel() + 1 + "");
+        try {
+            if (Server.getInstance().getPluginManager().getPlugin("OreArea") != null) {
+                PlayerClass playerClass = PlayerClass.getPlayerClass(player.getName());
+                addStrReplaceString("{arealevel}", playerClass.getMaxAreaLevel() + "");
+                addStrReplaceString("{nextarealevel}", playerClass.getMaxAreaLevel() + 1 + "");
+            }
+        }catch (Exception e){
+            addStrReplaceString("{arealevel}","读取数据出现异常 请检查插件版本");
+            addStrReplaceString("{nextarealevel}", "读取数据出现异常 请检查插件版本");
         }
+
     }
 
     private void getP(){
-        if (Server.getInstance().getPluginManager().getPlugin("PlaceholderAPI") != null) {
-            try {
-                PlaceholderAPI api = PlaceholderAPI.getInstance();
-                for(String key:api.getPlaceholders().keySet()){
-                    addStrReplaceString("%"+key+"%", api.getValue(key,player));
-                }
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-        }
         if (Server.getInstance().getPluginManager().getPlugin("Proficiency") != null) {
             PlayerRPG playerRpgC = PlayerRPG.getPlayer(player, "采集");
             PlayerRPG playerRpgM = PlayerRPG.getPlayer(player, "制作");

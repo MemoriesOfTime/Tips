@@ -148,7 +148,6 @@ public class ListenerWindow implements Listener {
                     }else {
                         config.setMessage(baseMessage);
                         config.save();
-//                        Main.getInstance().init();
                     }
                     player.sendMessage("§7设置已保存..");
                 }else{
@@ -157,16 +156,19 @@ public class ListenerWindow implements Listener {
             }
         }
         if(id == CreateWindow.CHOSE_THEME){
-            PlayerConfig config = Main.getInstance().getPlayerConfig(player.getName());
-            if(config == null){
-                config = new PlayerConfig(player.getName(),new MessageManager(),Main.getInstance().getTheme());
+            PlayerConfig config = Main.getInstance().getPlayerConfigInit(player.getName());
+            if("关闭样式".equalsIgnoreCase(window.getResponse()
+                    .getDropdownResponse(0).getElementContent())){
+                config.setTheme(null);
+                player.sendMessage("§2你已关闭样式");
+                return;
             }
             String name = Main.getInstance().getThemeManager().getNames().get(window.getResponse()
                     .getDropdownResponse(0).getElementID());
             config.setTheme(name);
-            Main.getInstance().getPlayerConfigs().add(config);
             player.sendMessage("§2你已切换到 "+window.getResponse()
                     .getDropdownResponse(0).getElementContent()+" §2样式");
+            config.save();
 
         }
     }

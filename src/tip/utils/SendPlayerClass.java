@@ -45,8 +45,7 @@ public class SendPlayerClass {
                 BaseMessage.BaseTypes.TIP);
         if (tipMessage != null) {
             if (tipMessage.isOpen()) {
-                Api api = new Api(tipMessage.getMessage(), player);
-                sendTip(player, api.strReplace(), tipMessage.getShowType());
+                sendTip(player, Api.strReplace(tipMessage.getMessage(), player), tipMessage.getShowType());
             }
         }
         if(bossTask == null){

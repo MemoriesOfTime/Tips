@@ -33,11 +33,18 @@ public final class Api {
         VARIABLE.put(name, variable);
     }
 
-    public final String strReplace(){
+    public String strReplace(){
         String m = string;
-        if(player instanceof Player){
-            m = Main.getInstance().getVarManager().toMessage((Player) player,m);
-        }
+        m = Main.getInstance().getVarManager().toMessage((Player) player,m);
+
+        return TextFormat.colorize('&',m);
+    }
+
+    public static String strReplace(String string, Player player){
+        String m = string;
+
+        m = Main.getInstance().getVarManager().toMessage((Player) player,m);
+
         return TextFormat.colorize('&',m);
     }
 
@@ -86,14 +93,8 @@ public final class Api {
     }
 
     public static void setPlayerShowMessage(String playerName,BaseMessage message){
-        PlayerConfig config = Main.getInstance().getPlayerConfig(playerName);
-        if(config == null){
-            config = new PlayerConfig(playerName, new MessageManager(),Main.getInstance().getTheme());
-        }
+        PlayerConfig config = Main.getInstance().getPlayerConfigInit(playerName);
         config.setMessage(message);
-        if(!Main.getInstance().getPlayerConfigs().contains(config)) {
-            Main.getInstance().getPlayerConfigs().add(config);
-        }
 
     }
 

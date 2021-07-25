@@ -27,9 +27,7 @@ public class NameTagTask {
                 BaseMessage.BaseTypes.NAME_TAG);
         if (nameTagMessage != null) {
             if (nameTagMessage.isOpen()) {
-                Api api1 = new Api(nameTagMessage.getMessage(), player);
-                String hand = api1.strReplace();
-                player.setNameTag(hand);
+                player.setNameTag(Api.strReplace(nameTagMessage.getMessage(),player));
             }
         }
     }

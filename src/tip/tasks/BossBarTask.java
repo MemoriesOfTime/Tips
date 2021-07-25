@@ -45,8 +45,7 @@ public class BossBarTask {
                         m.i = 0;
                     }
                     String text = bossMessageBuilder.getStrings().get(m.i);
-                    Api api = new Api(text, player);
-                    text = api.strReplace();
+                    text = Api.strReplace(text,player);
                     BossBarApi.showBoss(player, text, bossMessageBuilder.isHealth());
                 } else {
                     BossBarApi.removeBossBar(player);

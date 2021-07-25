@@ -67,7 +67,7 @@ public class Main extends PluginBase implements Listener {
 
     private LinkedList<PlayerConfig> playerConfigs = new LinkedList<>();
 
-    public static ExecutorService executor = Executors.newCachedThreadPool();
+    public static ExecutorService executor = Executors.newFixedThreadPool(100);
 
 
     @Override
@@ -162,8 +162,6 @@ public class Main extends PluginBase implements Listener {
         showMessages.addAll(getManagerByConfig(getLevelMessage()));
         //开始加载Message
         playerConfigs = new LinkedList<>();
-
-
         // 初始化注册类
         initVariable();
 
@@ -240,6 +238,14 @@ public class Main extends PluginBase implements Listener {
             }
         }
         return null;
+    }
+
+    public PlayerConfig getPlayerConfigInit(String playerName){
+        PlayerConfig config = new PlayerConfig(playerName,new MessageManager(),null);
+        if(!playerConfigs.contains(config)){
+            playerConfigs.add(config);
+        }
+        return playerConfigs.get(playerConfigs.indexOf(config));
     }
 
     public MessageManager getShowMessages() {

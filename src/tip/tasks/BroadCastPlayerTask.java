@@ -47,9 +47,7 @@ public class BroadCastPlayerTask {
                 if (m.key) {
                     m.key = false;
                     String text = message.getMessages().get(m.i);
-                    Api api = new Api(text, player);
-                    text = api.strReplace();
-                    player.sendMessage(text);
+                    player.sendMessage(Api.strReplace(text,player));
                 }
                 if (m.time > 0) {
                     m.time--;
