@@ -1,3 +1,5 @@
+版本: v1.9.9
+
 变量 & 介绍:
 基础变量:
 {name}     : 玩家名称
@@ -25,7 +27,7 @@
 {op}    :玩家权限
 {ach}   : 玩家完成的成就数量
 {achCount}: 玩家成就总数
-{color} : 变色
+{color} : 随机字符颜色
 
 安装 LevelAwakenSystem （等级插件）可显示 变量
 {属性}     : 玩家的RPG属性
@@ -48,7 +50,7 @@
 安装 HealthAPI 可显示
 {hb}       : 玩家血量百分比
 
-安装 Tiles（称号） 插件 (购买SVIP赠送) 可显示 变量
+安装 Titles（称号） 插件 (购买SVIP赠送) 可显示 变量
 {ch}       : 玩家称号
 
 安装 SVIP 插件 可显示 变量（售卖插件 50RMB）
@@ -65,6 +67,7 @@
 {胸甲宝石} : 玩家装备的胸甲宝石个数
 {护腿宝石} : 玩家装备的护腿宝石个数
 {靴子宝石} : 玩家装备的靴子宝石个数
+
 安装 RsWeapon 1.7.1版本 Tips 1.3.3版本
 显示变量
 {we-damage}:  玩家武器攻击力
@@ -74,7 +77,10 @@
 {we-dkick}:   玩家盔甲抗击退值
 {we-todamage}: 玩家盔甲反伤百分比
 
-
+安装好友 Friend 含 v1.1.7 以上版本
+{onlineFriend}:  获取在线好友数量
+{maxFriend}   :  获取所有好友数量
+{mailFriend}  :   获取好友邮件的数量
 
 安装 RsTask （任务）可显示:
 {task-name} 正在进行中的任务 (显示第一个)
@@ -87,6 +93,16 @@
 安装OreArea （矿区）插件可显示
 {arealevel} 玩家矿区等级
 {nextarealevel} 玩家下一阶段矿区等级
+
+
+安装OreArea （1.2.7以上版本） （矿区）插件可显示
+{oreareaTime}: 玩家在矿区的使用时间
+{oreareaReset}: 矿区刷新剩余时间
+{oreareaName}: 玩家所在矿区名称
+
+安装 ServerInfo 插件可显示
+{ServerInfoPlayer@服务器名(这个在ServerInfo插件的配置内)}: 显示服务器的在线人数
+{ServerInfoMaxPlayer@服务器名(这个在ServerInfo插件的配置内)}: 显示服务器的最大在线人数
 
 
 ==================支持不是若水的插件===========
@@ -125,40 +141,20 @@ ${zmarry}  ZSociety 结婚
 安装称号(Qwetitle 插件)
 {qt_ch}  : 玩家称号
 
-使用格式 昵称-%player%
-%player% - 获取玩家的名称
-%player_displayname% - 获取玩家的显示名称
-%player_uuid% - 获取玩家的UUID
-%player_ping% - 获取玩家当前延迟
-%player_level% - 获取玩家所在世界名称
-%player_can_fly% - 玩家是否开启飞行模式
-%player_flying% - 玩家是否处于飞行模式
-%player_health% - 获取玩家的生命值
-%player_max_health% - 获取玩家的最大生命值
-%player_saturation% - 获取玩家的饥饿值
-%player_food% - 获取玩家的饥饿值
-%player_gamemode% - 获取玩家的游戏模式
-%player_x% - 获取玩家的x坐标
-%player_y% - 获取玩家的y坐标
-%player_z% - 获取玩家的z坐标
-%player_direction% - 获取玩家的朝向
-%player_exp% - 获取玩家的当前经验
-%player_exp_to_next% - 获取玩家下一等级所需经验
-%player_exp_level% - 获取玩家的等级
-%player_speed% - 获取玩家当前的速度
-%player_max_air% - 获取玩家的最大氧气值
-%player_remaining_air% - 获取玩家的剩余氧气值
-%player_item_in_hand% - 获取玩家手持物品信息
-%server_online% - 获取当前在线玩家的数量
-%server_max_players% - 获取最大玩家数
-%server_motd% - 获取服务器motd
-%server_ram_used% - 获取已用内存
-%server_ram_free% - 获取可用内存
-%server_ram_total% - 获取总内存
-%server_ram_max% - 获取最大内存
-%server_cores% - 获取可用的处理器内核
-%server_tps% - 获取当前TPS
-%server_uptime% - 获取当前正常运行时间
-%time% - 获取实际时间
+安装YRJob 插件变量
+{yr-job}:   职业
 
+安装YRRPG 插件变量
+{yr-level}:           等级
+{yr-exp}:             经验
+{yr-maxExp}           最大值经验
+{yr-damage}           攻击
+{yr-defense}          防御
+{yr-suckblood}        吸血
+{yr-health}           血量
+{yr-defusedamage}     减伤
+{yr-counterattack}    反伤
+{yr-critprobability}  暴击率
+{yr-critrate}         暴击倍率
+{yr-title}            称号
 
