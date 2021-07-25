@@ -40,7 +40,6 @@ public class MessageManager extends LinkedList<BaseMessage> {
                 if(Arrays.asList(message.getWorldName().split("&"))
                         .contains(worldName) && type == message.getType()){
                     baseMessage = message;
-                    return baseMessage;
                 }
             }
             if("default".equalsIgnoreCase(message.getWorldName()) && message.getType() == type){

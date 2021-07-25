@@ -25,7 +25,6 @@ import tip.utils.Api;
 import tip.utils.OnListener;
 import tip.utils.PlayerConfig;
 import tip.utils.ThemeManager;
-import tip.utils.variables.BaseVariable;
 import tip.utils.variables.VariableManager;
 import tip.utils.variables.defaults.DefaultVariables;
 import tip.utils.variables.defaults.PluginVariables;
@@ -33,7 +32,6 @@ import tip.windows.ListenerWindow;
 import updata.AutoData;
 
 import java.io.File;
-import java.lang.reflect.Constructor;
 import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -72,6 +70,7 @@ public class Main extends PluginBase implements Listener {
 
     @Override
     public void onLoad() {
+        instance = this;
         Api.registerVariables("default", DefaultVariables.class);
         Api.registerVariables("plugin", PluginVariables.class);
         Api.registerVariables("ViewCompass", ViewCompassVariable.class);
@@ -79,7 +78,6 @@ public class Main extends PluginBase implements Listener {
 
     @Override
     public void onEnable() {
-        instance = this;
         if(Server.getInstance().getPluginManager().getPlugin("AutoUpData") != null){
             if(AutoData.defaultUpData(this,getFile(),"SmallasWater","Tips")){
                 return;
@@ -163,7 +161,8 @@ public class Main extends PluginBase implements Listener {
         //开始加载Message
         playerConfigs = new LinkedList<>();
         // 初始化注册类
-        initVariable();
+//        initVariable();
+//        varManager = Api.flush();
 
     }
 
@@ -176,7 +175,7 @@ public class Main extends PluginBase implements Listener {
         }
     }
 
-    public MessageManager getManagerByConfig(Config config){
+    private MessageManager getManagerByConfig(Config config){
         MessageManager messages = new MessageManager();
         if(config == null){
             return messages;
@@ -204,31 +203,18 @@ public class Main extends PluginBase implements Listener {
             getLogger().info("未加载任何样式");
         }
     }
-    private void initVariable(){
-        varManager = new VariableManager();
-        BaseVariable variable;
-        for(Class<? extends BaseVariable> var:Api.VARIABLE.values()){
-            for (Constructor<?> constructor : var.getConstructors()) {
-                try {
-                    if(constructor.getParameterCount() == 1) {
-                        variable = (BaseVariable) constructor.newInstance((Object) null);
-                    }else{
-                        variable = (BaseVariable) constructor.newInstance((Object) null,null);
-                    }
-                    varManager.addVariableClass(variable);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    return;
-                }
-            }
-        }
-    }
+
+
     public LinkedList<PlayerConfig> getPlayerConfigs() {
         return playerConfigs;
     }
 
     public VariableManager getVarManager() {
         return varManager;
+    }
+
+    public void setVarManager(VariableManager varManager) {
+        this.varManager = varManager;
     }
 
     public PlayerConfig getPlayerConfig(String playerName){

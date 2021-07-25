@@ -95,7 +95,7 @@ public class ListenerWindow implements Listener {
             String playerName = clickPlayer.get(player.getName());
             PlayerConfig config = Main.getInstance().getPlayerConfig(playerName);
             if(config == null){
-                config = new PlayerConfig(playerName,new MessageManager(),Main.getInstance().getTheme());
+                config = new PlayerConfig(playerName,new MessageManager(),null);
             }
             BaseMessage defaultMessage;
             BaseMessage baseMessage;
@@ -161,6 +161,7 @@ public class ListenerWindow implements Listener {
                     .getDropdownResponse(0).getElementContent())){
                 config.setTheme(null);
                 player.sendMessage("§2你已关闭样式");
+                config.save();
                 return;
             }
             String name = Main.getInstance().getThemeManager().getNames().get(window.getResponse()

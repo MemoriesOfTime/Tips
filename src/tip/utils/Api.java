@@ -9,6 +9,9 @@ import tip.Main;
 import tip.messages.BaseMessage;
 import tip.messages.defaults.MessageManager;
 import tip.utils.variables.BaseVariable;
+import tip.utils.variables.VariableManager;
+
+import java.lang.reflect.Constructor;
 import java.util.*;
 
 /**
@@ -20,7 +23,7 @@ public final class Api {
     private final String string;
     private final IPlayer player;
 
-    public static final LinkedHashMap<String, Class<? extends BaseVariable>> VARIABLE = new LinkedHashMap<>();
+    private static final LinkedHashMap<String, Class<? extends BaseVariable>> VARIABLE = new LinkedHashMap<>();
     public Api(String string, IPlayer player){
         this.string = string;
         this.player = player;
@@ -31,6 +34,37 @@ public final class Api {
             return;
         }
         VARIABLE.put(name, variable);
+        Main.getInstance().setVarManager(flush(variable));
+
+    }
+
+    private static VariableManager flush(Class<? extends BaseVariable> var){
+        VariableManager varManager = Main.getInstance().getVarManager();
+        if( Main.getInstance().getVarManager() == null){
+            varManager = new VariableManager();
+        }
+        BaseVariable variable = Api.initVariable(var);
+        if(variable != null) {
+            varManager.addVariableClass(variable);
+        }
+        return varManager;
+    }
+
+    private static BaseVariable initVariable(Class<? extends BaseVariable> var){
+        BaseVariable variable = null;
+        for (Constructor<?> constructor : var.getConstructors()) {
+            try {
+                if(constructor.getParameterCount() == 1) {
+                    variable = (BaseVariable) constructor.newInstance((Object) null);
+                }else{
+                    variable = (BaseVariable) constructor.newInstance((Object) null,null);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+        return variable;
     }
 
     public String strReplace(){

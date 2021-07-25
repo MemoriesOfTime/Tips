@@ -10,6 +10,8 @@ import java.util.LinkedList;
  */
 public final class VariableManager {
 
+
+
     public void addVariableClass(BaseVariable variable){
         variablesClass.add(variable);
     }

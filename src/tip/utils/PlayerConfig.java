@@ -52,14 +52,15 @@ public class PlayerConfig {
     public BaseMessage getMessage(String levelName,int type){
         //Theme 优先级要高
         BaseMessage message = null;
-        MessageManager message1 = Main.getInstance().getThemeManager().get(theme);
         if(theme != null){
+            MessageManager message1 = Main.getInstance().getThemeManager().get(theme);
             if(message1 != null){
                 message =  message1.getMessageByTypeAndWorld(levelName, type);
             }
         }
         if(message == null) {
             message = messages.getMessageByTypeAndWorld(levelName, type);
+
 
         }
         return message;
@@ -75,17 +76,6 @@ public class PlayerConfig {
        LinkedHashMap<String,Object> map = new LinkedHashMap<>();
        map.put("样式",theme);
        map.putAll(messages.saveConfig());
-//       for(BaseMessage.BaseTypes types: BaseMessage.BaseTypes.values()){
-//           LinkedHashMap<String,Object> sub = new LinkedHashMap<>();
-//           if(messages.size() > 0){
-//               for(BaseMessage message:messages){
-//                   if(message.getType() == types.getType()) {
-//                       sub.putAll(message.getConfig());
-//                   }
-//               }
-//               map.put(types.getConfigName(),sub);
-//           }
-//       }
        config.setAll(map);
        config.save();
     }
