@@ -1,4 +1,4 @@
-版本: v1.7.1
+版本: v1.9.9
 
 变量 & 介绍:
 基础变量:
@@ -100,6 +100,10 @@
 {oreareaReset}: 矿区刷新剩余时间
 {oreareaName}: 玩家所在矿区名称
 
+安装 ServerInfo 插件可显示
+{ServerInfoPlayer@服务器名(这个在ServerInfo插件的配置内)}: 显示服务器的在线人数
+{ServerInfoMaxPlayer@服务器名(这个在ServerInfo插件的配置内)}: 显示服务器的最大在线人数
+
 
 ==================支持不是若水的插件===========
 
@@ -136,42 +140,6 @@ ${zmarry}  ZSociety 结婚
 
 安装称号(Qwetitle 插件)
 {qt_ch}  : 玩家称号
-
-使用格式 昵称-%player%
-%player% - 获取玩家的名称
-%player_displayname% - 获取玩家的显示名称
-%player_uuid% - 获取玩家的UUID
-%player_ping% - 获取玩家当前延迟
-%player_level% - 获取玩家所在世界名称
-%player_can_fly% - 玩家是否开启飞行模式
-%player_flying% - 玩家是否处于飞行模式
-%player_health% - 获取玩家的生命值
-%player_max_health% - 获取玩家的最大生命值
-%player_saturation% - 获取玩家的饥饿值
-%player_food% - 获取玩家的饥饿值
-%player_gamemode% - 获取玩家的游戏模式
-%player_x% - 获取玩家的x坐标
-%player_y% - 获取玩家的y坐标
-%player_z% - 获取玩家的z坐标
-%player_direction% - 获取玩家的朝向
-%player_exp% - 获取玩家的当前经验
-%player_exp_to_next% - 获取玩家下一等级所需经验
-%player_exp_level% - 获取玩家的等级
-%player_speed% - 获取玩家当前的速度
-%player_max_air% - 获取玩家的最大氧气值
-%player_remaining_air% - 获取玩家的剩余氧气值
-%player_item_in_hand% - 获取玩家手持物品信息
-%server_online% - 获取当前在线玩家的数量
-%server_max_players% - 获取最大玩家数
-%server_motd% - 获取服务器motd
-%server_ram_used% - 获取已用内存
-%server_ram_free% - 获取可用内存
-%server_ram_total% - 获取总内存
-%server_ram_max% - 获取最大内存
-%server_cores% - 获取可用的处理器内核
-%server_tps% - 获取当前TPS
-%server_uptime% - 获取当前正常运行时间
-%time% - 获取实际时间
 
 安装YRJob 插件变量
 {yr-job}:   职业
