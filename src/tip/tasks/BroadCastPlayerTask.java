@@ -13,7 +13,7 @@ import java.util.LinkedHashMap;
 public class BroadCastPlayerTask {
 
     private Player player;
-    private LinkedHashMap<String,MessageType> type = new LinkedHashMap<>();
+    private LinkedHashMap<BaseMessage,MessageType> type = new LinkedHashMap<>();
 
 
     public BroadCastPlayerTask(Player owner) {
@@ -24,35 +24,35 @@ public class BroadCastPlayerTask {
         if(player == null || !player.isOnline()){
             return;
         }
-        BroadcastMessage message;
-        message = (BroadcastMessage) Api.getSendPlayerMessage(player.getName(),player.level.getFolderName(),
+        BaseMessage message;
+        message = Api.getSendPlayerMessage(player.getName(),player.level.getFolderName(),
                 BaseMessage.BaseTypes.BROADCAST);
         if (message != null) {
             if (message.isOpen()) {
-                if(!type.containsKey(player.getLevel().getFolderName())){
-                    type.put(player.getLevel().getFolderName(),new MessageType());
+                if(!type.containsKey(message)){
+                    type.put(message,new MessageType());
                 }
-                MessageType m = type.get(player.getLevel().getFolderName());
+                MessageType m = type.get(message);
                 if (m.time == -1) {
-                    m.time = message.getTime();
+                    m.time = ((BroadcastMessage)message).getTime();
                     m.key = true;
                 } else if (m.time <= 0) {
                     m.i++;
-                    m.time = message.getTime();
+                    m.time = ((BroadcastMessage)message).getTime();
                     m.key = true;
                 }
-                if (m.i >= message.getMessages().size()) {
+                if (m.i >= ((BroadcastMessage)message).getMessages().size()) {
                     m.i = 0;
                 }
                 if (m.key) {
                     m.key = false;
-                    String text = message.getMessages().get(m.i);
+                    String text = ((BroadcastMessage)message).getMessages().get(m.i);
                     player.sendMessage(Api.strReplace(text,player));
                 }
                 if (m.time > 0) {
                     m.time--;
                 }
-                type.put(player.getLevel().getFolderName(),m);
+                type.put(message,m);
             }
         }
     }

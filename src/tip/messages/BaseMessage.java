@@ -1,6 +1,8 @@
 package tip.messages;
 
 
+import tip.utils.variables.BaseVariable;
+
 import java.util.LinkedHashMap;
 
 /**
@@ -35,6 +37,10 @@ public abstract class BaseMessage {
     }
 
 
+    @Override
+    public int hashCode() {
+        return worldName.hashCode() + getType();
+    }
 
     public void setWorldName(String worldName) {
         this.worldName = worldName;
@@ -90,6 +96,7 @@ public abstract class BaseMessage {
 
 
 
+
     public enum BaseTypes{
         /**显示类型*/
         BOSS_BAR(0,"Boss血条"),
@@ -113,4 +120,7 @@ public abstract class BaseMessage {
             return type;
         }
     }
+
+
+
 }
