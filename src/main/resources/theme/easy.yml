@@ -1,6 +1,9 @@
 # 均可使用RPG 里的变量 VIP 称号
 name: "§a简易风格"
 头部:
+  world:
+    是否开启: true
+    显示: "§e {name}§2  {ms}\n[§2❤§b {h}/{mh}]"
   default:
     是否开启: true
     显示: "§e {name}§2  {ms}\n[§2❤§b {h}/{mh}]"

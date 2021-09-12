@@ -7,7 +7,7 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 
 /**
- * @author ZXR
+ * @author SmallasWater
  */
 public class ThemeManager extends LinkedHashMap<String, MessageManager> {
 

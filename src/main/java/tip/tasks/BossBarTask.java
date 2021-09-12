@@ -38,15 +38,15 @@ public class BossBarTask {
                     }
                     if (m.time <= 0) {
                         m.time = bossMessageBuilder.getTime();
-                        m.i++;
+                        ++m.i;
                     }
-                    m.time--;
                     if (m.i >= bossMessageBuilder.getStrings().size()) {
                         m.i = 0;
                     }
                     String text = bossMessageBuilder.getStrings().get(m.i);
                     text = Api.strReplace(text,player);
-                    BossBarApi.showBoss(player, text, bossMessageBuilder.isHealth());
+                    BossBarApi.showBoss(player, text, bossMessageBuilder,m.time);
+                    m.time--;
                 } else {
                     BossBarApi.removeBossBar(player);
                 }

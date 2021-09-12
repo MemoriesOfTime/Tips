@@ -76,9 +76,7 @@ public final class Api {
 
     public static String strReplace(String string, Player player){
         String m = string;
-
-        m = Main.getInstance().getVarManager().toMessage((Player) player,m);
-
+        m = Main.getInstance().getVarManager().toMessage(player,m);
         return TextFormat.colorize('&',m);
     }
 

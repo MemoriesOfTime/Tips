@@ -8,7 +8,7 @@ import java.util.LinkedHashMap;
 /**
  * @author SmallasWater
  */
-public abstract class BaseMessage {
+public abstract class BaseMessage implements Cloneable{
 
     public static final int BOSS_BAR_TYPE = 0;
 
@@ -121,6 +121,13 @@ public abstract class BaseMessage {
         }
     }
 
-
-
+    @Override
+    public BaseMessage clone()  {
+        try {
+            return (BaseMessage) super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

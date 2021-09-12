@@ -33,6 +33,11 @@ public class DefaultSubCommand extends BaseSubCommand {
     }
 
     @Override
+    public boolean hasPermission(CommandSender sender) {
+        return sender.hasPermission("tips.default");
+    }
+
+    @Override
     public CommandParameter[] getParameters() {
         return new CommandParameter[0];
     }

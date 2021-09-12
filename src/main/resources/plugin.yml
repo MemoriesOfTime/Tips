@@ -1,6 +1,6 @@
 name: Tips
 main: tip.Main
-version: 2.0.2
+version: 2.0.9
 api: ["1.0.8"]
 
 load: POSTWORLD
@@ -12,6 +12,9 @@ permissions:
     default: true
   tips.me:
     description: "设置自身的显示"
+    default: op
+  tips.default:
+    description: "修改默认显示"
     default: op
   tips.theme:
     description: "设置自身的显示样式"

@@ -17,7 +17,7 @@ public class TipTask extends BaseTipsRunnable {
     private static LinkedHashMap<Player,SendPlayerClass> sendPlayerClassLinkedHashMap = new LinkedHashMap<>();
     public TipTask(Main owner,int sleep) {
         super(owner);
-        this.sleep = sleep;
+        this.sleep = sleep * 50;
 
     }
     private int sleep;
@@ -38,7 +38,7 @@ public class TipTask extends BaseTipsRunnable {
                 }
             }
             try {
-                Thread.sleep(1000);
+                Thread.sleep(sleep);
             } catch (InterruptedException e) {
                 e.printStackTrace();
                 return;

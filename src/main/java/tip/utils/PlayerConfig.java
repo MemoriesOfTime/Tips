@@ -49,21 +49,28 @@ public class PlayerConfig {
 
     }
 
-    public BaseMessage getMessage(String levelName,int type){
-        //Theme 优先级要高
-        BaseMessage message = null;
-        if(theme != null){
-            MessageManager message1 = Main.getInstance().getThemeManager().get(theme);
-            if(message1 != null){
-                message =  message1.getMessageByTypeAndWorld(levelName, type);
+    public BaseMessage getMessageNewInstance(String levelName,int type,boolean create){
+        BaseMessage  message = messages.getMessageByTypeAndWorld(levelName, type);
+        if(message == null){
+            if(theme != null){
+                MessageManager message1 = Main.getInstance().getThemeManager().get(theme);
+                if(message1 != null){
+                    message =  message1.getMessageByTypeAndWorld(levelName, type);
+                }
             }
         }
-        if(message == null) {
-            message = messages.getMessageByTypeAndWorld(levelName, type);
-
-
+        if(message == null && create){
+            message = Main.getInstance().getThemeManager()
+                    .getDefaultManager().getMessageByTypeAndWorld(levelName,type);
+            if(message != null){
+                message = message.clone();
+            }
         }
         return message;
+    }
+
+    public BaseMessage getMessage(String levelName,int type){
+        return getMessageNewInstance(levelName,type,false);
     }
 
 

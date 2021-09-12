@@ -21,9 +21,7 @@ public class BossBarAllPlayerTask {
 
 
     public void onRun() {
-//        for(Player player: Server.getInstance().getOnlinePlayers().values()){
             if(player == null || !player.isOnline()){
-//                this.cancel();
                 return;
             }
             BossBarApi.createBossBar(player);
@@ -33,5 +31,4 @@ public class BossBarAllPlayerTask {
             BossBarTask task = Main.getInstance().tasks.get(player);
             task.onRun(player);
         }
-//    }
 }

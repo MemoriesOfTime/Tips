@@ -27,7 +27,6 @@ import tip.utils.PlayerConfig;
 import tip.utils.ThemeManager;
 import tip.utils.variables.VariableManager;
 import tip.utils.variables.defaults.DefaultVariables;
-import tip.utils.variables.defaults.PluginVariables;
 import tip.windows.ListenerWindow;
 import updata.AutoData;
 
@@ -65,14 +64,13 @@ public class Main extends PluginBase implements Listener {
 
     private LinkedList<PlayerConfig> playerConfigs = new LinkedList<>();
 
-    public static ExecutorService executor = Executors.newFixedThreadPool(100);
+    public static ExecutorService executor = Executors.newCachedThreadPool();
 
 
     @Override
     public void onLoad() {
         instance = this;
         Api.registerVariables("default", DefaultVariables.class);
-        Api.registerVariables("plugin", PluginVariables.class);
         Api.registerVariables("ViewCompass", ViewCompassVariable.class);
     }
 
@@ -87,7 +85,7 @@ public class Main extends PluginBase implements Listener {
 
         motd = getConfig().getString("自定义MOTD.内容","&l{color}在线 -{online}/{maxplayer}\n {version}");
         if(getConfig().getBoolean("自定义MOTD.是否启用",false)){
-            executor.submit(new MotdTask(this));
+            executor.execute(new MotdTask(this));
         }
         this.getServer().getCommandMap().register("tips", new TipsCommand(getConfig().getString("自定义指令.name","tips")));
         this.getServer().getPluginManager().registerEvents(new OnListener(),this);
@@ -161,8 +159,6 @@ public class Main extends PluginBase implements Listener {
         //开始加载Message
         playerConfigs = new LinkedList<>();
         // 初始化注册类
-//        initVariable();
-//        varManager = Api.flush();
 
     }
 

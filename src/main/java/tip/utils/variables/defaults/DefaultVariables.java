@@ -25,7 +25,9 @@ public class DefaultVariables extends BaseVariable {
     @Override
     public void strReplace() {
         time();
-        configString();
+        if(player != null) {
+            configString();
+        }
         defaultString();
 
     }
@@ -42,11 +44,14 @@ public class DefaultVariables extends BaseVariable {
         addStrReplaceString("{分}",now.get(Calendar.MINUTE) +"");
         addStrReplaceString("{秒}",now.get(Calendar.SECOND) +"");
         addStrReplaceString("{星期}",now.get(Calendar.WEEK_OF_MONTH) +"");
-        addStrReplaceString("{ms}",player.getPing()+"ms");
-        addStrReplaceString("{levelName}",player.getLevel().getFolderName());
-        addStrReplaceString("{x}",Math.round(player.getX())+"");
-        addStrReplaceString("{y}",Math.round(player.getY())+"");
-        addStrReplaceString("{z}",Math.round(player.getZ())+"");
+        if(player != null){
+            addStrReplaceString("{ms}",player.getPing()+"ms");
+            addStrReplaceString("{levelName}",player.getLevel().getFolderName());
+            addStrReplaceString("{x}",Math.round(player.getX())+"");
+            addStrReplaceString("{y}",Math.round(player.getY())+"");
+            addStrReplaceString("{z}",Math.round(player.getZ())+"");
+        }
+
         addStrReplaceString("{tps}",Server.getInstance().getTicksPerSecond()+"");
     }
 
@@ -93,6 +98,11 @@ public class DefaultVariables extends BaseVariable {
     }
 
     private void defaultString(){
+        String[] strings = new String[]{"§c","§6","§e","§a","§b","§9","§d","§7","§5"};
+        addStrReplaceString("{online}",Server.getInstance().getOnlinePlayers().size()+"");
+        addStrReplaceString("{maxplayer}",Server.getInstance().getMaxPlayers()+"");
+        addStrReplaceString("{换行}","\n");
+        addStrReplaceString("{color}",strings[new Random().nextInt(strings.length)]);
         Optional<Player> playerOptional = Optional.ofNullable(player);
         if(!playerOptional.isPresent()){
             return;
@@ -101,20 +111,14 @@ public class DefaultVariables extends BaseVariable {
         if(!playerOptional.get().isOnline()){
             return;
         }
-
         int ach = player.achievements.size();
         addStrReplaceString("{ach}",ach+"");
         addStrReplaceString("{achCount}", Achievement.achievements.size()+"");
         addStrReplaceString("{name}",player.getName());
-        addStrReplaceString("{换行}","\n");
         addStrReplaceString("{h}",player.getHealth()+"");
         addStrReplaceString("{mh}",player.getMaxHealth()+"");
-        addStrReplaceString("{online}",Server.getInstance().getOnlinePlayers().size()+"");
-        addStrReplaceString("{maxplayer}",Server.getInstance().getMaxPlayers()+"");
         addStrReplaceString("{damage}",player.getInventory().getItemInHand().getDamage()+"");
         addStrReplaceString("{id}",player.getInventory().getItemInHand().getId()+"");
-        String[] strings = new String[]{"§c","§6","§e","§a","§b","§9","§d","§7","§5"};
-        addStrReplaceString("{color}",strings[new Random().nextInt(strings.length)]);
         addStrReplaceString("{food}",player.getFoodData().getLevel()+"");
         addStrReplaceString("{mfood}",player.getFoodData().getMaxLevel()+"");
 

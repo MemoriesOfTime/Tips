@@ -4,6 +4,7 @@ import cn.nukkit.Player;
 import cn.nukkit.utils.BlockColor;
 import cn.nukkit.utils.DummyBossBar;
 import tip.Main;
+import tip.utils.BossMessageBuilder;
 
 
 /**
@@ -19,6 +20,7 @@ public class BossBarApi extends DummyBossBar.Builder{
 
     public static void createBossBar(Player player){
         if(!Main.getInstance().apis.containsKey(player)) {
+
             BossBarApi bossBar = new BossBarApi(player);
             bossBar.length(0);
             bossBar.text("加载中");
@@ -38,16 +40,24 @@ public class BossBarApi extends DummyBossBar.Builder{
     }
 
 
-    public static void showBoss(Player player, String text, boolean health){
+    public static void showBoss(Player player, String text, BossMessageBuilder builder, int time){
         if(Main.getInstance().apis.get(player) != null){
-            DummyBossBar bossBar = Main.getInstance().apis.get(player).build();
+            DummyBossBar bossBar = player.getDummyBossBar(Main.getInstance().apis.get(player).build().getBossBarId());
             bossBar.setText(text);
-            if(health){
+            if(builder.isHealth()){
                 bossBar.setLength((float)Math.round(player.getHealth() / (float)player.getMaxHealth() * 100.0F));
+            }else{
+                float m;
+                if(time < 0){
+                    m = 0;
+                }else{
+                    m = (float)Math.round(time / (float)builder.getTime() * 100.0F);
+                }
+                bossBar.setLength(m);
             }
-
             bossBar.setColor(new BlockColor(0,205,102));
             player.createBossBar(bossBar);
+
         }
     }
 }

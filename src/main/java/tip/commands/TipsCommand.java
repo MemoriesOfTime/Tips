@@ -45,6 +45,14 @@ public class TipsCommand extends BaseCommand {
                         return false;
                     }
                 }
+            }else{
+                if (args.length == 0) {
+                    return false;
+                }
+            }
+        }else{
+            if (args.length == 0) {
+                return false;
             }
         }
         return super.execute(sender, s, args);
@@ -60,7 +68,7 @@ public class TipsCommand extends BaseCommand {
             sender.sendMessage("§e/"+getName()+" §7reload §e重新读取配置");
             sender.sendMessage("§e/"+getName()+" §7achAll §e打开成就GUI");
             sender.sendMessage("§e/"+getName()+" §7theme §e打开设置样式GUI");
-            sender.sendMessage("§e/"+getName()+" §7send <类型> <信息>§e给玩家发送消息\n§r类型: tip,popup,action,title,msg");
+            sender.sendMessage("§e/"+getName()+" §7send <玩家> <类型> <信息>§e给玩家发送消息\n§r类型: tip,popup,action,title,msg");
             sender.sendMessage("§a====================");
         }else{
             sender.sendMessage("§a====================");
