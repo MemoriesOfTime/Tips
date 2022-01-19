@@ -57,6 +57,7 @@ public class BossBarApi extends DummyBossBar.Builder{
                 bossBar.setLength(m);
             }
             try {
+                Class.forName("cn.nukkit.utils.BossBarColor");
                 bossBar.setColor(BossBarColor.GREEN);
             }catch (Exception ignore){}
             player.createBossBar(bossBar);
