@@ -2,6 +2,7 @@ package tip.bossbar;
 
 import cn.nukkit.Player;
 import cn.nukkit.utils.BlockColor;
+import cn.nukkit.utils.BossBarColor;
 import cn.nukkit.utils.DummyBossBar;
 import tip.Main;
 import tip.utils.BossMessageBuilder;
@@ -55,7 +56,10 @@ public class BossBarApi extends DummyBossBar.Builder{
                 }
                 bossBar.setLength(m);
             }
-            bossBar.setColor(new BlockColor(0,205,102));
+            try {
+                Class.forName("cn.nukkit.utils.BossBarColor");
+                bossBar.setColor(BossBarColor.GREEN);
+            }catch (Exception ignore){}
             player.createBossBar(bossBar);
 
         }

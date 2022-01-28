@@ -64,15 +64,10 @@ public class ListenerWindow implements Listener {
         if(id == CreateWindow.SETTING){
             if(ListenerWindow.CHOSE_TYPE.containsKey(player.getName())){
                 BaseMessage.BaseTypes types = BaseMessage.getTypeByName(window.getResponse().getClickedButton().getText());
-//                if(ListenerWindow.CHOSE_TYPE.get(player.getName()) == 1 || ListenerWindow.CHOSE_TYPE.get(player.getName()) == 2) {
-                    if (types != null) {
-                        clickType.put(player.getName(), types);
-                        CreateWindow.sendSettingShow(player, types);
-                    }
-//                }else{
-//                    CreateWindow.sendSetting(player);
-//                }
-
+                if (types != null) {
+                    clickType.put(player.getName(), types);
+                    CreateWindow.sendSettingShow(player, types);
+                }
             }else {
                 String playerName = clickPlayer.get(player.getName());
                 if (playerName != null) {
