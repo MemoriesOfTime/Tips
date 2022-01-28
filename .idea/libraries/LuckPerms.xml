@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="LuckPerms">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../LuckPerms.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
