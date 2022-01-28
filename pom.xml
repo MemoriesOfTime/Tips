@@ -61,7 +61,7 @@
             <artifactId>economyapi</artifactId>
             <version>1.1.7</version> <!-- 记得修改到已经安装到本地库最新版本 -->
             <scope>system</scope>
-            <systemPath>F:/Nukkit驱动/EconomyAPI.jar</systemPath>
+            <systemPath>${project.basedir}/lib/EconomyAPI.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.smallaswater.ServerInfo</groupId>
