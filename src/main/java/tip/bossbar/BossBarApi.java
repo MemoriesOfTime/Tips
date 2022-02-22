@@ -13,6 +13,8 @@ import tip.utils.BossMessageBuilder;
  */
 public class BossBarApi extends DummyBossBar.Builder{
 
+    public long bossId;
+
     private BossBarApi(Player player){
         super(player);
 
@@ -26,7 +28,7 @@ public class BossBarApi extends DummyBossBar.Builder{
             bossBar.length(0);
             bossBar.text("加载中");
             Main.getInstance().apis.put(player, bossBar);
-            player.createBossBar(Main.getInstance().apis.get(player).build());
+            bossBar.bossId = player.createBossBar(Main.getInstance().apis.get(player).build());
         }
 
     }
@@ -43,6 +45,10 @@ public class BossBarApi extends DummyBossBar.Builder{
 
     public static void showBoss(Player player, String text, BossMessageBuilder builder, int time){
         if(Main.getInstance().apis.get(player) != null){
+            if(player.getDummyBossBar(Main.getInstance().apis.get(player).bossId) == null){
+                Main.getInstance().apis.remove(player);
+                return;
+            }
             DummyBossBar bossBar = player.getDummyBossBar(Main.getInstance().apis.get(player).build().getBossBarId());
             bossBar.setText(text);
             if(builder.isHealth()){
