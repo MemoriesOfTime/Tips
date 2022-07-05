@@ -6,6 +6,7 @@ import cn.nukkit.Player;
 import cn.nukkit.Server;
 import cn.nukkit.event.Listener;
 import cn.nukkit.plugin.PluginBase;
+import cn.nukkit.utils.BossBarColor;
 import cn.nukkit.utils.Config;
 import de.theamychan.scoreboard.network.Scoreboard;
 import tip.bossbar.BossBarApi;
@@ -241,9 +242,19 @@ public class Main extends PluginBase implements Listener {
                 case BaseMessage.BOSS_BAR_TYPE:
                     for (Object o : map1.keySet()) {
                         Map map = (Map) map1.get(o);
-                        messages.add(new BossBarMessage(o.toString(),
+                        BossBarMessage message = new BossBarMessage(o.toString(),
                                 (boolean) map.get("是否开启"),
-                                (int) map.get("间隔时间"), (boolean) map.get("是否根据玩家血量变化"), getList((List) map.get("消息轮播"))));
+                                (int) map.get("间隔时间"),
+                                (boolean) map.get("是否根据玩家血量变化"),
+                                getList((List) map.get("消息轮播")));
+                        if (map.containsKey("显示颜色")) {
+                            try {
+                                message.setBossBarColor(BossBarColor.valueOf((String) map.get("显示颜色")));
+                            } catch (Exception e) {
+                                getLogger().error("错误: 无法识别的BossBar颜色: " + map.get("显示颜色"), e);
+                            }
+                        }
+                        messages.add(message);
                     }
                     break;
                 case BaseMessage.CHAT_MESSAGE_TYPE:
