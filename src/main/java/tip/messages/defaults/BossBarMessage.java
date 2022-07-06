@@ -35,7 +35,7 @@ public class BossBarMessage extends BaseMessage {
     }
 
     public BossMessageBuilder getBuilder(){
-        return new BossMessageBuilder(messages,time,size);
+        return new BossMessageBuilder(messages,time,size,bossBarColor);
     }
 
     @Override
