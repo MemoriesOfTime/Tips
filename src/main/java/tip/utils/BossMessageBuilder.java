@@ -1,6 +1,8 @@
 package tip.utils;
 
 
+import cn.nukkit.utils.BossBarColor;
+
 import java.util.LinkedList;
 
 /**
@@ -14,10 +16,17 @@ public class BossMessageBuilder {
 
     private boolean health;
 
+    private BossBarColor bossBarColor;
+
     public BossMessageBuilder(LinkedList<String> strings,int time,boolean health){
+        this(strings, time, health, BossBarColor.GREEN);
+    }
+
+    public BossMessageBuilder(LinkedList<String> strings, int time, boolean health, BossBarColor bossBarColor){
         this.time = time;
         this.strings = strings;
         this.health = health;
+        this.bossBarColor = bossBarColor;
     }
 
     public int getTime() {
@@ -30,5 +39,9 @@ public class BossMessageBuilder {
 
     public boolean isHealth() {
         return health;
+    }
+
+    public BossBarColor getBossBarColor() {
+        return bossBarColor;
     }
 }
