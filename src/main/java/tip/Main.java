@@ -59,9 +59,9 @@ public class Main extends PluginBase implements Listener {
 
     private MessageManager showMessages = new MessageManager();
 
-    private ThemeManager themeManager = new ThemeManager();
+    private final ThemeManager themeManager = new ThemeManager();
 
-    public LinkedHashMap<Player, BossBarApi> apis = new LinkedHashMap<>();
+    public final LinkedHashMap<Player, BossBarApi> apis = new LinkedHashMap<>();
 
     private LinkedList<PlayerConfig> playerConfigs = new LinkedList<>();
 

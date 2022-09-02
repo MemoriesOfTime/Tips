@@ -1,8 +1,6 @@
 package tip.bossbar;
 
 import cn.nukkit.Player;
-import cn.nukkit.utils.BlockColor;
-import cn.nukkit.utils.BossBarColor;
 import cn.nukkit.utils.DummyBossBar;
 import tip.Main;
 import tip.utils.BossMessageBuilder;
@@ -36,8 +34,8 @@ public class BossBarApi extends DummyBossBar.Builder{
 
     public static void removeBossBar(Player player){
         if(Main.getInstance().apis.containsKey(player)){
-            if(player.getDummyBossBar(Main.getInstance().apis.get(player).build().getBossBarId()) != null) {
-                player.removeBossBar(Main.getInstance().apis.get(player).build().getBossBarId());
+            if(player.getDummyBossBar(Main.getInstance().apis.get(player).bossId) != null) {
+                player.removeBossBar(Main.getInstance().apis.get(player).bossId);
             }
         }
     }
@@ -49,7 +47,7 @@ public class BossBarApi extends DummyBossBar.Builder{
                 Main.getInstance().apis.remove(player);
                 return;
             }
-            DummyBossBar bossBar = player.getDummyBossBar(Main.getInstance().apis.get(player).build().getBossBarId());
+            DummyBossBar bossBar = player.getDummyBossBar(Main.getInstance().apis.get(player).bossId);
             bossBar.setText(text);
             if(builder.isHealth()){
                 bossBar.setLength((float)Math.round(player.getHealth() / (float)player.getMaxHealth() * 100.0F));
