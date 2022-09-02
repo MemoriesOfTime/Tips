@@ -1,6 +1,6 @@
 name: Tips
 main: tip.Main
-version: 2.1.2
+version: "2.1.3-MOT-SNAPSHOT"
 api: ["1.0.8"]
 
 load: POSTWORLD
