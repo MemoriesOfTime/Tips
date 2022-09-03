@@ -8,6 +8,8 @@ import cn.nukkit.Server;
 import tip.Main;
 import tip.utils.variables.BaseVariable;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.*;
 
 /**
@@ -115,7 +117,7 @@ public class DefaultVariables extends BaseVariable {
         addStrReplaceString("{ach}",ach+"");
         addStrReplaceString("{achCount}", Achievement.achievements.size()+"");
         addStrReplaceString("{name}",player.getName());
-        addStrReplaceString("{h}",player.getHealth()+"");
+        addStrReplaceString("{h}", BigDecimal.valueOf(player.getHealth()).setScale(2, RoundingMode.HALF_UP).doubleValue() + "");
         addStrReplaceString("{mh}",player.getMaxHealth()+"");
         addStrReplaceString("{damage}",player.getInventory().getItemInHand().getDamage()+"");
         addStrReplaceString("{id}",player.getInventory().getItemInHand().getId()+"");
