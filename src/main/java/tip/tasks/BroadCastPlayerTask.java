@@ -12,8 +12,8 @@ import java.util.LinkedHashMap;
  */
 public class BroadCastPlayerTask {
 
-    private Player player;
-    private LinkedHashMap<BaseMessage,MessageType> type = new LinkedHashMap<>();
+    private final Player player;
+    private final LinkedHashMap<BaseMessage, MessageType> type = new LinkedHashMap<>();
 
 
     public BroadCastPlayerTask(Player owner) {
@@ -21,43 +21,39 @@ public class BroadCastPlayerTask {
     }
 
     public void onRun() {
-        if(player == null || !player.isOnline()){
+        if (player == null || !player.isOnline()) {
             return;
         }
-        BaseMessage message;
-        message = Api.getSendPlayerMessage(player.getName(),player.level.getFolderName(),
-                BaseMessage.BaseTypes.BROADCAST);
-        if (message != null) {
-            if (message.isOpen()) {
-                if(!type.containsKey(message)){
-                    type.put(message,new MessageType());
-                }
-                MessageType m = type.get(message);
-                if (m.time == -1) {
-                    m.time = ((BroadcastMessage)message).getTime();
-                    m.key = true;
-                } else if (m.time <= 0) {
-                    m.i++;
-                    m.time = ((BroadcastMessage)message).getTime();
-                    m.key = true;
-                }
-                if (m.i >= ((BroadcastMessage)message).getMessages().size()) {
-                    m.i = 0;
-                }
-                if (m.key) {
-                    m.key = false;
-                    String text = ((BroadcastMessage)message).getMessages().get(m.i);
-                    player.sendMessage(Api.strReplace(text,player));
-                }
-                if (m.time > 0) {
-                    m.time--;
-                }
-                type.put(message,m);
+        BroadcastMessage message = (BroadcastMessage) Api.getSendPlayerMessage(player.getName(), player.level.getFolderName(), BaseMessage.BaseTypes.BROADCAST);
+        if (message != null && message.isOpen() && !message.getMessages().isEmpty()) {
+            if (!type.containsKey(message)) {
+                type.put(message, new MessageType());
             }
+            MessageType m = type.get(message);
+            if (m.time == -1) {
+                m.time = message.getTime();
+                m.key = true;
+            } else if (m.time <= 0) {
+                m.i++;
+                m.time = message.getTime();
+                m.key = true;
+            }
+            if (m.i >= message.getMessages().size()) {
+                m.i = 0;
+            }
+            if (m.key) {
+                m.key = false;
+                String text = message.getMessages().get(m.i);
+                player.sendMessage(Api.strReplace(text, player));
+            }
+            if (m.time > 0) {
+                m.time--;
+            }
+            type.put(message, m);
         }
     }
 
-    private class MessageType{
+    private static class MessageType {
         public int i = 0;
 
         public int time = -1;
