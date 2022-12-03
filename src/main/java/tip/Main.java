@@ -59,9 +59,9 @@ public class Main extends PluginBase implements Listener {
 
     private MessageManager showMessages = new MessageManager();
 
-    private ThemeManager themeManager = new ThemeManager();
+    private final ThemeManager themeManager = new ThemeManager();
 
-    public LinkedHashMap<Player, BossBarApi> apis = new LinkedHashMap<>();
+    public final LinkedHashMap<Player, BossBarApi> apis = new LinkedHashMap<>();
 
     private LinkedList<PlayerConfig> playerConfigs = new LinkedList<>();
 
@@ -77,6 +77,11 @@ public class Main extends PluginBase implements Listener {
 
     @Override
     public void onEnable() {
+        if (executor != null) {
+            executor.shutdown();
+        }
+        executor = Executors.newCachedThreadPool();
+
         if(Server.getInstance().getPluginManager().getPlugin("AutoUpData") != null){
             if(AutoData.defaultUpData(this,getFile(),"SmallasWater","Tips")){
                 return;
@@ -341,6 +346,7 @@ public class Main extends PluginBase implements Listener {
 
     @Override
     public void onDisable() {
+        //保存配置文件
         for(PlayerConfig config:playerConfigs){
             config.save();
         }
@@ -362,6 +368,15 @@ public class Main extends PluginBase implements Listener {
                 config.set(name, configs.get(name));
             }
             config.save();
+        }
+        //关闭不再使用的消息
+        if (executor != null) {
+            executor.shutdown();
+            executor = null;
+        }
+
+        for (Player player : new HashSet<>(this.apis.keySet())) {
+            BossBarApi.removeBossBar(player);
         }
     }
 

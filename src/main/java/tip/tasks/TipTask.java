@@ -14,26 +14,27 @@ import java.util.LinkedHashMap;
 public class TipTask extends BaseTipsRunnable {
 
 
-    private static LinkedHashMap<Player,SendPlayerClass> sendPlayerClassLinkedHashMap = new LinkedHashMap<>();
-    public TipTask(Main owner,int sleep) {
+    private static final LinkedHashMap<Player, SendPlayerClass> sendPlayerClassLinkedHashMap = new LinkedHashMap<>();
+
+    public TipTask(Main owner, int sleep) {
         super(owner);
         this.sleep = sleep * 50;
 
     }
-    private int sleep;
 
+    private int sleep;
 
 
     @Override
     public void run() {
-        while (true){
+        while (this.owner.isEnabled()) {
             for (Player player : Server.getInstance().getOnlinePlayers().values()) {
                 try {
-                    if(!sendPlayerClassLinkedHashMap.containsKey(player)){
-                        sendPlayerClassLinkedHashMap.put(player,new SendPlayerClass(player, getOwner()));
+                    if (!sendPlayerClassLinkedHashMap.containsKey(player)) {
+                        sendPlayerClassLinkedHashMap.put(player, new SendPlayerClass(player, getOwner()));
                     }
                     sendPlayerClassLinkedHashMap.get(player).init();
-                }catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -46,9 +47,6 @@ public class TipTask extends BaseTipsRunnable {
         }
 
     }
-
-
-
 
 
 }
