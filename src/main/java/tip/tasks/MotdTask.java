@@ -16,8 +16,18 @@ import java.util.Random;
  * Package tip.tasks
  */
 public class MotdTask extends BaseTipsRunnable {
+
+    private boolean hasServerInfoPlugin = false;
+
     public MotdTask(Main owner) {
         super(owner);
+
+        try {
+            Class.forName("ServerInfoMainClass");
+            this.hasServerInfoPlugin = true;
+        }catch (Exception ignored){
+
+        }
     }
 
     @Override
@@ -30,8 +40,7 @@ public class MotdTask extends BaseTipsRunnable {
             motd = motd.replace("{换行}", "\n");
             motd = motd.replace("{color}", strings[new Random().nextInt(strings.length)]);
             int maxOnline = 0;
-            try {
-                Class.forName("ServerInfoMainClass");
+            if (this.hasServerInfoPlugin) {
                 for (ServerInfo info : ServerInfoMainClass.getInstance().getServerInfos()) {
                     if (info.onLine()) {
                         maxOnline += info.getPlayer();
@@ -44,7 +53,6 @@ public class MotdTask extends BaseTipsRunnable {
 
                 }
                 motd = motd.replace("{ServerInfoPlayer}", maxOnline + "");
-            } catch (ClassNotFoundException ignore) {
             }
 
             owner.getServer().getNetwork().setName(TextFormat.colorize('&', motd));
