@@ -23,7 +23,7 @@ public class MotdTask extends BaseTipsRunnable {
         super(owner);
 
         try {
-            Class.forName("ServerInfoMainClass");
+            Class.forName("com.smallaswater.serverinfo.ServerInfoMainClass");
             this.hasServerInfoPlugin = true;
         }catch (Exception ignored){
 
