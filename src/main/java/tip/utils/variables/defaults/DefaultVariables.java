@@ -143,7 +143,11 @@ public class DefaultVariables extends BaseVariable {
         addStrReplaceString("{id}",displayId);
         addStrReplaceString("{food}",player.getFoodData().getLevel()+"");
         addStrReplaceString("{mfood}",player.getFoodData().getMaxLevel()+"");
-        addStrReplaceString("{money}", String.format("%.2f",EconomyAPI.getInstance().myMoney(player)));
+        try{
+            Class.forName("me.onebone.economyapi.EconomyAPI");
+            addStrReplaceString("{money}", String.format("%.2f",EconomyAPI.getInstance().myMoney(player)));
+        }catch (Exception ignore){}
+
 
     }
 
