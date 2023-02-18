@@ -5,9 +5,13 @@ import cn.nukkit.Achievement;
 import cn.nukkit.AdventureSettings;
 import cn.nukkit.Player;
 import cn.nukkit.Server;
+import cn.nukkit.item.Item;
+import me.onebone.economyapi.EconomyAPI;
 import tip.Main;
 import tip.utils.variables.BaseVariable;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.*;
@@ -55,6 +59,7 @@ public class DefaultVariables extends BaseVariable {
         }
 
         addStrReplaceString("{tps}",Server.getInstance().getTicksPerSecond()+"");
+
     }
 
     private void configString(){
@@ -99,7 +104,7 @@ public class DefaultVariables extends BaseVariable {
         addStrReplaceString("{fly}", f);
     }
 
-    private void defaultString(){
+    private void defaultString() {
         String[] strings = new String[]{"§c","§6","§e","§a","§b","§9","§d","§7","§5"};
         addStrReplaceString("{online}",Server.getInstance().getOnlinePlayers().size()+"");
         addStrReplaceString("{maxplayer}",Server.getInstance().getMaxPlayers()+"");
@@ -120,9 +125,25 @@ public class DefaultVariables extends BaseVariable {
         addStrReplaceString("{h}", BigDecimal.valueOf(player.getHealth()).setScale(2, RoundingMode.HALF_UP).doubleValue() + "");
         addStrReplaceString("{mh}",player.getMaxHealth()+"");
         addStrReplaceString("{damage}",player.getInventory().getItemInHand().getDamage()+"");
-        addStrReplaceString("{id}",player.getInventory().getItemInHand().getId()+"");
+        //兼容新版的 字符串ID
+        int id = player.getInventory().getItemInHand().getId();
+        String displayId = id+"";
+        if(id == 255){
+            //字符串ID
+            Item item = player.getInventory().getItemInHand();
+            //保证能编译通过
+            Class<? extends Item> itemClass = item.getClass();
+            try {
+                Method m = itemClass.getMethod("getNamespaceId");
+                displayId = (String) m.invoke(item);
+            } catch (Exception ignore) {}
+
+        }
+
+        addStrReplaceString("{id}",displayId);
         addStrReplaceString("{food}",player.getFoodData().getLevel()+"");
         addStrReplaceString("{mfood}",player.getFoodData().getMaxLevel()+"");
+        addStrReplaceString("{money}", String.format("%.2f",EconomyAPI.getInstance().myMoney(player)));
 
     }
 
