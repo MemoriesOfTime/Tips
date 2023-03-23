@@ -29,6 +29,8 @@
 {achCount}: 玩家成就总数
 {color} : 随机字符颜色
 
+以下变量使用还需要配合Tips变量扩展插件！
+
 安装 LevelAwakenSystem （等级插件）可显示 变量
 {属性}     : 玩家的RPG属性
 {天赋}     : 玩家评分

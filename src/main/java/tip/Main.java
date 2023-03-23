@@ -8,7 +8,6 @@ import cn.nukkit.event.Listener;
 import cn.nukkit.plugin.PluginBase;
 import cn.nukkit.utils.BossBarColor;
 import cn.nukkit.utils.Config;
-import de.theamychan.scoreboard.network.Scoreboard;
 import tip.bossbar.BossBarApi;
 import tip.commands.TipsCommand;
 import tip.lib.viewcompass.ViewCompassVariable;
@@ -22,10 +21,7 @@ import tip.messages.defaults.ScoreBoardMessage;
 import tip.messages.defaults.TipMessage;
 import tip.tasks.*;
 
-import tip.utils.Api;
-import tip.utils.OnListener;
-import tip.utils.PlayerConfig;
-import tip.utils.ThemeManager;
+import tip.utils.*;
 import tip.utils.variables.VariableManager;
 import tip.utils.variables.defaults.DefaultVariables;
 import tip.windows.ListenerWindow;
@@ -53,7 +49,7 @@ public class Main extends PluginBase implements Listener {
 
 
     private VariableManager varManager;
-    public Map<Player, Scoreboard> scoreboards = new HashMap<>();
+    public Set<Player> scoreboards = new HashSet<>();
 
     public LinkedHashMap<Player,BossBarTask> tasks = new LinkedHashMap<>();
 
@@ -82,8 +78,8 @@ public class Main extends PluginBase implements Listener {
         }
         executor = Executors.newCachedThreadPool();
 
-        if(Server.getInstance().getPluginManager().getPlugin("AutoUpData") != null){
-            if(AutoData.defaultUpData(this,getFile(),"SmallasWater","Tips")){
+        if(Server.getInstance().getPluginManager().getPlugin("AutoUpData") != null) {
+            if(AutoData.defaultUpData(this,getFile(),"SmallasWater","Tips")) {
                 return;
             }
         }
@@ -97,13 +93,11 @@ public class Main extends PluginBase implements Listener {
         this.getServer().getPluginManager().registerEvents(new OnListener(),this);
         this.getServer().getPluginManager().registerEvents(new ListenerWindow(),this);
 
-        try {
-            Class.forName("de.theamychan.scoreboard.api.ScoreboardAPI");
-            Main.getInstance().getLogger().info("检测到 ScoreboardAPI 成功开启计分板功能");
+        if (GameCoreDownload.checkAndDownload() == 1) {
+            this.getLogger().error("MemoriesOfTime-GameCore依赖 下载失败，无法使用计分板功能！");
+        } else {
+            Main.getInstance().getLogger().info("检测到 MemoriesOfTime-GameCore 成功开启计分板功能");
             scoreboard = true;
-
-        } catch (Exception e) {
-            Main.getInstance().getLogger().info("未检测到计分板API 无法使用计分板功能");
         }
         AddPlayerTask.add(new TipTask(Main.getInstance(),Main.getInstance().getConfig().getInt("自定义刷新刻度.底部",20)));
 
@@ -132,14 +126,11 @@ public class Main extends PluginBase implements Listener {
     public void init(){
         this.saveDefaultConfig();
         this.reloadConfig();
-        theme = getConfig().getString("默认样式","default");
-        getLogger().info("当前样式为: "+theme);
         tasks = new LinkedHashMap<>();
         showMessages = new MessageManager();
-        this.getLogger().info("加载成功");
-        if(!new File(this.getDataFolder()+"/Tips变量.txt").exists()){
-            this.saveResource("Tips变量.txt","/Tips变量.txt",true);
-        }
+
+        this.saveResource("Tips变量.txt","/Tips变量.txt",true); //每次加载时写入，保证是最新的
+
         if(!new File(this.getDataFolder()+"/theme").exists()){
             if(!new File(this.getDataFolder()+"/theme").mkdirs()){
                 getLogger().info("创建 theme 文件夹失败");
@@ -160,12 +151,14 @@ public class Main extends PluginBase implements Listener {
         }
         //加载风格
         loadTheme();
+        theme = getConfig().getString("默认样式","default");
+        getLogger().info("当前样式已设置为: "+theme);
 
         showMessages.addAll(getManagerByConfig(getLevelMessage()));
         //开始加载Message
         playerConfigs = new LinkedList<>();
-        // 初始化注册类
 
+        this.getLogger().info("插件加载完成~");
     }
 
     public void loadPlayerConfig(Player player){
