@@ -1,4 +1,4 @@
-版本: v2.0.0
+版本: v2.1.6
 
 变量 & 介绍:
 基础变量:
@@ -6,12 +6,14 @@
 {h}        : 玩家血量
 {mh}       : 玩家血量上限
 {id}       : 玩家手持物品ID
-{money}    : 玩家金钱数量 (EconomyAPI)
 {damage}   : 玩家手持物品的特殊值
+{money}    : 玩家金钱数量 (EconomyAPI)
+{ms}       : 玩家的延迟
+{levelName}: 玩家当前地图名称
+{deviceOS} : 玩家设备系统
 {online}   : 在线玩家数量
 {maxplayer}: 服务器最大人数上限
-{ms}       : 玩家的延迟
-{levelName}:  玩家当前地图名称
+
 {年}:  当前时间 年
 {月}:  当前时间 月
 {日}:  当前时间 日
@@ -123,15 +125,8 @@
 {zw} 玩家公会职位
 
 安装MarryN 插件可显示
-
 {marry}  结婚
 {sex} 性别
-
-安装 MurderMystery 插件可显示
-%MurderRoomMode%:    房间状态
-%MurderPlayerMode%:   当前身份
-%MurderTime%:   剩余时间
-%MurderSurvivorNumber%:  存活人数
 
 安装 ZSociety 可显示
 ${societyGrade} 公会等级

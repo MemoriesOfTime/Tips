@@ -5,5 +5,6 @@ package tip.utils.variables.utils;
  * Create on 2020/12/28 19:09
  * Package tip.utils.variables.utils
  */
+@Deprecated
 public class Variable {
 }

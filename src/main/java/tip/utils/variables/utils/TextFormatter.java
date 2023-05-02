@@ -5,5 +5,6 @@ package tip.utils.variables.utils;
  * Create on 2020/12/28 19:10
  * Package tip.utils.variables.utils
  */
+@Deprecated
 public class TextFormatter {
 }

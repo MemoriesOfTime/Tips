@@ -25,7 +25,6 @@ public class DefaultVariables extends BaseVariable {
 
     public DefaultVariables(Player player) {
         super(player);
-
     }
 
     @Override
@@ -35,34 +34,33 @@ public class DefaultVariables extends BaseVariable {
             configString();
         }
         defaultString();
-
     }
 
-    private void time(){
+    private void time() {
         Calendar now = Calendar.getInstance();
         TimeZone timeZone = TimeZone.getTimeZone("GMT+8");
         now.setTimeZone(timeZone);
         now.setTime(new Date());
-        addStrReplaceString("{年}",now.get(Calendar.YEAR)+"");
-        addStrReplaceString("{月}",(now.get(Calendar.MONTH) + 1)+"");
-        addStrReplaceString("{日}",now.get(Calendar.DAY_OF_MONTH) +"");
-        addStrReplaceString("{时}",(now.get(Calendar.HOUR_OF_DAY)) +"");
-        addStrReplaceString("{分}",now.get(Calendar.MINUTE) +"");
-        addStrReplaceString("{秒}",now.get(Calendar.SECOND) +"");
-        addStrReplaceString("{星期}",now.get(Calendar.WEEK_OF_MONTH) +"");
-        if(player != null){
+        addStrReplaceString("{年}", String.valueOf(now.get(Calendar.YEAR)));
+        addStrReplaceString("{月}", String.valueOf(now.get(Calendar.MONTH) + 1));
+        addStrReplaceString("{日}", String.valueOf(now.get(Calendar.DAY_OF_MONTH)));
+        addStrReplaceString("{时}", String.valueOf(now.get(Calendar.HOUR_OF_DAY)));
+        addStrReplaceString("{分}", String.valueOf(now.get(Calendar.MINUTE)));
+        addStrReplaceString("{秒}", String.valueOf(now.get(Calendar.SECOND)));
+        addStrReplaceString("{星期}", String.valueOf(now.get(Calendar.WEEK_OF_MONTH)));
+        if(player != null) {
             addStrReplaceString("{ms}",player.getPing()+"ms");
             addStrReplaceString("{levelName}",player.getLevel().getFolderName());
-            addStrReplaceString("{x}",Math.round(player.getX())+"");
-            addStrReplaceString("{y}",Math.round(player.getY())+"");
-            addStrReplaceString("{z}",Math.round(player.getZ())+"");
+            addStrReplaceString("{x}", String.valueOf(Math.round(player.getX())));
+            addStrReplaceString("{y}", String.valueOf(Math.round(player.getY())));
+            addStrReplaceString("{z}", String.valueOf(Math.round(player.getZ())));
         }
 
-        addStrReplaceString("{tps}",Server.getInstance().getTicksPerSecond()+"");
+        addStrReplaceString("{tps}", String.valueOf(Server.getInstance().getTicksPerSecond()));
 
     }
 
-    private void configString(){
+    private void configString() {
         Map op = Main.getInstance().getConfig().get("变量显示.玩家权限", new LinkedHashMap<String, String>() {
             {
                 put("op", "§c[§e管理员§c]§f");
@@ -83,8 +81,8 @@ public class DefaultVariables extends BaseVariable {
             }
         });
         String m = (String) mode.get("0");
-        if (mode.containsKey(player.getGamemode()+"")) {
-            m = (String) mode.get(player.getGamemode()+"");
+        if (mode.containsKey(String.valueOf(player.getGamemode()))) {
+            m = (String) mode.get(String.valueOf(player.getGamemode()));
         }
         addStrReplaceString("{gm}", m);
         Map fly = Main.getInstance().getConfig().get("变量显示.飞行", new LinkedHashMap<String, String>() {
@@ -98,37 +96,35 @@ public class DefaultVariables extends BaseVariable {
         if (player.getAdventureSettings().get(AdventureSettings.Type.ALLOW_FLIGHT)) {
             i = 0;
         }
-        if (fly.containsKey(i+"")) {
-            f = (String) fly.get(i+"");
+        if (fly.containsKey(String.valueOf(i))) {
+            f = (String) fly.get(String.valueOf(i));
         }
         addStrReplaceString("{fly}", f);
     }
 
     private void defaultString() {
         String[] strings = new String[]{"§c","§6","§e","§a","§b","§9","§d","§7","§5"};
-        addStrReplaceString("{online}",Server.getInstance().getOnlinePlayers().size()+"");
-        addStrReplaceString("{maxplayer}",Server.getInstance().getMaxPlayers()+"");
-        addStrReplaceString("{换行}","\n");
-        addStrReplaceString("{color}",strings[new Random().nextInt(strings.length)]);
+        addStrReplaceString("{online}", String.valueOf(Server.getInstance().getOnlinePlayers().size()));
+        addStrReplaceString("{maxplayer}", String.valueOf(Server.getInstance().getMaxPlayers()));
+        addStrReplaceString("{换行}", "\n");
+        addStrReplaceString("{color}", strings[new Random().nextInt(strings.length)]);
         Optional<Player> playerOptional = Optional.ofNullable(player);
         if(!playerOptional.isPresent()){
             return;
         }
         Player player = playerOptional.get();
-        if(!playerOptional.get().isOnline()){
+        if(!player.isOnline()){
             return;
         }
-        int ach = player.achievements.size();
-        addStrReplaceString("{ach}",ach+"");
-        addStrReplaceString("{achCount}", Achievement.achievements.size()+"");
+        addStrReplaceString("{ach}", String.valueOf(player.achievements.size()));
+        addStrReplaceString("{achCount}", String.valueOf(Achievement.achievements.size()));
         addStrReplaceString("{name}",player.getName());
-        addStrReplaceString("{h}", BigDecimal.valueOf(player.getHealth()).setScale(2, RoundingMode.HALF_UP).doubleValue() + "");
-        addStrReplaceString("{mh}",player.getMaxHealth()+"");
-        addStrReplaceString("{damage}",player.getInventory().getItemInHand().getDamage()+"");
-        //兼容新版的 字符串ID
+        addStrReplaceString("{h}", String.valueOf(BigDecimal.valueOf(player.getHealth()).setScale(2, RoundingMode.HALF_UP).doubleValue()));
+        addStrReplaceString("{mh}", String.valueOf(player.getMaxHealth()));
+        addStrReplaceString("{damage}", String.valueOf(player.getInventory().getItemInHand().getDamage()));
         int id = player.getInventory().getItemInHand().getId();
-        String displayId = id+"";
-        if(id == 255){
+        String displayId = String.valueOf(id);
+        if(id == 255) {//兼容PN/PNX字符串ID
             //字符串ID
             Item item = player.getInventory().getItemInHand();
             //保证能编译通过
@@ -137,18 +133,38 @@ public class DefaultVariables extends BaseVariable {
                 Method m = itemClass.getMethod("getNamespaceId");
                 displayId = (String) m.invoke(item);
             } catch (Exception ignore) {}
-
         }
 
-        addStrReplaceString("{id}",displayId);
-        addStrReplaceString("{food}",player.getFoodData().getLevel()+"");
-        addStrReplaceString("{mfood}",player.getFoodData().getMaxLevel()+"");
+        addStrReplaceString("{id}", displayId);
+        addStrReplaceString("{food}", String.valueOf(player.getFoodData().getLevel()));
+        addStrReplaceString("{mfood}", String.valueOf(player.getFoodData().getMaxLevel()));
         try{
             Class.forName("me.onebone.economyapi.EconomyAPI");
             addStrReplaceString("{money}", String.format("%.2f",EconomyAPI.getInstance().myMoney(player)));
         }catch (Exception ignore){}
 
+        addStrReplaceString("{deviceOS}", this.mapDeviceOSToString(player.getLoginChainData().getDeviceOS()));
 
+    }
+
+    private String mapDeviceOSToString(int os) {
+        switch (os) {
+            case 1: return "Android";
+            case 2: return "iOS";
+            case 3: return "macOS";
+            case 4: return "Fire OS";
+            case 5: return "Gear VR";
+            case 6: return "HoloLens";
+            case 7: return "Windows 10";
+            case 8: return "Windows";
+            case 9: return "Dedicated";
+            case 10: return "tvOS";
+            case 11: return "PlayStation";
+            case 12: return "Switch";
+            case 13: return "Xbox";
+            case 14: return "Windows Phone";
+        }
+        return "Unknown";
     }
 
 

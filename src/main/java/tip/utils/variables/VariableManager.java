@@ -28,7 +28,7 @@ public final class VariableManager {
 
     private LinkedList<BaseVariable> variablesClass = new LinkedList<>();
 
-    public final synchronized String toMessage(Player player,String msg){
+    public synchronized String toMessage(Player player, String msg){
         String message = msg;
         if(message == null){
             return "";
