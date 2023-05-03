@@ -5,10 +5,10 @@ import tip.utils.variables.BaseVariable;
 
 /**
  * 本类引用 @PetteriM1 作者 的ViewCompass 方法
+ *
  * @author from PetteriM1
- * */
+ */
 public class ViewCompassVariable extends BaseVariable {
-
 
     private static final String[] COMPASS = new String[36];
 
@@ -16,7 +16,8 @@ public class ViewCompassVariable extends BaseVariable {
         super(player);
         init();
     }
-    private void init(){
+
+    private void init() {
         COMPASS[0] = "\u00A77|  |  |  |  |  \u00A7l\u00A71南\u00A7r\u00A77  |  |  |  |  |";
         COMPASS[1] = "\u00A77|  |  |  |  \u00A7l\u00A71南\u00A7r\u00A77  |  |  |  |  |  |";
         COMPASS[2] = "\u00A77|  |  |  \u00A7l\u00A71南\u00A7r\u00A77  |  |  |  |  \u00A7l\u00A7f西南\u00A7r\u00A77  |  |";
@@ -63,6 +64,9 @@ public class ViewCompassVariable extends BaseVariable {
 
     @Override
     public void strReplace() {
-        addStrReplaceString("{view}",getCompass(player.getYaw()));
+        if (player == null || !player.isOnline()) {
+            return;
+        }
+        addStrReplaceString("{view}", getCompass(player.getYaw()));
     }
 }
