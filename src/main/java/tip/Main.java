@@ -101,6 +101,7 @@ public class Main extends PluginBase implements Listener {
         }
         AddPlayerTask.add(new TipTask(Main.getInstance(),Main.getInstance().getConfig().getInt("自定义刷新刻度.底部",20)));
 
+        this.getLogger().info("插件加载完成~");
     }
 
     public String getMotd() {
@@ -157,8 +158,6 @@ public class Main extends PluginBase implements Listener {
         showMessages.addAll(getManagerByConfig(getLevelMessage()));
         //开始加载Message
         playerConfigs = new LinkedList<>();
-
-        this.getLogger().info("插件加载完成~");
     }
 
     public void loadPlayerConfig(Player player){
