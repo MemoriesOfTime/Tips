@@ -134,7 +134,7 @@ public class Main extends PluginBase implements Listener {
 
         if(!new File(this.getDataFolder()+"/theme").exists()){
             if(!new File(this.getDataFolder()+"/theme").mkdirs()){
-                getLogger().info("创建 theme 文件夹失败");
+                getLogger().error("创建 theme 文件夹失败");
             }
             if(!new File(this.getDataFolder()+"/theme/easy.yml").exists()){
                 this.saveResource("theme/easy.yml","/theme/easy.yml",false);
@@ -147,7 +147,7 @@ public class Main extends PluginBase implements Listener {
 
         if(!new File(this.getDataFolder()+"/Players").exists()){
             if(!new File(this.getDataFolder()+"/Players").mkdirs()){
-                this.getLogger().info("玩家文件夹创建失败");
+                this.getLogger().error("玩家文件夹创建失败");
             }
         }
         //加载风格
@@ -211,9 +211,9 @@ public class Main extends PluginBase implements Listener {
         this.varManager = varManager;
     }
 
-    public PlayerConfig getPlayerConfig(String playerName){
-        for(PlayerConfig config:playerConfigs){
-            if(config.getPlayerName().equalsIgnoreCase(playerName)){
+    public PlayerConfig getPlayerConfig(String playerName) {
+        for(PlayerConfig config:playerConfigs) {
+            if(config.getPlayerName().equalsIgnoreCase(playerName)) {
                 return config;
             }
         }

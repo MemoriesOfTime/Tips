@@ -71,8 +71,7 @@ public class OnListener implements Listener {
                 return;
             }
             if (!"".equals(s)) {
-                Api api = new Api(s, player);
-                String send = api.strReplace().replace("{msg}", msg);
+                String send = Api.strReplace(s, player).replace("{msg}", msg);
                 if(message.isInWorld()){
                     for(Player player1:player.getLevel().getPlayers().values()){
                         player1.sendMessage(send);
