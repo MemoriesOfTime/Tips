@@ -10,11 +10,11 @@ import me.onebone.economyapi.EconomyAPI;
 import tip.Main;
 import tip.utils.variables.BaseVariable;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * 默认变量
@@ -107,7 +107,7 @@ public class DefaultVariables extends BaseVariable {
         addStrReplaceString("{online}", String.valueOf(Server.getInstance().getOnlinePlayers().size()));
         addStrReplaceString("{maxplayer}", String.valueOf(Server.getInstance().getMaxPlayers()));
         addStrReplaceString("{换行}", "\n");
-        addStrReplaceString("{color}", strings[new Random().nextInt(strings.length)]);
+        addStrReplaceString("{color}", strings[ThreadLocalRandom.current().nextInt(strings.length)]);
         Optional<Player> playerOptional = Optional.ofNullable(player);
         if(!playerOptional.isPresent()){
             return;

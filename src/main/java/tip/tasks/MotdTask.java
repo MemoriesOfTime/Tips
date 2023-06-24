@@ -8,6 +8,7 @@ import com.smallaswater.serverinfo.servers.ServerInfo;
 import tip.Main;
 
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 
 /**
@@ -38,14 +39,14 @@ public class MotdTask extends BaseTipsRunnable {
             motd = motd.replace("{online}", Server.getInstance().getOnlinePlayers().size() + "");
             motd = motd.replace("{maxplayer}", Server.getInstance().getMaxPlayers() + "");
             motd = motd.replace("{换行}", "\n");
-            motd = motd.replace("{color}", strings[new Random().nextInt(strings.length)]);
+            motd = motd.replace("{color}", strings[ThreadLocalRandom.current().nextInt(strings.length)]);
             int maxOnline = 0;
             if (this.hasServerInfoPlugin) {
                 for (ServerInfo info : ServerInfoMainClass.getInstance().getServerInfos()) {
                     if (info.onLine()) {
                         maxOnline += info.getPlayer();
-                        motd = motd.replace("{ServerInfoPlayer@" + info.getCallback() + "}", info.getPlayer() + "");
-                        motd = motd.replace("{ServerInfoMaxPlayer@" + info.getCallback() + "}", info.getMaxPlayer() + "");
+                        motd = motd.replace("{ServerInfoPlayer@" + info.getCallback() + "}", String.valueOf(info.getPlayer()));
+                        motd = motd.replace("{ServerInfoMaxPlayer@" + info.getCallback() + "}", String.valueOf(info.getMaxPlayer()));
                     } else {
                         motd = motd.replace("{ServerInfoPlayer@" + info.getCallback() + "}", "服务器离线");
                         motd = motd.replace("{ServerInfoMaxPlayer@" + info.getCallback() + "}", "服务器离线");
