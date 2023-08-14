@@ -1,6 +1,7 @@
 package tip.utils.variables;
 
 import cn.nukkit.Player;
+import tip.Main;
 
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
@@ -34,10 +35,14 @@ public final class VariableManager {
             return "";
         }
         for (BaseVariable variable : variablesClass) {
-            variable.player = player;
-            variable.string = msg;
-            variable.strReplace();
-            variables.putAll(variable.getVar());
+            try {
+                variable.player = player;
+                variable.string = msg;
+                variable.strReplace();
+                variables.putAll(variable.getVar());
+            } catch (Exception e) {
+                Main.getInstance().getLogger().error("VariablesClass: " + variable.getClass().getName() + " Error executing strReplace() method!", e);
+            }
         }
         variables.putAll(otherVariables);
 
