@@ -22,9 +22,7 @@ public class NameTagTask {
         if(player == null || !player.isOnline()){
             return;
         }
-        NameTagMessage nameTagMessage;
-        nameTagMessage = (NameTagMessage) Api.getSendPlayerMessage(player.getName(),player.level.getFolderName(),
-                BaseMessage.BaseTypes.NAME_TAG);
+        NameTagMessage nameTagMessage = (NameTagMessage) Api.getSendPlayerMessage(player.getName(),player.level.getFolderName(), BaseMessage.BaseTypes.NAME_TAG);
         if (nameTagMessage != null) {
             if (nameTagMessage.isOpen()) {
                 player.setNameTag(Api.strReplace(nameTagMessage.getMessage(),player));

@@ -103,28 +103,28 @@ public class DefaultVariables extends BaseVariable {
     }
 
     private void defaultString() {
-        String[] strings = new String[]{"§c","§6","§e","§a","§b","§9","§d","§7","§5"};
+        String[] strings = new String[]{"§c", "§6", "§e", "§a", "§b", "§9", "§d", "§7", "§5"};
         addStrReplaceString("{online}", String.valueOf(Server.getInstance().getOnlinePlayers().size()));
         addStrReplaceString("{maxplayer}", String.valueOf(Server.getInstance().getMaxPlayers()));
         addStrReplaceString("{换行}", "\n");
         addStrReplaceString("{color}", strings[ThreadLocalRandom.current().nextInt(strings.length)]);
         Optional<Player> playerOptional = Optional.ofNullable(player);
-        if(!playerOptional.isPresent()){
+        if (!playerOptional.isPresent()) {
             return;
         }
         Player player = playerOptional.get();
-        if(!player.isOnline()){
+        if (!player.isOnline()) {
             return;
         }
         addStrReplaceString("{ach}", String.valueOf(player.achievements.size()));
         addStrReplaceString("{achCount}", String.valueOf(Achievement.achievements.size()));
-        addStrReplaceString("{name}",player.getName());
+        addStrReplaceString("{name}", player.getName());
         addStrReplaceString("{h}", String.valueOf(BigDecimal.valueOf(player.getHealth()).setScale(2, RoundingMode.HALF_UP).doubleValue()));
         addStrReplaceString("{mh}", String.valueOf(player.getMaxHealth()));
         addStrReplaceString("{damage}", String.valueOf(player.getInventory().getItemInHand().getDamage()));
         int id = player.getInventory().getItemInHand().getId();
         String displayId = String.valueOf(id);
-        if(id == 255) {//兼容PN/PNX字符串ID
+        if (id == 255) {//兼容PN/PNX字符串ID
             //字符串ID
             Item item = player.getInventory().getItemInHand();
             //保证能编译通过
@@ -132,19 +132,21 @@ public class DefaultVariables extends BaseVariable {
             try {
                 Method m = itemClass.getMethod("getNamespaceId");
                 displayId = (String) m.invoke(item);
-            } catch (Exception ignore) {}
+            } catch (Exception ignore) {
+            }
         }
 
         addStrReplaceString("{id}", displayId);
         addStrReplaceString("{food}", String.valueOf(player.getFoodData().getLevel()));
         addStrReplaceString("{mfood}", String.valueOf(player.getFoodData().getMaxLevel()));
-        try{
+        try {
             Class.forName("me.onebone.economyapi.EconomyAPI");
-            addStrReplaceString("{money}", String.format("%.2f",EconomyAPI.getInstance().myMoney(player)));
-        }catch (Exception ignore){}
+            addStrReplaceString("{money}", String.format("%.2f", EconomyAPI.getInstance().myMoney(player)));
+        } catch (Exception ignore) {
+        }
 
         addStrReplaceString("{deviceOS}", this.mapDeviceOSToString(player.getLoginChainData().getDeviceOS()));
-
+        addStrReplaceString("{playerVersion}", player.getLoginChainData().getGameVersion());
     }
 
     private String mapDeviceOSToString(int os) {
