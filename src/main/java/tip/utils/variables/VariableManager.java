@@ -40,7 +40,7 @@ public final class VariableManager {
                 variable.string = msg;
                 variable.strReplace();
                 variables.putAll(variable.getVar());
-            } catch (Exception e) {
+            } catch (Throwable e) {
                 Main.getInstance().getLogger().error("VariablesClass: " + variable.getClass().getName() + " Error executing strReplace() method!", e);
             }
         }
