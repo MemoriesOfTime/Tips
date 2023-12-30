@@ -9,6 +9,7 @@ import cn.nukkit.event.player.*;
 import cn.nukkit.scheduler.AsyncTask;
 import cn.nukkit.utils.Config;
 import tip.Main;
+import tip.bossbar.BossBarApi;
 import tip.messages.BaseMessage;
 import tip.messages.defaults.ChatMessage;
 import tip.messages.defaults.MessageManager;
@@ -36,7 +37,11 @@ public class OnListener implements Listener {
             config.save();
             Main.getInstance().getPlayerConfigs().remove(config);
         }
+    }
 
+    @EventHandler
+    public void onPlayerRespawn(PlayerRespawnEvent event) {
+        BossBarApi.removeBossBar(event.getPlayer());
     }
 
     private String getBadWorld(String msg,List badWords){
