@@ -6,7 +6,7 @@
 
     <groupId>com.smallaswater.tips</groupId>
     <artifactId>Tips</artifactId>
-    <version>2.1.9-SNAPSHOT</version>
+    <version>2.1.9<!-- -SNAPSHOT--></version>
 
 
     <properties>
