@@ -78,10 +78,14 @@ public class Main extends PluginBase implements Listener {
         }
         executor = Executors.newCachedThreadPool();
 
-        if(Server.getInstance().getPluginManager().getPlugin("AutoUpData") != null) {
-            if(AutoData.defaultUpData(this,getFile(),"SmallasWater","Tips")) {
-                return;
+        try {
+            if (Server.getInstance().getPluginManager().getPlugin("AutoUpData") != null) {
+                if (AutoData.defaultUpDataByMaven(this, this.getFile(), "com.smallaswater.tips", "Tips", null)) {
+                    return;
+                }
             }
+        } catch (Throwable e) {
+            this.getLogger().warning("插件自动更新失败！请检查AutoUpData前置插件！");
         }
         init();
 
