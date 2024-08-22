@@ -31,10 +31,10 @@ public class ASMTemplateCompiler {
 
     private static Function<Map<String, String>, String> createTemplateFunction(String template) {
         try {
-            String className = "GeneratedTemplate_" + template.hashCode();
+            String className = "Tips_GeneratedTemplate_" + template.hashCode();
 
             ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_FRAMES | ClassWriter.COMPUTE_MAXS);
-            cw.visit(V17, ACC_PUBLIC, className, null, "java/lang/Object", new String[]{Function.class.getName().replace('.', '/')});
+            cw.visit(V1_8, ACC_PUBLIC, className, null, "java/lang/Object", new String[]{Function.class.getName().replace('.', '/')});
 
             // 生成默认构造函数
             MethodVisitor mv = cw.visitMethod(ACC_PUBLIC, "<init>", "()V", null, null);
@@ -53,7 +53,7 @@ public class ASMTemplateCompiler {
             mv.visitTypeInsn(NEW, "java/lang/StringBuilder");
             mv.visitInsn(DUP);
             mv.visitMethodInsn(INVOKESPECIAL, "java/lang/StringBuilder", "<init>", "()V", false);
-// 解析模板并生成字节码
+
             int lastIndex = 0;
             java.util.regex.Matcher matcher = variablePattern.matcher(template);
 

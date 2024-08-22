@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.smallaswater.tips</groupId>
   <artifactId>Tips</artifactId>
-  <version>2.1.9-Beta1</version>
+  <version>2.1.9-Beta2</version>
   <build>
     <plugins>
       <plugin>
@@ -176,9 +176,9 @@
   </distributionManagement>
   <properties>
     <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
-    <maven.compiler.target>17</maven.compiler.target>
+    <maven.compiler.target>1.8</maven.compiler.target>
     <lib.GameCore.version>1.6.9</lib.GameCore.version>
-    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.source>1.8</maven.compiler.source>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <nukkitPluginsPath>C:\BedrockServer\MOT\plugins</nukkitPluginsPath>
