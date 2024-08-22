@@ -5,7 +5,8 @@ import tip.Main;
 
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
-import java.util.Map;
+
+import static tip.utils.variables.ASMTemplateCompiler.compile;
 
 /**
  * @author SmallasWater
@@ -30,8 +31,7 @@ public final class VariableManager {
     private final LinkedHashMap<String, String> variables = new LinkedHashMap<>();
 
     public synchronized String toMessage(Player player, String msg) {
-        String message = msg;
-        if (message == null) {
+        if (msg == null) {
             return "";
         }
         for (BaseVariable variable : variablesClass) {
@@ -46,14 +46,7 @@ public final class VariableManager {
         }
         variables.putAll(otherVariables);
 
-        for (Map.Entry<String, String> entry : variables.entrySet()) {
-            if (entry.getKey() == null || entry.getValue() == null) {
-                continue;
-            }
-            message = message.replace(entry.getKey(), entry.getValue());
-        }
-
-        return message;
+        return compile(msg).strReplace(variables);
     }
 
 }
