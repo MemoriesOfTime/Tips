@@ -72,6 +72,12 @@
         </dependency>
 
         <dependency>
+            <groupId>org.ow2.asm</groupId>
+            <artifactId>asm</artifactId>
+            <version>9.7</version>
+        </dependency>
+
+        <dependency>
             <groupId>cn.lanink</groupId>
             <artifactId>MemoriesOfTime-GameCore</artifactId>
             <version>${lib.GameCore.version}</version>
@@ -143,6 +149,29 @@
                                     <value>MINIMUM_GAME_CORE_VERSION = "${lib.GameCore.version}"</value>
                                 </replacement>
                             </replacements>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.4</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <minimizeJar>false</minimizeJar>
+                            <artifactSet>
+                                <includes>
+                                    <include>org.ow2.asm:asm</include>
+                                    <!-- 其他依赖也可以添加在这里 -->
+                                </includes>
+                            </artifactSet>
                         </configuration>
                     </execution>
                 </executions>
