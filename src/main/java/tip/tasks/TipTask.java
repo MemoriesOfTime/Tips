@@ -4,9 +4,7 @@ import cn.nukkit.Player;
 import cn.nukkit.Server;
 import tip.Main;
 import tip.utils.SendPlayerClass;
-
 import java.util.LinkedHashMap;
-
 
 /**
  * @author 若水
@@ -45,8 +43,5 @@ public class TipTask extends BaseTipsRunnable {
                 return;
             }
         }
-
     }
-
-
 }
