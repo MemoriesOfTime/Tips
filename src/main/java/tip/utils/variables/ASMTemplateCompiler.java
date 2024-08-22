@@ -33,9 +33,8 @@ public class ASMTemplateCompiler {
         try {
             String className = "GeneratedTemplate_" + template.hashCode();
 
-            // 使用 TraceClassVisitor 来输出生成的字节码
             ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_FRAMES | ClassWriter.COMPUTE_MAXS);
-            cw.visit(V1_8, ACC_PUBLIC, className, null, "java/lang/Object", new String[]{Function.class.getName().replace('.', '/')});
+            cw.visit(V17, ACC_PUBLIC, className, null, "java/lang/Object", new String[]{Function.class.getName().replace('.', '/')});
 
             // 生成默认构造函数
             MethodVisitor mv = cw.visitMethod(ACC_PUBLIC, "<init>", "()V", null, null);
