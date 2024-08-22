@@ -47,7 +47,7 @@ public final class VariableManager {
         }
         variables.putAll(otherVariables);
 
-        return compile(message).apply(variables);
+        return compile(message).strReplace(variables);
     }
 
 }

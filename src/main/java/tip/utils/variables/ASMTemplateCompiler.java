@@ -2,8 +2,6 @@ package tip.utils.variables;
 
 import org.objectweb.asm.*;
 
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.MethodType;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
@@ -12,17 +10,30 @@ import java.util.regex.Pattern;
 import static org.objectweb.asm.Opcodes.*;
 
 public class ASMTemplateCompiler {
-    private static final Pattern variablePattern = Pattern.compile("\\{([^}]+)\\}");
+    private static final Pattern variablePattern = Pattern.compile("\\{([^}]+)}");
 
     private static final Map<String, Function<Map<String, String>, String>> templateCache = new ConcurrentHashMap<>();
 
-    public static Function<Map<String, String>, String> compile(String template) {
-        return templateCache.computeIfAbsent(template, ASMTemplateCompiler::createTemplateFunction);
+    private Function<Map<String, String>, String> templateFunc;
+
+    public ASMTemplateCompiler(String template) {
+        templateFunc = templateCache.computeIfAbsent(template, ASMTemplateCompiler::createTemplateFunction);
+    }
+
+    public static ASMTemplateCompiler compile(String template) {
+        return new ASMTemplateCompiler(template);
+    }
+
+    public String strReplace(Map<String, String> variables) {
+        // 调用模板函数，进行替换
+        return templateFunc.apply(variables);
     }
 
     private static Function<Map<String, String>, String> createTemplateFunction(String template) {
         try {
             String className = "GeneratedTemplate_" + template.hashCode();
+
+            // 使用 TraceClassVisitor 来输出生成的字节码
             ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_FRAMES | ClassWriter.COMPUTE_MAXS);
             cw.visit(V1_8, ACC_PUBLIC, className, null, "java/lang/Object", new String[]{Function.class.getName().replace('.', '/')});
 
@@ -32,16 +43,12 @@ public class ASMTemplateCompiler {
             mv.visitVarInsn(ALOAD, 0);
             mv.visitMethodInsn(INVOKESPECIAL, "java/lang/Object", "<init>", "()V", false);
             mv.visitInsn(RETURN);
-            mv.visitMaxs(0, 0); // 自动计算
+            mv.visitMaxs(0, 0);
             mv.visitEnd();
 
-            // 生成apply方法
-            mv = cw.visitMethod(ACC_PUBLIC, "apply", "(Ljava/lang/Object;)Ljava/lang/Object;", null, null);
+            // 生成superReplace方法
+            mv = cw.visitMethod(ACC_PUBLIC, "superReplace", "(Ljava/util/Map;)Ljava/lang/String;", null, null);
             mv.visitCode();
-
-            // 将传入的Object参数转换为Map<String, String>
-            mv.visitVarInsn(ALOAD, 1);
-            mv.visitTypeInsn(CHECKCAST, "java/util/Map");
 
             // 创建StringBuilder实例
             mv.visitTypeInsn(NEW, "java/lang/StringBuilder");
@@ -59,9 +66,8 @@ public class ASMTemplateCompiler {
                     mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/StringBuilder", "append", "(Ljava/lang/String;)Ljava/lang/StringBuilder;", false);
                 }
                 // 插入变量片段
-                String key = matcher.group(1);
-                mv.visitVarInsn(ALOAD, 1);
-                mv.visitLdcInsn(key);
+                mv.visitVarInsn(ALOAD, 1);  // 加载Map对象
+                mv.visitLdcInsn("{" + matcher.group(1) + "}");// 变量有大括号
                 mv.visitMethodInsn(INVOKEINTERFACE, "java/util/Map", "get", "(Ljava/lang/Object;)Ljava/lang/Object;", true);
                 mv.visitTypeInsn(CHECKCAST, "java/lang/String");
                 mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/StringBuilder", "append", "(Ljava/lang/String;)Ljava/lang/StringBuilder;", false);
@@ -81,12 +87,20 @@ public class ASMTemplateCompiler {
             mv.visitMaxs(0, 0); // 自动计算
             mv.visitEnd();
 
-            cw.visitEnd();
-
             // 将生成的字节码加载为Class
             byte[] bytecode = cw.toByteArray();
             Class<?> generatedClass = new DynamicClassLoader().defineClass(className, bytecode);
-            return (Function<Map<String, String>, String>) generatedClass.getDeclaredConstructor().newInstance();
+
+            // 使用lambda表达式包装生成的类，并调用superReplace方法
+            return variables -> {
+                try {
+                    Object instance = generatedClass.getDeclaredConstructor().newInstance();
+                    return (String) generatedClass.getDeclaredMethod("superReplace", Map.class).invoke(instance, variables);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            };
+
         } catch (Exception e) {
             throw new RuntimeException("Failed to compile template", e);
         }
