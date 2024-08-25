@@ -109,7 +109,7 @@ public class DefaultVariables extends BaseVariable {
         addStrReplaceString("{换行}", "\n");
         addStrReplaceString("{color}", strings[ThreadLocalRandom.current().nextInt(strings.length)]);
         Optional<Player> playerOptional = Optional.ofNullable(player);
-        if (playerOptional.isEmpty()) {
+        if (!playerOptional.isPresent()) {
             return;
         }
         Player player = playerOptional.get();

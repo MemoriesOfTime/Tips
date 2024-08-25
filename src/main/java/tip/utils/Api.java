@@ -136,7 +136,7 @@ public final class Api {
         if (config.messages.contains(message)) {
             config.removeMessage(message);
         }
-        if (config.messages.size() == 0) {
+        if (config.messages.isEmpty()) {
             Main.getInstance().getPlayerConfigs().remove(config);
         }
     }
