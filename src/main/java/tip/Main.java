@@ -8,6 +8,7 @@ import cn.nukkit.event.Listener;
 import cn.nukkit.plugin.PluginBase;
 import cn.nukkit.utils.BossBarColor;
 import cn.nukkit.utils.Config;
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import tip.bossbar.BossBarApi;
 import tip.commands.TipsCommand;
 import tip.lib.viewcompass.ViewCompassVariable;
@@ -31,6 +32,7 @@ import java.io.File;
 import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadFactory;
 
 /**
  * @author 若水
@@ -61,7 +63,7 @@ public class Main extends PluginBase implements Listener {
 
     private LinkedList<PlayerConfig> playerConfigs = new LinkedList<>();
 
-    public static ExecutorService executor = Executors.newCachedThreadPool();
+    public static ExecutorService executor = null;
 
 
     @Override
@@ -76,7 +78,7 @@ public class Main extends PluginBase implements Listener {
         if (executor != null) {
             executor.shutdown();
         }
-        executor = Executors.newCachedThreadPool();
+        executor = Executors.newCachedThreadPool(new ThreadFactoryBuilder().setNameFormat("Tips-Thread-%d").build());
 
         try {
             if (Server.getInstance().getPluginManager().getPlugin("AutoUpData") != null) {

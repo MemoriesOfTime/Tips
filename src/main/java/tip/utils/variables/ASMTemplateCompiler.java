@@ -9,23 +9,19 @@ import java.util.regex.Pattern;
 
 import static org.objectweb.asm.Opcodes.*;
 
-public class ASMTemplateCompiler {
+public final class ASMTemplateCompiler {
+
     private static final Pattern variablePattern = Pattern.compile("\\{([^}]+)}");
 
     private static final Map<String, Function<Map<String, String>, String>> templateCache = new ConcurrentHashMap<>();
 
-    private Function<Map<String, String>, String> templateFunc;
+    private ASMTemplateCompiler() {
 
-    public ASMTemplateCompiler(String template) {
-        templateFunc = templateCache.computeIfAbsent(template, ASMTemplateCompiler::createTemplateFunction);
     }
 
-    public static ASMTemplateCompiler compile(String template) {
-        return new ASMTemplateCompiler(template);
-    }
-
-    public String strReplace(Map<String, String> variables) {
+    public static String strReplace(String template, Map<String, String> variables) {
         // 调用模板函数，进行替换
+        Function<Map<String, String>, String> templateFunc = templateCache.computeIfAbsent(template, ASMTemplateCompiler::createTemplateFunction);
         return templateFunc.apply(variables);
     }
 

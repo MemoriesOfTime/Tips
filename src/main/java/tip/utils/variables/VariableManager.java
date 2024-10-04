@@ -5,8 +5,7 @@ import tip.Main;
 
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
-
-import static tip.utils.variables.ASMTemplateCompiler.compile;
+import java.util.Map;
 
 /**
  * @author SmallasWater
@@ -46,7 +45,19 @@ public final class VariableManager {
         }
         variables.putAll(otherVariables);
 
-        return compile(msg).strReplace(variables);
+        try {
+            return ASMTemplateCompiler.strReplace(msg, variables);
+        } catch (Throwable e) {
+            Main.getInstance().getLogger().error("Error executing ASMTemplateCompiler.strReplace() method!", e);
+            String message = msg;
+            for (Map.Entry<String, String> entry : variables.entrySet()) {
+                if (entry.getKey() == null || entry.getValue() == null) {
+                    continue;
+                }
+                message = message.replace(entry.getKey(), entry.getValue());
+            }
+            return message;
+        }
     }
 
 }

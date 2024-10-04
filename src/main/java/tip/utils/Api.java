@@ -125,7 +125,6 @@ public final class Api {
     public static void setPlayerShowMessage(String playerName, BaseMessage message) {
         PlayerConfig config = Main.getInstance().getPlayerConfigInit(playerName);
         config.setMessage(message);
-
     }
 
     public static void removePlayerShowMessage(String playerName, BaseMessage message) {
