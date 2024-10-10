@@ -1,13 +1,11 @@
 package tip.tasks;
 
-
 import cn.nukkit.Server;
 import cn.nukkit.utils.TextFormat;
 import com.smallaswater.serverinfo.ServerInfoMainClass;
 import com.smallaswater.serverinfo.servers.ServerInfo;
 import tip.Main;
 
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 
