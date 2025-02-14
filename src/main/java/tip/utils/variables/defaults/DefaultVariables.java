@@ -147,6 +147,16 @@ public class DefaultVariables extends BaseVariable {
 
         addStrReplaceString("{deviceOS}", this.mapDeviceOSToString(player.getLoginChainData().getDeviceOS()));
         addStrReplaceString("{playerVersion}", player.getLoginChainData().getGameVersion());
+
+        addStrReplaceString("{player_exp}", String.valueOf(player.getExperience()));
+        addStrReplaceString("{player_exp_level}", String.valueOf(player.getExperienceLevel()));
+        if (player.getExperienceLevel() >= 1) {
+            addStrReplaceString("{player_exp_min}", String.valueOf(Player.calculateRequireExperience(player.getExperienceLevel() - 1)));
+        } else {
+            addStrReplaceString("{player_exp_min}", "0");
+        }
+        addStrReplaceString("{player_exp_max}", String.valueOf(Player.calculateRequireExperience(player.getExperienceLevel())));
+
     }
 
     private String mapDeviceOSToString(int os) {
