@@ -7,13 +7,12 @@ import cn.nukkit.command.data.CommandParameter;
  * @author SmallasWater
  */
 public abstract class BaseSubCommand {
-    private String name;
+
+    private final String name;
 
     protected BaseSubCommand(String name) {
-        this.name = name;
+        this.name = name.toLowerCase();
     }
-
-
 
     /**
      * 获取名称

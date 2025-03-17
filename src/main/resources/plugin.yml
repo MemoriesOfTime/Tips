@@ -1,21 +1,24 @@
 name: Tips
 main: tip.Main
-version: "2.2.1"
+version: "2.2.2-SNAPSHOT"
 api: ["1.0.8"]
 
 load: POSTWORLD
 
 
 permissions:
-  tips.ts:
-    description: "设置GUI"
-    default: true
-  tips.me:
-    description: "设置自身的显示"
-    default: op
   tips.default:
     description: "修改默认显示"
     default: op
+  tips.send:
+    description: "发送提示"
+    default: op
+  tips.reload:
+    description: "重载插件"
+    default: op
   tips.theme:
     description: "设置自身的显示样式"
+    default: true
+  tips.achall:
+    description: "打开成就GUI"
     default: true

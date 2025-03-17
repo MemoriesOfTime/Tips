@@ -15,15 +15,13 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public abstract class BaseCommand extends Command {
 
-    private ArrayList<BaseSubCommand> subCommand = new ArrayList<>();
+    private final ArrayList<BaseSubCommand> subCommand = new ArrayList<>();
 
     private final ConcurrentHashMap<String, Integer> subCommands = new ConcurrentHashMap<>();
 
     public BaseCommand(String name, String description) {
         super(name,description);
     }
-
-
 
     /**
      * 获取权限
@@ -35,7 +33,7 @@ public abstract class BaseCommand extends Command {
 
     @Override
     public boolean execute(CommandSender sender, String s, String[] args) {
-        if(hasPermission(sender)){
+        if(hasPermission(sender)) {
             String subCommand = args[0].toLowerCase();
             if (subCommands.containsKey(subCommand)) {
                 BaseSubCommand command = this.subCommand.get(subCommands.get(subCommand));
@@ -43,7 +41,7 @@ public abstract class BaseCommand extends Command {
                 if (canUse) {
                     return command.execute(sender,s, args);
                 } else if (sender instanceof Player) {
-                    sender.sendMessage("你不能使用这个指令");
+                    sender.sendMessage("你没有权限使用这个指令");
                     return true;
                 } else {
                     sender.sendMessage("请不要在控制台执行此指令");

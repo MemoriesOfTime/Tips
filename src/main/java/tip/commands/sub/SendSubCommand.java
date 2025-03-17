@@ -83,6 +83,6 @@ public class SendSubCommand extends BaseSubCommand {
 
     @Override
     public boolean hasPermission(CommandSender sender) {
-        return sender.hasPermission("tips.ts");
+        return sender.hasPermission("tips.send");
     }
 }

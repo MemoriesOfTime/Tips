@@ -58,7 +58,7 @@ public class AchAllSubCommand extends BaseSubCommand {
 
     @Override
     public boolean hasPermission(CommandSender sender) {
-        return sender.isPlayer();
+        return sender.hasPermission("tips.achall");
     }
 
     @Override
