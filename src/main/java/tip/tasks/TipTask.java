@@ -6,6 +6,7 @@ import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import tip.Main;
 import tip.utils.SendPlayerClass;
+
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -17,14 +18,12 @@ public class TipTask extends BaseTipsRunnable {
             .expireAfterAccess(1, TimeUnit.MINUTES)
             .build();
 
+    private final int sleep;
+
     public TipTask(Main owner, int sleep) {
         super(owner);
         this.sleep = sleep * 50;
-
     }
-
-    private int sleep;
-
 
     @Override
     public void run() {

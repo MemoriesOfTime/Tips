@@ -14,22 +14,22 @@ import java.util.LinkedHashMap;
  * @author 若水
  */
 public class BossBarTask {
-    private LinkedHashMap<String, BossBarTask.MessageType> type = new LinkedHashMap<>();
 
+    private final LinkedHashMap<String, BossBarTask.MessageType> type = new LinkedHashMap<>();
 
     void onRun(Player player) {
-        if(player == null){
+        if (player == null) {
             return;
         }
-        if(player.isOnline()){
-            if(!Main.getInstance().apis.containsKey(player)){
+        if (player.isOnline()) {
+            if (!Main.getInstance().apis.containsKey(player)) {
                 return;
             }
-            BossBarMessage message = (BossBarMessage) Api.getSendPlayerMessage(player.getName(),player.getLevel().getFolderName(), BaseMessage.BaseTypes.BOSS_BAR);
-            if(message != null) {
+            BossBarMessage message = (BossBarMessage) Api.getSendPlayerMessage(player.getName(), player.getLevel().getFolderName(), BaseMessage.BaseTypes.BOSS_BAR);
+            if (message != null) {
                 if (message.isOpen()) {
-                    if(!type.containsKey(player.getLevel().getFolderName())){
-                        type.put(player.getLevel().getFolderName(),new BossBarTask.MessageType());
+                    if (!type.containsKey(player.getLevel().getFolderName())) {
+                        type.put(player.getLevel().getFolderName(), new MessageType());
                     }
                     MessageType m = type.get(player.getLevel().getFolderName());
                     BossMessageBuilder bossMessageBuilder = message.getBuilder();
@@ -44,24 +44,21 @@ public class BossBarTask {
                         m.i = 0;
                     }
                     String text = bossMessageBuilder.getStrings().get(m.i);
-                    text = Api.strReplace(text,player);
-                    BossBarApi.showBoss(player, text, bossMessageBuilder,m.time);
+                    text = Api.strReplace(text, player);
+                    BossBarApi.showBoss(player, text, bossMessageBuilder, m.time);
                     m.time--;
                 } else {
                     BossBarApi.removeBossBar(player);
                 }
-            }else{
+            } else {
                 BossBarApi.removeBossBar(player);
             }
         }
-
-
     }
-    private class MessageType{
+
+    private static class MessageType {
         public int i = 0;
-
         public int time = -2;
-
-
     }
+
 }

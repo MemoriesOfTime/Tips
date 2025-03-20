@@ -1,27 +1,23 @@
 package tip;
 
 
-
 import cn.nukkit.Player;
 import cn.nukkit.Server;
-import cn.nukkit.event.Listener;
 import cn.nukkit.plugin.PluginBase;
 import cn.nukkit.utils.BossBarColor;
 import cn.nukkit.utils.Config;
+import com.google.common.cache.Cache;
+import com.google.common.cache.CacheBuilder;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import tip.bossbar.BossBarApi;
 import tip.commands.TipsCommand;
 import tip.lib.viewcompass.ViewCompassVariable;
-import tip.messages.*;
+import tip.messages.BaseMessage;
 import tip.messages.defaults.*;
-import tip.messages.defaults.BossBarMessage;
-import tip.messages.defaults.BroadcastMessage;
-import tip.messages.defaults.ChatMessage;
-import tip.messages.defaults.NameTagMessage;
-import tip.messages.defaults.ScoreBoardMessage;
-import tip.messages.defaults.TipMessage;
-import tip.tasks.*;
-
+import tip.tasks.AddPlayerTask;
+import tip.tasks.BossBarTask;
+import tip.tasks.MotdTask;
+import tip.tasks.TipTask;
 import tip.utils.*;
 import tip.utils.variables.VariableManager;
 import tip.utils.variables.defaults.DefaultVariables;
@@ -32,13 +28,13 @@ import java.io.File;
 import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author 若水
 
  */
-public class Main extends PluginBase implements Listener {
+public class Main extends PluginBase {
 
 
     private static Main instance;
@@ -53,13 +49,15 @@ public class Main extends PluginBase implements Listener {
     private VariableManager varManager;
     public Set<Player> scoreboards = new HashSet<>();
 
-    public LinkedHashMap<Player,BossBarTask> tasks = new LinkedHashMap<>();
+    public Cache<Player,BossBarTask> tasks = CacheBuilder.newBuilder()
+            .expireAfterAccess(60, TimeUnit.MINUTES)
+            .build();
+
+    public final LinkedHashMap<Player, BossBarApi> apis = new LinkedHashMap<>();
 
     private MessageManager showMessages = new MessageManager();
 
     private final ThemeManager themeManager = new ThemeManager();
-
-    public final LinkedHashMap<Player, BossBarApi> apis = new LinkedHashMap<>();
 
     private LinkedList<PlayerConfig> playerConfigs = new LinkedList<>();
 
@@ -133,7 +131,6 @@ public class Main extends PluginBase implements Listener {
     public void init(){
         this.saveDefaultConfig();
         this.reloadConfig();
-        tasks = new LinkedHashMap<>();
         showMessages = new MessageManager();
 
         this.saveResource("Tips变量.txt","/Tips变量.txt",true); //每次加载时写入，保证是最新的
@@ -373,6 +370,7 @@ public class Main extends PluginBase implements Listener {
             executor = null;
         }
 
+        tasks.invalidateAll();
         for (Player player : new HashSet<>(this.apis.keySet())) {
             BossBarApi.removeBossBar(player);
         }

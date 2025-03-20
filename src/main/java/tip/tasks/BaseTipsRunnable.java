@@ -1,6 +1,5 @@
 package tip.tasks;
 
-import cn.nukkit.plugin.Plugin;
 import tip.Main;
 
 /**
@@ -8,7 +7,8 @@ import tip.Main;
  * Create on 2021/2/26 14:47
  * Package tip.tasks
  */
-public abstract class BaseTipsRunnable implements Runnable{
+public abstract class BaseTipsRunnable implements Runnable {
+
     public Main owner;
 
     public BaseTipsRunnable(Main owner){
