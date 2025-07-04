@@ -161,6 +161,7 @@ public class DefaultVariables extends BaseVariable {
 
     private String mapDeviceOSToString(int os) {
         switch (os) {
+            case -1: return "Unknown";
             case 1: return "Android";
             case 2: return "iOS";
             case 3: return "macOS";
@@ -175,8 +176,9 @@ public class DefaultVariables extends BaseVariable {
             case 12: return "Switch";
             case 13: return "Xbox";
             case 14: return "Windows Phone";
+            case 15: return "Linux";
         }
-        return "Unknown";
+        return "Other";
     }
 
 
