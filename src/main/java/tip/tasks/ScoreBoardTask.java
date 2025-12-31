@@ -45,7 +45,6 @@ public class ScoreBoardTask {
         if (this.scoreboard == null) {
             return;
         }
-//        for (Player player : Server.getInstance().getOnlinePlayers().values()) {
             if (player == null || !player.isOnline()) {
                 return;
             }
@@ -58,19 +57,20 @@ public class ScoreBoardTask {
                 return;
             }
 
-            if (player.isOnline()) {
+            if (player.isOnline() && player.spawned) {
                 try {
                     String title = Api.strReplace(message.getTitle(), player);
                     ArrayList<String> list = new ArrayList<>();
                     for (String ms : message.getMessages()) {
                         list.add(Api.strReplace(ms, player));
                     }
+                    // 每次都先关闭再显示，强制GameCore重新发送数据包
+                    this.scoreboard.closeScoreboard(player);
                     this.scoreboard.showScoreboard(player, title, list);
                     Main.getInstance().scoreboards.add(player);
                 } catch (Exception ignored) {
                 }
             }
-//        }
     }
 
 }

@@ -21,7 +21,7 @@ public class BroadCastPlayerTask {
     }
 
     public void onRun() {
-        if (player == null || !player.isOnline()) {
+        if (player == null || !player.isOnline() || !player.spawned) {
             return;
         }
         BroadcastMessage message = (BroadcastMessage) Api.getSendPlayerMessage(player.getName(), player.level.getFolderName(), BaseMessage.BaseTypes.BROADCAST);

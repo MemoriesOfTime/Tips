@@ -15,7 +15,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
-        <lib.GameCore.version>1.6.9</lib.GameCore.version>
+        <lib.GameCore.version>1.6.11-PM1E</lib.GameCore.version>
     </properties>
 
     <distributionManagement>
@@ -81,8 +81,9 @@
         <dependency>
             <groupId>cn.lanink</groupId>
             <artifactId>MemoriesOfTime-GameCore</artifactId>
-            <version>${lib.GameCore.version}</version>
-            <scope>provided</scope>
+            <version>1.6.11-PM1E</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/MemoriesOfTime-GameCore-1.6.11-PM1E.jar</systemPath>
         </dependency>
 
         <dependency>

@@ -18,10 +18,13 @@ public class BossBarAllPlayerTask {
     }
 
     public void onRun() {
-        if (player == null || !player.isOnline()) {
+        if (player == null || !player.isOnline() || !player.spawned) {
             return;
         }
-        BossBarApi.createBossBar(player);
+        // 检查是否需要重新创建BossBar（跨服后apis中可能没有当前player）
+        if (!Main.getInstance().apis.containsKey(player)) {
+            BossBarApi.createBossBar(player);
+        }
         BossBarTask task = Main.getInstance().tasks.getIfPresent(player);
         if (task == null) {
             task = new BossBarTask();

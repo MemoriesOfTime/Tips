@@ -18,7 +18,7 @@ public class NameTagTask {
     }
 
     public void onRun() {
-        if (player == null || !player.isOnline()) {
+        if (player == null || !player.isOnline() || !player.spawned) {
             return;
         }
         NameTagMessage nameTagMessage = (NameTagMessage) Api.getSendPlayerMessage(player.getName(), player.level.getFolderName(), BaseMessage.BaseTypes.NAME_TAG);

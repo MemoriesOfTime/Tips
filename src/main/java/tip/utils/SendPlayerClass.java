@@ -32,6 +32,10 @@ public class SendPlayerClass {
 
     }
 
+    public void updatePlayer(Player player) {
+        this.player = player;
+    }
+
     private Main getOwner() {
         return main;
     }
@@ -40,6 +44,12 @@ public class SendPlayerClass {
         if(player == null || !player.isOnline()){
             return;
         }
+        
+        // 等待玩家完全生成后再发送显示数据
+        if(!player.spawned){
+            return;
+        }
+        
         TipMessage tipMessage;
         tipMessage = (TipMessage) Api.getSendPlayerMessage(player.getName(),player.level.getFolderName(),
                 BaseMessage.BaseTypes.TIP);
@@ -48,21 +58,14 @@ public class SendPlayerClass {
                 sendTip(player, Api.strReplace(tipMessage.getMessage(), player), tipMessage.getShowType());
             }
         }
-        if(bossTask == null){
-            bossTask = new BossBarAllPlayerTask(player);
-        }
+        // 每次都重新创建子Task，确保使用最新的player引用
+        bossTask = new BossBarAllPlayerTask(player);
         bossTask.onRun();
-        if(broadtask == null){
-            broadtask = new BroadCastTask(player);
-        }
+        broadtask = new BroadCastTask(player);
         broadtask.onRun();
-        if(nametask == null){
-            nametask = new NameTagTask(player);
-        }
+        nametask = new NameTagTask(player);
         nametask.onRun();
-        if(scoreTask == null){
-            scoreTask = new ScoreBoardTask(player,getOwner());
-        }
+        scoreTask = new ScoreBoardTask(player,getOwner());
         scoreTask.onRun();
 
     }

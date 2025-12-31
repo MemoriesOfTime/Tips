@@ -34,6 +34,9 @@ public class TipTask extends BaseTipsRunnable {
                     if ((sendPlayerClass = sendPlayerClassCache.getIfPresent(player)) == null) {
                         sendPlayerClass = new SendPlayerClass(player, getOwner());
                         sendPlayerClassCache.put(player, sendPlayerClass);
+                    } else {
+                        // 更新player引用，解决跨服后旧player对象失效的问题
+                        sendPlayerClass.updatePlayer(player);
                     }
                     sendPlayerClass.init();
                 } catch (Exception e) {
