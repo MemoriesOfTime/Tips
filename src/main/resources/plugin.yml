@@ -1,10 +1,9 @@
 name: Tips
 main: tip.Main
 version: "2.2.3-SNAPSHOT"
-api: ["1.0.8"]
+api: ["1.1.0"]
 
 load: POSTWORLD
-
 
 permissions:
   tips.default:

@@ -38,6 +38,7 @@ public class OnListener implements Listener {
 
         BossBarApi.removeBossBar(player);
         Main.getInstance().apis.remove(player);
+        Main.getInstance().tasks.invalidate(player);
     }
 
     @EventHandler

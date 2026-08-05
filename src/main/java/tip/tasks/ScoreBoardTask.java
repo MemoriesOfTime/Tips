@@ -1,16 +1,13 @@
 package tip.tasks;
 
-import cn.lanink.gamecore.GameCore;
-import cn.lanink.gamecore.scoreboard.ScoreboardUtil;
-import cn.lanink.gamecore.scoreboard.base.IScoreboard;
-import cn.lanink.gamecore.scoreboard.ltname.SimpleScoreboard;
 import cn.nukkit.Player;
-import cn.nukkit.utils.TextFormat;
+import cn.nukkit.scoreboard.Scoreboard;
+import cn.nukkit.scoreboard.Scoreboard.DisplaySlot;
+import cn.nukkit.scoreboard.Scoreboard.SortOrder;
 import tip.Main;
 import tip.messages.BaseMessage;
 import tip.messages.defaults.ScoreBoardMessage;
 import tip.utils.Api;
-
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -23,18 +20,12 @@ public class ScoreBoardTask {
 
     private final Player player;
     private final Main main;
-    private IScoreboard scoreboard = null;
+    private Scoreboard scoreboard = null;
+    private String title = null;
 
-    public ScoreBoardTask(Player player,Main main) {
+    public ScoreBoardTask(Player player, Main main) {
         this.player = player;
         this.main = main;
-
-        try {
-            Class.forName("cn.lanink.gamecore.scoreboard.ScoreboardUtil");
-            scoreboard = ScoreboardUtil.getScoreboard();
-        } catch (Exception ignored) {
-
-        }
     }
 
     private Main getOwner() {
@@ -42,35 +33,58 @@ public class ScoreBoardTask {
     }
 
     public void onRun() {
-        if (this.scoreboard == null) {
+        if (player == null || !player.isOnline()) {
             return;
         }
-//        for (Player player : Server.getInstance().getOnlinePlayers().values()) {
-            if (player == null || !player.isOnline()) {
-                return;
-            }
-            ScoreBoardMessage message = (ScoreBoardMessage) Api.getSendPlayerMessage(player.getName(), player.level.getFolderName(), BaseMessage.BaseTypes.SCORE_BOARD);
-            if (message == null || !message.isOpen()) {
-                if (getOwner().scoreboards.contains(player)) {
-                    this.scoreboard.closeScoreboard(player);
-                    getOwner().scoreboards.remove(player);
-                }
-                return;
-            }
+        ScoreBoardMessage message = (ScoreBoardMessage) Api.getSendPlayerMessage(player.getName(), player.level.getFolderName(), BaseMessage.BaseTypes.SCORE_BOARD);
+        if (message == null || !message.isOpen()) {
+            close();
+            return;
+        }
 
-            if (player.isOnline()) {
-                try {
-                    String title = Api.strReplace(message.getTitle(), player);
-                    ArrayList<String> list = new ArrayList<>();
-                    for (String ms : message.getMessages()) {
-                        list.add(Api.strReplace(ms, player));
-                    }
-                    this.scoreboard.showScoreboard(player, title, list);
-                    Main.getInstance().scoreboards.add(player);
-                } catch (Exception ignored) {
+        String title = Api.strReplace(message.getTitle(), player);
+        LinkedList<String> messages = message.getMessages();
+        ArrayList<String> list = new ArrayList<>();
+        for (String ms : messages) {
+            list.add(Api.strReplace(ms, player));
+        }
+        if (this.scoreboard == null || !title.equals(this.title)) {
+            close();
+            this.scoreboard = new Scoreboard(title, SortOrder.ASCENDING, DisplaySlot.SIDEBAR);
+            this.title = title;
+            this.scoreboard.showTo(player);
+        }
+
+        boolean changed = this.scoreboard.getScores().size() != list.size();
+        if (!changed) {
+            int index = 0;
+            for (String line : list) {
+                Scoreboard.Score score = this.scoreboard.getScores().get(line);
+                if (score == null || score.getScore() != index) {
+                    changed = true;
+                    break;
                 }
+                index++;
             }
-//        }
+        }
+        if (changed) {
+            this.scoreboard.clear();
+            int index = 0;
+            for (String line : list) {
+                this.scoreboard.setScore(line, index);
+                index++;
+            }
+        }
+        Main.getInstance().scoreboards.add(player);
+    }
+
+    private void close() {
+        if (this.scoreboard != null) {
+            this.scoreboard.hideFor(player);
+            this.scoreboard = null;
+        }
+        this.title = null;
+        getOwner().scoreboards.remove(player);
     }
 
 }

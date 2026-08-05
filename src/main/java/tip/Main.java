@@ -18,7 +18,10 @@ import tip.tasks.AddPlayerTask;
 import tip.tasks.BossBarTask;
 import tip.tasks.MotdTask;
 import tip.tasks.TipTask;
-import tip.utils.*;
+import tip.utils.Api;
+import tip.utils.OnListener;
+import tip.utils.PlayerConfig;
+import tip.utils.ThemeManager;
 import tip.utils.variables.VariableManager;
 import tip.utils.variables.defaults.DefaultVariables;
 import tip.windows.ListenerWindow;
@@ -40,8 +43,6 @@ public class Main extends PluginBase {
     private static Main instance;
 
     private String theme;
-
-    private boolean scoreboard = false;
 
     private String motd;
 
@@ -96,13 +97,6 @@ public class Main extends PluginBase {
         this.getServer().getCommandMap().register("tips", new TipsCommand(getConfig().getString("自定义指令.name","tips")));
         this.getServer().getPluginManager().registerEvents(new OnListener(),this);
         this.getServer().getPluginManager().registerEvents(new ListenerWindow(),this);
-
-        if (GameCoreDownload.checkAndDownload() == 1) {
-            this.getLogger().error("MemoriesOfTime-GameCore依赖 下载失败，无法使用计分板功能！");
-        } else {
-            Main.getInstance().getLogger().info("检测到 MemoriesOfTime-GameCore 成功开启计分板功能");
-            scoreboard = true;
-        }
         AddPlayerTask.add(new TipTask(Main.getInstance(),Main.getInstance().getConfig().getInt("自定义刷新刻度.底部",20)));
 
         this.getLogger().info("插件加载完成~");
@@ -113,7 +107,7 @@ public class Main extends PluginBase {
     }
 
     public boolean isScoreboard() {
-        return scoreboard;
+        return true;
     }
 
     public String getTheme() {

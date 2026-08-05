@@ -15,7 +15,6 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
-        <lib.GameCore.version>1.6.9</lib.GameCore.version>
     </properties>
 
     <distributionManagement>
@@ -79,13 +78,6 @@
         </dependency>
 
         <dependency>
-            <groupId>cn.lanink</groupId>
-            <artifactId>MemoriesOfTime-GameCore</artifactId>
-            <version>${lib.GameCore.version}</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
             <groupId>com.smallaswater.ServerInfo</groupId>
             <artifactId>ServerInfo</artifactId>
             <version>1.0.10</version>
@@ -141,16 +133,11 @@
                         <configuration>
                             <includes>
                                 <include>${project.basedir}/src/main/resources/plugin.yml</include>
-                                <include>${project.basedir}/src/main/java/tip/utils/GameCoreDownload.java</include>
                             </includes>
                             <replacements>
                                 <replacement>
                                     <token>version: ".*"</token>
                                     <value>version: "${project.version}"</value>
-                                </replacement>
-                                <replacement>
-                                    <token>MINIMUM_GAME_CORE_VERSION = ".*"</token>
-                                    <value>MINIMUM_GAME_CORE_VERSION = "${lib.GameCore.version}"</value>
                                 </replacement>
                             </replacements>
                         </configuration>
